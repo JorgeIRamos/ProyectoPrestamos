@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class Form1 : Form
+    public partial class Registro_Usuario : Form
     {
-        public Form1()
+        public Registro_Usuario()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Inicio_Sesion inicio_Sesion = new Inicio_Sesion();
+            inicio_Sesion.Show();
         }
     }
 }
