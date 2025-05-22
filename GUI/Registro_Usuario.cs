@@ -23,5 +23,12 @@ namespace GUI
             Inicio_Sesion inicio_Sesion = new Inicio_Sesion();
             inicio_Sesion.Show();
         }
+
+        private void btningresar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Inicio_Sesion inicio_Sesion = new Inicio_Sesion();
+            inicio_Sesion.Show();
+        }
     }
 }

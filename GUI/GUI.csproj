@@ -71,6 +71,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Registro_Usuario.resx">
       <DependentUpon>Registro_Usuario.cs</DependentUpon>
@@ -87,6 +88,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ellipse 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ellipse 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PresTech.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,5 +28,15 @@ namespace GUI
             Registro_Usuario registro_Usuario = new Registro_Usuario();
             registro_Usuario.Show();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
