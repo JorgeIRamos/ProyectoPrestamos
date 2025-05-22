@@ -37,7 +37,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(169)))));
             this.BackgroundImage = global::GUI.Properties.Resources.BG;
             this.ClientSize = new System.Drawing.Size(1029, 687);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Menu_Prestamista";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu_Prestamista";
             this.ResumeLayout(false);
 

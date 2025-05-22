@@ -78,6 +78,9 @@
     <EmbeddedResource Include="Menu_Prestamista.resx">
       <DependentUpon>Menu_Prestamista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Prestatario.resx">
+      <DependentUpon>Menu_Prestatario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

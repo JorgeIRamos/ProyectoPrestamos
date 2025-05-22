@@ -35,6 +35,74 @@ namespace GUI
             {
                 return;
             }
+
+            GuardarPersona();
+            GuardarRol();
+            MessageBox.Show("A continuacion digite los datos para loguearse");
+            this.Close();
+
+        }
+
+        private void GuardarPersona()
+        {
+            int tipo_documento = ValorTipoDocumento();
+            char sexo = ValorSexo();
+
+
+            Persona persona = new Persona
+            {
+                nombre = txtnombre.Text.Trim(),
+                apellido = txtapellido.Text.Trim(),
+                NumeroDocumento = txtnrodocumento.Text.Trim(),
+                tipo_documento = tipo_documento,
+                telefono = txttelefono.Text.Trim(),
+                sexo = sexo.ToString(),
+                direccion = txtdireccion.Text.Trim(),
+                email = txtemail.Text.Trim(),
+                username = txtusuario.Text.Trim(),
+                contraseña = txtcontraseña.Text.Trim()
+            };
+
+            // Guardar persona
+            servicePersona.AbrirConexion();
+            servicePersona.Guardar(persona);
+            servicePersona.CerrarConexion();
+        }
+
+        private void GuardarRol()
+        {
+            string rol = boxrol.SelectedItem.ToString();
+            if (rol == "Prestamista")
+            {
+                var personas = servicePersona.Consultar(new Persona());
+                var servicePrestamista = new Service<Prestamista>();
+                Prestamista prestamista = new Prestamista();
+                foreach (var item in personas)
+                {
+
+                    prestamista.id_prestamista = item.id_persona;
+
+                }
+                servicePrestamista.AbrirConexion();
+                MessageBox.Show(servicePrestamista.Guardar(prestamista));
+                servicePrestamista.CerrarConexion();
+
+
+            }
+            else if (rol == "Prestatario")
+            {
+                var personas = servicePersona.Consultar(new Persona());
+                var servicePrestatario = new Service<Prestatario>();
+                Prestatario prestatario = new Prestatario();
+                foreach (var item in personas)
+                {
+                    prestatario.id_prestatario = item.id_persona;
+                }
+
+                servicePrestatario.AbrirConexion();
+                MessageBox.Show(servicePrestatario.Guardar(prestatario));
+                servicePrestatario.CerrarConexion();
+            }
         }
 
         private bool ValidarNombre()
@@ -95,7 +163,7 @@ namespace GUI
         {
             if (boxsexo.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar un tipo de documento.");
+                MessageBox.Show("Debe seleccionar un sexo.");
                 boxsexo.Focus();
                 return false;
             }
@@ -117,10 +185,17 @@ namespace GUI
         {
             servicePersona.AbrirConexion();
             string email = txtemail.Text.Trim();
+            var regex = new System.Text.RegularExpressions.Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
             var listapersona = servicePersona.Consultar(new Persona());
             if (string.IsNullOrEmpty(email))
             {
                 MessageBox.Show("El email no puede estar vacio.");
+                return false;
+            }
+            
+            if (!regex.IsMatch(email))
+            {
+                MessageBox.Show("El formato del email no es válido.");
                 return false;
             }
 
@@ -197,5 +272,34 @@ namespace GUI
             }
             return true;
         }
+
+        private int ValorTipoDocumento()
+        {
+            if (boxtipodocumento.SelectedItem.ToString() == "Cedula de Ciudadania")
+            {
+                return 1;
+            }
+            else if (boxtipodocumento.SelectedItem.ToString() == "Tarjeta de Identidad")
+            {
+                return 2;
+            }
+            else if (boxtipodocumento.SelectedItem.ToString() == "Cedula de Extranjeria")
+            {
+                return 3;
+            }
+
+            return 4;
+        }
+
+        private char ValorSexo()
+        {
+            if (boxsexo.SelectedItem.ToString() == "Masculino")
+            {
+                return 'M';
+            }  
+            return 'F';
+        } 
+
+        
     }
 }
