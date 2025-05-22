@@ -52,6 +52,18 @@
     <Compile Include="Inicio_Sesion.Designer.cs">
       <DependentUpon>Inicio_Sesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu_Prestamista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Prestamista.Designer.cs">
+      <DependentUpon>Menu_Prestamista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Prestatario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Prestatario.Designer.cs">
+      <DependentUpon>Menu_Prestatario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro_Usuario.cs">
@@ -62,6 +74,9 @@
     </Compile>
     <EmbeddedResource Include="Inicio_Sesion.resx">
       <DependentUpon>Inicio_Sesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Prestamista.resx">
+      <DependentUpon>Menu_Prestamista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,6 +112,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PresTech.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{3bdeaac6-1f58-4a22-9815-b7ed6d97aa97}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{59965f6c-4937-4914-938e-679b350b669f}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

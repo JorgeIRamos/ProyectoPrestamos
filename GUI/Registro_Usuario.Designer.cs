@@ -53,22 +53,22 @@
             this.boxtipodocumento = new System.Windows.Forms.ComboBox();
             this.boxsexo = new System.Windows.Forms.ComboBox();
             this.boxrol = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnregistrar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.btningresar = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -268,6 +268,7 @@
             this.txtcontraseña.Name = "txtcontraseña";
             this.txtcontraseña.Size = new System.Drawing.Size(234, 13);
             this.txtcontraseña.TabIndex = 20;
+            this.txtcontraseña.UseSystemPasswordChar = true;
             // 
             // txtverificar
             // 
@@ -276,10 +277,17 @@
             this.txtverificar.Name = "txtverificar";
             this.txtverificar.Size = new System.Drawing.Size(234, 13);
             this.txtverificar.TabIndex = 21;
+            this.txtverificar.UseSystemPasswordChar = true;
             // 
             // boxtipodocumento
             // 
+            this.boxtipodocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxtipodocumento.FormattingEnabled = true;
+            this.boxtipodocumento.Items.AddRange(new object[] {
+            "Cedula de Ciudadania",
+            "Tarjeta de Identidad",
+            "Cedula de Extranjeria",
+            "Pasaporte"});
             this.boxtipodocumento.Location = new System.Drawing.Point(196, 151);
             this.boxtipodocumento.Name = "boxtipodocumento";
             this.boxtipodocumento.Size = new System.Drawing.Size(170, 21);
@@ -287,7 +295,11 @@
             // 
             // boxsexo
             // 
+            this.boxsexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxsexo.FormattingEnabled = true;
+            this.boxsexo.Items.AddRange(new object[] {
+            "Masculino",
+            "Femenino"});
             this.boxsexo.Location = new System.Drawing.Point(200, 269);
             this.boxsexo.Name = "boxsexo";
             this.boxsexo.Size = new System.Drawing.Size(85, 21);
@@ -295,24 +307,28 @@
             // 
             // boxrol
             // 
+            this.boxrol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxrol.FormattingEnabled = true;
+            this.boxrol.Items.AddRange(new object[] {
+            "Prestamista",
+            "Prestatario"});
             this.boxrol.Location = new System.Drawing.Point(201, 505);
             this.boxrol.Name = "boxrol";
             this.boxrol.Size = new System.Drawing.Size(194, 21);
             this.boxrol.TabIndex = 24;
             // 
-            // button1
+            // btnregistrar
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(140)))), ((int)(((byte)(204)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.button1.Location = new System.Drawing.Point(204, 548);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 42);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "REGISTRARSE";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnregistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(140)))), ((int)(((byte)(204)))));
+            this.btnregistrar.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnregistrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnregistrar.Location = new System.Drawing.Point(204, 548);
+            this.btnregistrar.Name = "btnregistrar";
+            this.btnregistrar.Size = new System.Drawing.Size(159, 42);
+            this.btnregistrar.TabIndex = 25;
+            this.btnregistrar.Text = "REGISTRARSE";
+            this.btnregistrar.UseVisualStyleBackColor = false;
+            this.btnregistrar.Click += new System.EventHandler(this.btnregistrar_Click);
             // 
             // panel1
             // 
@@ -351,11 +367,83 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.boxrol);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnregistrar);
             this.panel1.Location = new System.Drawing.Point(84, 40);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(563, 609);
             this.panel1.TabIndex = 26;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.DarkGray;
+            this.panel10.Location = new System.Drawing.Point(204, 481);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(230, 1);
+            this.panel10.TabIndex = 34;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.DarkGray;
+            this.panel9.Location = new System.Drawing.Point(203, 442);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(230, 1);
+            this.panel9.TabIndex = 33;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.DarkGray;
+            this.panel8.Location = new System.Drawing.Point(201, 401);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(230, 1);
+            this.panel8.TabIndex = 32;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.DarkGray;
+            this.panel7.Location = new System.Drawing.Point(199, 360);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(230, 1);
+            this.panel7.TabIndex = 31;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.DarkGray;
+            this.panel6.Location = new System.Drawing.Point(196, 322);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(230, 1);
+            this.panel6.TabIndex = 30;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.DarkGray;
+            this.panel5.Location = new System.Drawing.Point(196, 248);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(230, 1);
+            this.panel5.TabIndex = 29;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DarkGray;
+            this.panel4.Location = new System.Drawing.Point(195, 207);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(230, 1);
+            this.panel4.TabIndex = 28;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.DarkGray;
+            this.panel3.Location = new System.Drawing.Point(200, 128);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(230, 1);
+            this.panel3.TabIndex = 27;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.DarkGray;
+            this.panel2.Location = new System.Drawing.Point(204, 86);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(230, 1);
+            this.panel2.TabIndex = 26;
             // 
             // pictureBox1
             // 
@@ -374,88 +462,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(78, 71);
             this.pictureBox2.TabIndex = 28;
             this.pictureBox2.TabStop = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.DarkGray;
-            this.panel2.Location = new System.Drawing.Point(204, 86);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(230, 1);
-            this.panel2.TabIndex = 26;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.DarkGray;
-            this.panel3.Location = new System.Drawing.Point(200, 128);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(230, 1);
-            this.panel3.TabIndex = 27;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DarkGray;
-            this.panel4.Location = new System.Drawing.Point(195, 207);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(230, 1);
-            this.panel4.TabIndex = 28;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.DarkGray;
-            this.panel5.Location = new System.Drawing.Point(196, 248);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(230, 1);
-            this.panel5.TabIndex = 29;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.DarkGray;
-            this.panel6.Location = new System.Drawing.Point(196, 322);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(230, 1);
-            this.panel6.TabIndex = 30;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.DarkGray;
-            this.panel7.Location = new System.Drawing.Point(199, 360);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(230, 1);
-            this.panel7.TabIndex = 31;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.DarkGray;
-            this.panel8.Location = new System.Drawing.Point(201, 401);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(230, 1);
-            this.panel8.TabIndex = 32;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.DarkGray;
-            this.panel9.Location = new System.Drawing.Point(203, 442);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(230, 1);
-            this.panel9.TabIndex = 33;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.DarkGray;
-            this.panel10.Location = new System.Drawing.Point(204, 481);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(230, 1);
-            this.panel10.TabIndex = 34;
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.White;
-            this.panel11.Controls.Add(this.btningresar);
-            this.panel11.Controls.Add(this.label14);
-            this.panel11.Location = new System.Drawing.Point(190, 684);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(347, 37);
-            this.panel11.TabIndex = 29;
             // 
             // label14
             // 
@@ -480,6 +486,16 @@
             this.btningresar.Text = "INGRESAR";
             this.btningresar.UseVisualStyleBackColor = false;
             this.btningresar.Click += new System.EventHandler(this.btningresar_Click);
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.White;
+            this.panel11.Controls.Add(this.btningresar);
+            this.panel11.Controls.Add(this.label14);
+            this.panel11.Location = new System.Drawing.Point(190, 684);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(347, 37);
+            this.panel11.TabIndex = 29;
             // 
             // Registro_Usuario
             // 
@@ -533,7 +549,7 @@
         private System.Windows.Forms.ComboBox boxtipodocumento;
         private System.Windows.Forms.ComboBox boxsexo;
         private System.Windows.Forms.ComboBox boxrol;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnregistrar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -546,8 +562,8 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Button btningresar;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btningresar;
+        private System.Windows.Forms.Panel panel11;
     }
 }

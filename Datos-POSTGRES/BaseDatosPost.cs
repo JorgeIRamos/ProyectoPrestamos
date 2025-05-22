@@ -14,7 +14,7 @@ namespace Datos_POSTGRES
     {
 
        
-        protected string cadenaConexion = "Host=localhost;Port=5436;Username=postgres;Password=12345;Database=proyectointentarenlazar";
+        protected string cadenaConexion = "Host=localhost;Port=5432;Username=postgres;Password=12345;Database=prueba";
 
         public NpgsqlConnection conexion;
 

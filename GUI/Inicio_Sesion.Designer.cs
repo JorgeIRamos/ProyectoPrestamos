@@ -36,10 +36,10 @@
             this.txtusuario = new System.Windows.Forms.TextBox();
             this.txtcontraseña = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnregistrarse = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnregistrarse = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -57,7 +57,6 @@
             this.label1.Size = new System.Drawing.Size(433, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "BIENVENIDO A NUESTRO PROGRAMA DE GESTION DE PRESTAMO PRESTECH";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -117,6 +116,7 @@
             this.txtcontraseña.Name = "txtcontraseña";
             this.txtcontraseña.Size = new System.Drawing.Size(246, 13);
             this.txtcontraseña.TabIndex = 8;
+            this.txtcontraseña.UseSystemPasswordChar = true;
             // 
             // panel1
             // 
@@ -135,7 +135,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(427, 418);
             this.panel1.TabIndex = 9;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel4.Location = new System.Drawing.Point(123, 148);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(246, 1);
+            this.panel4.TabIndex = 12;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel3.Location = new System.Drawing.Point(123, 194);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(246, 1);
+            this.panel3.TabIndex = 11;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel2.Location = new System.Drawing.Point(53, 287);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(337, 1);
+            this.panel2.TabIndex = 10;
             // 
             // btnregistrarse
             // 
@@ -150,30 +173,6 @@
             this.btnregistrarse.Text = "REGISTRARSE";
             this.btnregistrarse.UseVisualStyleBackColor = false;
             this.btnregistrarse.Click += new System.EventHandler(this.btnregistrarse_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel2.Location = new System.Drawing.Point(53, 287);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(337, 1);
-            this.panel2.TabIndex = 10;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel3.Location = new System.Drawing.Point(123, 194);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(246, 1);
-            this.panel3.TabIndex = 11;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.panel4.Location = new System.Drawing.Point(123, 148);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(246, 1);
-            this.panel4.TabIndex = 12;
             // 
             // pictureBox2
             // 
