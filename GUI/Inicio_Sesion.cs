@@ -100,7 +100,7 @@ namespace GUI
                 if (prestamista.Persona.username == txtusuario.Text.Trim() && prestamista.Persona.contraseña == txtcontraseña.Text.Trim())
                 {
                     this.Hide();
-                    Menu_Prestamista menu_Prestamista = new Menu_Prestamista();
+                    Menu_Prestamista menu_Prestamista = new Menu_Prestamista(prestamista.id_prestamista);
                     menu_Prestamista.ShowDialog();
                     this.Show();
                     return true;

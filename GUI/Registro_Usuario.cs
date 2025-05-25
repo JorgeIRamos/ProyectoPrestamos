@@ -207,6 +207,7 @@ namespace GUI
                     return false;
                 }
             }
+            servicePersona.CerrarConexion();
             return true;
         }
 
@@ -232,7 +233,7 @@ namespace GUI
                     return false;
                 }
             }
-
+            servicePersona.CerrarConexion();
             return true;
 
         }

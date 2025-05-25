@@ -84,5 +84,21 @@ namespace Logica
             return repo.Modificar(entity);
         }
 
+        public T BuscarPorId(int id, T entity)
+        {
+            if (typeof(T) == typeof(OfertaPrestamo))
+            {
+                var repo = new Datos_POSTGRES.OfertaPrestamoRepository();
+                return (T)(object)repo.BuscarPorId(id);
+            }
+            // Agrega más casos para otros tipos si es necesario
+            return default(T);
+        }
+
+
+
+
+
+
     }
 }

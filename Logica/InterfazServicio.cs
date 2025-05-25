@@ -12,5 +12,7 @@ namespace Logica
         string Modificar(T entity);
         string Eliminar(T entity);
         List<T> Consultar(T entity);
+
+        T BuscarPorId(int id, T entity);
     }
 }

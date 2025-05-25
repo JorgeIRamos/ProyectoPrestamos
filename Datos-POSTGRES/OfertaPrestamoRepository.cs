@@ -202,10 +202,12 @@ namespace Datos_POSTGRES
             if (id <= 0) return null;
 
             string sentencia = @"SELECT op.*, p.id_prestamista, pe.nombre, pe.apellido 
-                                 FROM oferta_prestamo op
-                                 JOIN prestamista p ON op.id_prestamista = p.id_prestamista
-                                 JOIN persona pe ON p.id_prestamista = pe.id_persona
-                                 WHERE op.id = @Id";
+            FROM oferta_prestamo op
+            LEFT JOIN prestamista p ON op.id_prestamista = p.id_prestamista
+            LEFT JOIN persona pe ON p.id_prestamista = pe.id_persona
+            WHERE op.id = @Id
+            ";
+
 
             using (var cmd = new NpgsqlCommand(sentencia, conexion))
             {
@@ -232,9 +234,12 @@ namespace Datos_POSTGRES
             return null;
         }
 
+
         public int GetId(OfertaPrestamo entity)
         {
             return entity?.id ?? 0;
         }
+
+
     }
 }
