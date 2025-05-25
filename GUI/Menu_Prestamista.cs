@@ -17,12 +17,18 @@ namespace GUI
         private Service<Prestamista> servicePrestamista;
         private Service<OfertaPrestamo> serviceOfertaPrestamo;
         private int idPrestamistaActual;
-        public Menu_Prestamista(int idPrestamista)
+        private string Nombre;
+        public Menu_Prestamista(int idPrestamista, string nombre)
         {
             servicePrestamista = new Service<Prestamista>();
             serviceOfertaPrestamo = new Service<OfertaPrestamo>();
             InitializeComponent();
             idPrestamistaActual = idPrestamista;
+            Nombre = nombre;
+            pnlconsultarprestamo.Visible = false;
+            pnlcrearprestamo.Visible = false;
+            labeluser.Text = "BIENVENIDO " + Nombre.ToUpper();
+
         }
 
         private void btncrearprestamo_Click(object sender, EventArgs e)
@@ -37,6 +43,7 @@ namespace GUI
             pnlinicio.Visible = false;
             pnlcrearprestamo.Visible = false;
             pnlconsultarprestamo.Visible = true;
+            CargarPrestamos();
 
         }
 
@@ -51,6 +58,23 @@ namespace GUI
 
 
         }
+
+        private void CargarPrestamos()
+        {
+            // Consultar todos los préstamos
+            var prestamos = serviceOfertaPrestamo.Consultar(null);
+
+            // Filtrar por el prestamista actual
+            var prestamosFiltrados = prestamos
+                .Where(p => p.id_prestamista == idPrestamistaActual)
+                .ToList();
+
+            dgvDatosPrestamos.DataSource = prestamosFiltrados;
+}
+
+
+
+
 
         private void GuardarPrestamo()
         {
@@ -69,6 +93,7 @@ namespace GUI
             serviceOfertaPrestamo.AbrirConexion();
             ;
             MessageBox.Show(serviceOfertaPrestamo.Guardar(ofertaPrestamo));
+
             serviceOfertaPrestamo.CerrarConexion();
         }
 
@@ -159,8 +184,9 @@ namespace GUI
             MessageBox.Show(resultado);
         }
 
+        private void txtcantidad_TextChanged(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }

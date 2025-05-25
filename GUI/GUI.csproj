@@ -129,5 +129,26 @@
       <Name>Logica</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo PresTech.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BGP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BGPP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BGPPP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BASUBDFUJA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackGround.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background color.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
