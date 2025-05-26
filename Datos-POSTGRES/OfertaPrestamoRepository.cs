@@ -61,6 +61,7 @@ namespace Datos_POSTGRES
                 proposito = reader.IsDBNull(reader.GetOrdinal("proposito")) ? null : reader.GetString(reader.GetOrdinal("proposito")),
                 tipopago = reader.GetString(reader.GetOrdinal("tipopago")),
                 estado = reader.IsDBNull(reader.GetOrdinal("estado")) ? null : reader.GetString(reader.GetOrdinal("estado")),
+                id_prestamista = Convert.ToInt32(reader["id_prestamista"]),
                 prestamista = new Prestamista
                 {
                     id_prestamista = reader.GetInt32(reader.GetOrdinal("id_prestamista")),

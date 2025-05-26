@@ -28,7 +28,7 @@ namespace GUI
             pnlconsultarprestamo.Visible = false;
             pnlcrearprestamo.Visible = false;
             labeluser.Text = "BIENVENIDO " + Nombre.ToUpper();
-
+            CargarPrestamos();
         }
 
         private void btncrearprestamo_Click(object sender, EventArgs e)
@@ -44,6 +44,7 @@ namespace GUI
             pnlcrearprestamo.Visible = false;
             pnlconsultarprestamo.Visible = true;
             CargarPrestamos();
+
 
         }
 
@@ -61,19 +62,17 @@ namespace GUI
 
         private void CargarPrestamos()
         {
-            // Consultar todos los préstamos
-            var prestamos = serviceOfertaPrestamo.Consultar(null);
+            dgvDatosPrestamos.AutoGenerateColumns = true;
+            var prestamos = serviceOfertaPrestamo.Consultar(new OfertaPrestamo());
 
-            // Filtrar por el prestamista actual
             var prestamosFiltrados = prestamos
                 .Where(p => p.id_prestamista == idPrestamistaActual)
+                .OrderBy(p => p.id)
                 .ToList();
 
+            dgvDatosPrestamos.DataSource = null;
             dgvDatosPrestamos.DataSource = prestamosFiltrados;
-}
-
-
-
+        }
 
 
         private void GuardarPrestamo()
@@ -95,6 +94,7 @@ namespace GUI
             MessageBox.Show(serviceOfertaPrestamo.Guardar(ofertaPrestamo));
 
             serviceOfertaPrestamo.CerrarConexion();
+            CargarPrestamos();
         }
 
 
@@ -187,6 +187,20 @@ namespace GUI
         private void txtcantidad_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btninicio_Click(object sender, EventArgs e)
+        {
+            pnlconsultarprestamo.Visible = false;
+            pnlcrearprestamo.Visible = false;
+            pnlinicio.Visible = true;
+        }
+
+        private void btnsalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Inicio_Sesion inicio_Sesion = new Inicio_Sesion();
+            inicio_Sesion.Close();
         }
     }
 }

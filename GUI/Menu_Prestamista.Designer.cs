@@ -31,7 +31,7 @@
             this.pnlmenu = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btninicio = new System.Windows.Forms.Button();
             this.btnrecordatorios = new System.Windows.Forms.Button();
             this.btnconsultarprestamos = new System.Windows.Forms.Button();
             this.btncrearprestamo = new System.Windows.Forms.Button();
@@ -76,7 +76,7 @@
             this.pnlmenu.BackColor = System.Drawing.Color.LightGray;
             this.pnlmenu.Controls.Add(this.pictureBox1);
             this.pnlmenu.Controls.Add(this.button5);
-            this.pnlmenu.Controls.Add(this.button4);
+            this.pnlmenu.Controls.Add(this.btninicio);
             this.pnlmenu.Controls.Add(this.btnrecordatorios);
             this.pnlmenu.Controls.Add(this.btnconsultarprestamos);
             this.pnlmenu.Controls.Add(this.btncrearprestamo);
@@ -103,16 +103,18 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Salir";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.btnsalir_Click);
             // 
-            // button4
+            // btninicio
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(190, 12);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(159, 42);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Inicio";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btninicio.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btninicio.Location = new System.Drawing.Point(190, 12);
+            this.btninicio.Name = "btninicio";
+            this.btninicio.Size = new System.Drawing.Size(159, 42);
+            this.btninicio.TabIndex = 3;
+            this.btninicio.Text = "Inicio";
+            this.btninicio.UseVisualStyleBackColor = true;
+            this.btninicio.Click += new System.EventHandler(this.btninicio_Click);
             // 
             // btnrecordatorios
             // 
@@ -375,8 +377,13 @@
             // 
             // dgvDatosPrestamos
             // 
+            this.dgvDatosPrestamos.AllowUserToAddRows = false;
+            this.dgvDatosPrestamos.AllowUserToDeleteRows = false;
+            this.dgvDatosPrestamos.AllowUserToResizeColumns = false;
+            this.dgvDatosPrestamos.AllowUserToResizeRows = false;
             this.dgvDatosPrestamos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
             this.dgvDatosPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosPrestamos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
             this.dgvDatosPrestamos.Location = new System.Drawing.Point(99, 111);
             this.dgvDatosPrestamos.Name = "dgvDatosPrestamos";
             this.dgvDatosPrestamos.Size = new System.Drawing.Size(645, 449);
@@ -463,9 +470,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1029, 687);
             this.Controls.Add(this.pnlmenu);
+            this.Controls.Add(this.pnlconsultarprestamo);
             this.Controls.Add(this.pnlinicio);
             this.Controls.Add(this.pnlcrearprestamo);
-            this.Controls.Add(this.pnlconsultarprestamo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Menu_Prestamista";
@@ -488,7 +495,7 @@
 
         private System.Windows.Forms.Panel pnlmenu;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btninicio;
         private System.Windows.Forms.Button btnrecordatorios;
         private System.Windows.Forms.Button btnconsultarprestamos;
         private System.Windows.Forms.Button btncrearprestamo;

@@ -100,6 +100,8 @@ namespace GUI
                 if (prestamista.Persona.username == txtusuario.Text.Trim() && prestamista.Persona.contraseña == txtcontraseña.Text.Trim())
                 {
                     this.Hide();
+                    txtusuario.Text = "";
+                    txtcontraseña.Text = "";
                     Menu_Prestamista menu_Prestamista = new Menu_Prestamista(prestamista.id_prestamista, prestamista.Persona.nombre);
                     menu_Prestamista.ShowDialog();
                     this.Show();
@@ -119,6 +121,8 @@ namespace GUI
                 if (prestatario.Persona.username == txtusuario.Text.Trim() && prestatario.Persona.contraseña == txtcontraseña.Text.Trim())
                 {
                     this.Hide();
+                    txtusuario.Text = "";
+                    txtcontraseña.Text = "";
                     Menu_Prestatario menu_Prestatario = new Menu_Prestatario();
                     menu_Prestatario.ShowDialog();
                     this.Show();
