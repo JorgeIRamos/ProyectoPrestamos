@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             this.pnlmenu = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.btninicio = new System.Windows.Forms.Button();
             this.btnrecordatorios = new System.Windows.Forms.Button();
             this.btnconsultarprestamos = new System.Windows.Forms.Button();
             this.btncrearprestamo = new System.Windows.Forms.Button();
+            this.pnlinicio = new System.Windows.Forms.Panel();
+            this.labeluser = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pnlconsultarprestamo = new System.Windows.Forms.Panel();
+            this.dgvDatosPrestamos = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlcrearprestamo = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txttipopago = new System.Windows.Forms.TextBox();
-            this.txtproposito = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.btncrear = new System.Windows.Forms.Button();
             this.txtplazo = new System.Windows.Forms.TextBox();
             this.txtintereses = new System.Windows.Forms.TextBox();
@@ -54,21 +54,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pnlconsultarprestamo = new System.Windows.Forms.Panel();
-            this.dgvDatosPrestamos = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.pnlinicio = new System.Windows.Forms.Panel();
-            this.labeluser = new System.Windows.Forms.Label();
-            this.txtid = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tproposito = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.pnlmenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnlcrearprestamo.SuspendLayout();
+            this.pnlinicio.SuspendLayout();
             this.pnlconsultarprestamo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPrestamos)).BeginInit();
-            this.pnlinicio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlcrearprestamo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlmenu
@@ -84,15 +75,6 @@
             this.pnlmenu.Name = "pnlmenu";
             this.pnlmenu.Size = new System.Drawing.Size(1031, 63);
             this.pnlmenu.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources.Logo_PresTech;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(155, 50);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // button5
             // 
@@ -148,221 +130,40 @@
             this.btncrearprestamo.UseVisualStyleBackColor = true;
             this.btncrearprestamo.Click += new System.EventHandler(this.btncrearprestamo_Click);
             // 
-            // pnlcrearprestamo
+            // pnlinicio
             // 
-            this.pnlcrearprestamo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
-            this.pnlcrearprestamo.BackgroundImage = global::GUI.Properties.Resources.Background_color;
-            this.pnlcrearprestamo.Controls.Add(this.panel7);
-            this.pnlcrearprestamo.Controls.Add(this.panel6);
-            this.pnlcrearprestamo.Controls.Add(this.panel5);
-            this.pnlcrearprestamo.Controls.Add(this.panel4);
-            this.pnlcrearprestamo.Controls.Add(this.panel3);
-            this.pnlcrearprestamo.Controls.Add(this.panel2);
-            this.pnlcrearprestamo.Controls.Add(this.txttipopago);
-            this.pnlcrearprestamo.Controls.Add(this.txtproposito);
-            this.pnlcrearprestamo.Controls.Add(this.label11);
-            this.pnlcrearprestamo.Controls.Add(this.label10);
-            this.pnlcrearprestamo.Controls.Add(this.btncrear);
-            this.pnlcrearprestamo.Controls.Add(this.txtplazo);
-            this.pnlcrearprestamo.Controls.Add(this.txtintereses);
-            this.pnlcrearprestamo.Controls.Add(this.txtcantidad);
-            this.pnlcrearprestamo.Controls.Add(this.label5);
-            this.pnlcrearprestamo.Controls.Add(this.label4);
-            this.pnlcrearprestamo.Controls.Add(this.label3);
-            this.pnlcrearprestamo.Controls.Add(this.label2);
-            this.pnlcrearprestamo.Location = new System.Drawing.Point(128, 69);
-            this.pnlcrearprestamo.Name = "pnlcrearprestamo";
-            this.pnlcrearprestamo.Size = new System.Drawing.Size(814, 574);
-            this.pnlcrearprestamo.TabIndex = 1;
+            this.pnlinicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
+            this.pnlinicio.BackgroundImage = global::GUI.Properties.Resources.Background_color;
+            this.pnlinicio.Controls.Add(this.labeluser);
+            this.pnlinicio.Controls.Add(this.label9);
+            this.pnlinicio.Location = new System.Drawing.Point(131, 74);
+            this.pnlinicio.Name = "pnlinicio";
+            this.pnlinicio.Size = new System.Drawing.Size(811, 569);
+            this.pnlinicio.TabIndex = 3;
             // 
-            // panel7
+            // labeluser
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(189)))), ((int)(((byte)(229)))));
-            this.panel7.Location = new System.Drawing.Point(120, 92);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(607, 1);
-            this.panel7.TabIndex = 23;
+            this.labeluser.AutoSize = true;
+            this.labeluser.BackColor = System.Drawing.Color.Transparent;
+            this.labeluser.Font = new System.Drawing.Font("Impact", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labeluser.ForeColor = System.Drawing.Color.White;
+            this.labeluser.Location = new System.Drawing.Point(132, 207);
+            this.labeluser.Name = "labeluser";
+            this.labeluser.Size = new System.Drawing.Size(163, 80);
+            this.labeluser.TabIndex = 5;
+            this.labeluser.Text = "USER";
             // 
-            // panel6
+            // label9
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.panel6.Location = new System.Drawing.Point(291, 346);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(316, 1);
-            this.panel6.TabIndex = 22;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.panel5.Location = new System.Drawing.Point(291, 295);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(316, 1);
-            this.panel5.TabIndex = 21;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.panel4.Location = new System.Drawing.Point(291, 247);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(316, 1);
-            this.panel4.TabIndex = 20;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.panel3.Location = new System.Drawing.Point(291, 203);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(316, 1);
-            this.panel3.TabIndex = 19;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
-            this.panel2.Location = new System.Drawing.Point(291, 158);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(316, 1);
-            this.panel2.TabIndex = 18;
-            // 
-            // txttipopago
-            // 
-            this.txttipopago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
-            this.txttipopago.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txttipopago.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttipopago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.txttipopago.Location = new System.Drawing.Point(291, 327);
-            this.txttipopago.Name = "txttipopago";
-            this.txttipopago.Size = new System.Drawing.Size(316, 15);
-            this.txttipopago.TabIndex = 17;
-            // 
-            // txtproposito
-            // 
-            this.txtproposito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
-            this.txtproposito.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtproposito.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtproposito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.txtproposito.Location = new System.Drawing.Point(291, 276);
-            this.txtproposito.Name = "txtproposito";
-            this.txtproposito.Size = new System.Drawing.Size(316, 15);
-            this.txtproposito.TabIndex = 16;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.label11.Location = new System.Drawing.Point(168, 323);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 19);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "TIPO DE PAGO";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Transparent;
-            this.label10.Location = new System.Drawing.Point(193, 272);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 19);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "PROPOSITO";
-            // 
-            // btncrear
-            // 
-            this.btncrear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
-            this.btncrear.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btncrear.Location = new System.Drawing.Point(312, 416);
-            this.btncrear.Name = "btncrear";
-            this.btncrear.Size = new System.Drawing.Size(186, 39);
-            this.btncrear.TabIndex = 13;
-            this.btncrear.Text = "CREAR PRESTAMO";
-            this.btncrear.UseVisualStyleBackColor = false;
-            this.btncrear.Click += new System.EventHandler(this.btncrear_Click);
-            // 
-            // txtplazo
-            // 
-            this.txtplazo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
-            this.txtplazo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtplazo.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtplazo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.txtplazo.Location = new System.Drawing.Point(291, 226);
-            this.txtplazo.Name = "txtplazo";
-            this.txtplazo.Size = new System.Drawing.Size(316, 15);
-            this.txtplazo.TabIndex = 8;
-            // 
-            // txtintereses
-            // 
-            this.txtintereses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
-            this.txtintereses.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtintereses.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtintereses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.txtintereses.Location = new System.Drawing.Point(291, 184);
-            this.txtintereses.Name = "txtintereses";
-            this.txtintereses.Size = new System.Drawing.Size(316, 15);
-            this.txtintereses.TabIndex = 7;
-            // 
-            // txtcantidad
-            // 
-            this.txtcantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
-            this.txtcantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtcantidad.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.txtcantidad.Location = new System.Drawing.Point(291, 143);
-            this.txtcantidad.Name = "txtcantidad";
-            this.txtcantidad.Size = new System.Drawing.Size(316, 15);
-            this.txtcantidad.TabIndex = 6;
-            this.txtcantidad.TextChanged += new System.EventHandler(this.txtcantidad_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(217, 227);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 19);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "PLAZO";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(193, 180);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 19);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "INTERESES";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(193, 139);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 19);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "CANTIDAD";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(240, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(355, 60);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "CREAR PRESTAMO";
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(130, 299);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(543, 28);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "SE ENCUENTRA EN EL MENU PARA PRESTAMISTA";
             // 
             // pnlconsultarprestamo
             // 
@@ -401,67 +202,162 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "CONSULTAR PRESTAMO";
             // 
-            // pnlinicio
+            // pictureBox1
             // 
-            this.pnlinicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
-            this.pnlinicio.BackgroundImage = global::GUI.Properties.Resources.Background_color;
-            this.pnlinicio.Controls.Add(this.labeluser);
-            this.pnlinicio.Controls.Add(this.txtid);
-            this.pnlinicio.Controls.Add(this.button1);
-            this.pnlinicio.Controls.Add(this.tproposito);
-            this.pnlinicio.Controls.Add(this.label9);
-            this.pnlinicio.Location = new System.Drawing.Point(131, 74);
-            this.pnlinicio.Name = "pnlinicio";
-            this.pnlinicio.Size = new System.Drawing.Size(811, 569);
-            this.pnlinicio.TabIndex = 3;
+            this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources.Logo_PresTech;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(155, 50);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
-            // labeluser
+            // pnlcrearprestamo
             // 
-            this.labeluser.AutoSize = true;
-            this.labeluser.BackColor = System.Drawing.Color.Transparent;
-            this.labeluser.Font = new System.Drawing.Font("Impact", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeluser.ForeColor = System.Drawing.Color.White;
-            this.labeluser.Location = new System.Drawing.Point(132, 207);
-            this.labeluser.Name = "labeluser";
-            this.labeluser.Size = new System.Drawing.Size(163, 80);
-            this.labeluser.TabIndex = 5;
-            this.labeluser.Text = "USER";
+            this.pnlcrearprestamo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
+            this.pnlcrearprestamo.BackgroundImage = global::GUI.Properties.Resources.Background_color;
+            this.pnlcrearprestamo.Controls.Add(this.panel7);
+            this.pnlcrearprestamo.Controls.Add(this.panel4);
+            this.pnlcrearprestamo.Controls.Add(this.panel3);
+            this.pnlcrearprestamo.Controls.Add(this.panel2);
+            this.pnlcrearprestamo.Controls.Add(this.btncrear);
+            this.pnlcrearprestamo.Controls.Add(this.txtplazo);
+            this.pnlcrearprestamo.Controls.Add(this.txtintereses);
+            this.pnlcrearprestamo.Controls.Add(this.txtcantidad);
+            this.pnlcrearprestamo.Controls.Add(this.label5);
+            this.pnlcrearprestamo.Controls.Add(this.label4);
+            this.pnlcrearprestamo.Controls.Add(this.label3);
+            this.pnlcrearprestamo.Controls.Add(this.label2);
+            this.pnlcrearprestamo.Location = new System.Drawing.Point(128, 69);
+            this.pnlcrearprestamo.Name = "pnlcrearprestamo";
+            this.pnlcrearprestamo.Size = new System.Drawing.Size(814, 574);
+            this.pnlcrearprestamo.TabIndex = 1;
             // 
-            // txtid
+            // panel7
             // 
-            this.txtid.Location = new System.Drawing.Point(614, 435);
-            this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(197, 20);
-            this.txtid.TabIndex = 4;
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(189)))), ((int)(((byte)(229)))));
+            this.panel7.Location = new System.Drawing.Point(118, 148);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(607, 1);
+            this.panel7.TabIndex = 23;
             // 
-            // button1
+            // panel4
             // 
-            this.button1.Location = new System.Drawing.Point(666, 532);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.panel4.Location = new System.Drawing.Point(289, 303);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(316, 1);
+            this.panel4.TabIndex = 20;
             // 
-            // tproposito
+            // panel3
             // 
-            this.tproposito.Location = new System.Drawing.Point(614, 480);
-            this.tproposito.Name = "tproposito";
-            this.tproposito.Size = new System.Drawing.Size(197, 20);
-            this.tproposito.TabIndex = 2;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.panel3.Location = new System.Drawing.Point(289, 259);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(316, 1);
+            this.panel3.TabIndex = 19;
             // 
-            // label9
+            // panel2
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(130, 299);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(543, 28);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "SE ENCUENTRA EN EL MENU PARA PRESTAMISTA";
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(239)))));
+            this.panel2.Location = new System.Drawing.Point(289, 214);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(316, 1);
+            this.panel2.TabIndex = 18;
+            // 
+            // btncrear
+            // 
+            this.btncrear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
+            this.btncrear.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btncrear.Location = new System.Drawing.Point(316, 359);
+            this.btncrear.Name = "btncrear";
+            this.btncrear.Size = new System.Drawing.Size(186, 39);
+            this.btncrear.TabIndex = 13;
+            this.btncrear.Text = "CREAR PRESTAMO";
+            this.btncrear.UseVisualStyleBackColor = false;
+            this.btncrear.Click += new System.EventHandler(this.btncrear_Click);
+            // 
+            // txtplazo
+            // 
+            this.txtplazo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
+            this.txtplazo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtplazo.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtplazo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.txtplazo.Location = new System.Drawing.Point(289, 282);
+            this.txtplazo.Name = "txtplazo";
+            this.txtplazo.Size = new System.Drawing.Size(316, 15);
+            this.txtplazo.TabIndex = 8;
+            // 
+            // txtintereses
+            // 
+            this.txtintereses.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
+            this.txtintereses.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtintereses.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtintereses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.txtintereses.Location = new System.Drawing.Point(289, 240);
+            this.txtintereses.Name = "txtintereses";
+            this.txtintereses.Size = new System.Drawing.Size(316, 15);
+            this.txtintereses.TabIndex = 7;
+            // 
+            // txtcantidad
+            // 
+            this.txtcantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
+            this.txtcantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtcantidad.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtcantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.txtcantidad.Location = new System.Drawing.Point(289, 199);
+            this.txtcantidad.Name = "txtcantidad";
+            this.txtcantidad.Size = new System.Drawing.Size(316, 15);
+            this.txtcantidad.TabIndex = 6;
+            this.txtcantidad.TextChanged += new System.EventHandler(this.txtcantidad_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Transparent;
+            this.label5.Location = new System.Drawing.Point(215, 283);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 19);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "PLAZO";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Transparent;
+            this.label4.Location = new System.Drawing.Point(191, 236);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 19);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "INTERESES";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(191, 195);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 19);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "CANTIDAD";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Impact", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(238, 81);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(355, 60);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "CREAR PRESTAMO";
             // 
             // Menu_Prestamista
             // 
@@ -469,24 +365,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1029, 687);
-            this.Controls.Add(this.pnlmenu);
-            this.Controls.Add(this.pnlconsultarprestamo);
             this.Controls.Add(this.pnlinicio);
             this.Controls.Add(this.pnlcrearprestamo);
+            this.Controls.Add(this.pnlconsultarprestamo);
+            this.Controls.Add(this.pnlmenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Menu_Prestamista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu_Prestamista";
             this.pnlmenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnlcrearprestamo.ResumeLayout(false);
-            this.pnlcrearprestamo.PerformLayout();
+            this.pnlinicio.ResumeLayout(false);
+            this.pnlinicio.PerformLayout();
             this.pnlconsultarprestamo.ResumeLayout(false);
             this.pnlconsultarprestamo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPrestamos)).EndInit();
-            this.pnlinicio.ResumeLayout(false);
-            this.pnlinicio.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlcrearprestamo.ResumeLayout(false);
+            this.pnlcrearprestamo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -512,17 +408,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel pnlinicio;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txttipopago;
-        private System.Windows.Forms.TextBox txtproposito;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox tproposito;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtid;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label labeluser;

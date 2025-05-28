@@ -62,7 +62,6 @@ namespace GUI
 
         private void CargarPrestamos()
         {
-            dgvDatosPrestamos.AutoGenerateColumns = true;
             var prestamos = serviceOfertaPrestamo.Consultar(new OfertaPrestamo());
 
             var prestamosFiltrados = prestamos
@@ -72,6 +71,8 @@ namespace GUI
 
             dgvDatosPrestamos.DataSource = null;
             dgvDatosPrestamos.DataSource = prestamosFiltrados;
+
+            OcultarColumnas();
         }
 
 
@@ -86,7 +87,6 @@ namespace GUI
                 fechainicio = DateTime.Now,
                 fechavencimiento = DateTime.Now.AddMonths(int.Parse(txtplazo.Text.Trim())),
                 estado = "Pendiente",
-                tipopago = txttipopago.Text.Trim(),
                 id_prestamista = idPrestamistaActual
             };
             serviceOfertaPrestamo.AbrirConexion();
@@ -131,59 +131,6 @@ namespace GUI
             return true;
         }
 
-        private bool ValidarProposito()
-        {
-            string proposito = txtproposito.Text.Trim();
-            if (string.IsNullOrEmpty(proposito))
-            {
-                MessageBox.Show("El proposito no esta digitado de manera correcta.");
-                return false;
-            }
-            return true;
-        }
-
-        private bool ValidarTipoPago()
-        {
-            string tipopago = txttipopago.Text.Trim();
-            if (string.IsNullOrEmpty(tipopago))
-            {
-                MessageBox.Show("El tipo de pago no esta digitado de manera correcta.");
-                return false;
-            }
-            return true;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int idofertaprestamo;
-            if (!int.TryParse(txtid.Text.Trim(), out idofertaprestamo))
-            {
-                MessageBox.Show("Ingrese un ID válido.");
-                return;
-            }
-
-            string nuevoProposito = tproposito.Text.Trim();
-            if (string.IsNullOrEmpty(nuevoProposito))
-            {
-                MessageBox.Show("Ingrese un propósito válido.");
-                return;
-            }
-            OfertaPrestamo ofertaPrestamo = new OfertaPrestamo();
-            var oferta = serviceOfertaPrestamo.BuscarPorId(idofertaprestamo, ofertaPrestamo);
-
-            if (oferta == null)
-            {
-                MessageBox.Show("No se encontró la oferta de préstamo con ese ID.");
-                return;
-            }
-
-            oferta.proposito = nuevoProposito;
-
-            string resultado = serviceOfertaPrestamo.Modificar(oferta);
-
-            MessageBox.Show(resultado);
-        }
-
         private void txtcantidad_TextChanged(object sender, EventArgs e)
         {
 
@@ -201,6 +148,14 @@ namespace GUI
             this.Close();
             Inicio_Sesion inicio_Sesion = new Inicio_Sesion();
             inicio_Sesion.Close();
+        }
+
+        private void OcultarColumnas()
+        {
+            if (dgvDatosPrestamos.Columns["id_prestamista"] != null)
+                dgvDatosPrestamos.Columns["id_prestamista"].Visible = false;
+            if (dgvDatosPrestamos.Columns["prestamista"] != null)
+                dgvDatosPrestamos.Columns["prestamista"].Visible = false;
         }
     }
 }

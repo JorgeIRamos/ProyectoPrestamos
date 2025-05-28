@@ -123,7 +123,7 @@ namespace GUI
                     this.Hide();
                     txtusuario.Text = "";
                     txtcontraseña.Text = "";
-                    Menu_Prestatario menu_Prestatario = new Menu_Prestatario();
+                    Menu_Prestatario menu_Prestatario = new Menu_Prestatario(prestatario.id_prestatario, prestatario.Persona.nombre);
                     menu_Prestatario.ShowDialog();
                     this.Show();
                     return true;

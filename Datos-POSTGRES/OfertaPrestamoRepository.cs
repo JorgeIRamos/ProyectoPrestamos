@@ -202,12 +202,15 @@ namespace Datos_POSTGRES
         {
             if (id <= 0) return null;
 
-            string sentencia = @"SELECT op.*, p.id_prestamista, pe.nombre, pe.apellido 
-            FROM oferta_prestamo op
-            LEFT JOIN prestamista p ON op.id_prestamista = p.id_prestamista
-            LEFT JOIN persona pe ON p.id_prestamista = pe.id_persona
-            WHERE op.id = @Id
-            ";
+            string sentencia = @"SELECT o.*, 
+               p.id_prestamista, 
+               per.*, 
+               td.nombre AS nombre_tipo_doc
+               FROM oferta_prestamo o
+               JOIN prestamista p ON o.id_prestamista = p.id_prestamista
+               JOIN persona per ON p.id_prestamista = per.id_persona
+               JOIN tipo_documento td ON per.tipo_documento = td.id_documento
+               WHERE o.id = @Id";
 
 
             using (var cmd = new NpgsqlCommand(sentencia, conexion))

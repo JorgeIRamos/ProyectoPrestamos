@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OfertaPrestamo.cs" />
+    <Compile Include="OfertaPrestamoDTO.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Prestamista.cs" />
     <Compile Include="Prestamo.cs" />
