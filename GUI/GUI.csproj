@@ -159,5 +159,8 @@
   <ItemGroup>
     <None Include="Resources\Background color.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo PresTech blanco.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

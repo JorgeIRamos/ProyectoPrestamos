@@ -27,6 +27,7 @@ namespace GUI
             servicePrestatario = new Service<Prestatario>();
             servicePrestamo = new Service<Prestamo>();
             InitializeComponent();
+            QuitarBordes();
             dgvDatosPrestamos.DefaultCellStyle.ForeColor = Color.Black;
             idPrestatarioActual = idPrestatario;
             Nombre = nombre;
@@ -34,6 +35,25 @@ namespace GUI
             pnlofertasprestamo.Visible = false;
             pnlprestamosactivos.Visible = false;
             CargarPrestamos();
+        }
+
+        private void QuitarBordes()
+        {
+            btninicio.FlatStyle = FlatStyle.Flat;
+            btninicio.FlatAppearance.BorderSize = 0;
+            btnofertaprestamo.FlatStyle = FlatStyle.Flat;
+            btnofertaprestamo.FlatAppearance.BorderSize = 0;
+            btnmisprestamos.FlatStyle = FlatStyle.Flat;
+            btnmisprestamos.FlatAppearance.BorderSize = 0;
+            btnpagar.FlatStyle = FlatStyle.Flat;
+            btnpagar.FlatAppearance.BorderSize = 0;
+            btnhistorial.FlatStyle = FlatStyle.Flat;
+            btnhistorial.FlatAppearance.BorderSize = 0;
+            btnnotificaciones.FlatStyle = FlatStyle.Flat;
+            btnnotificaciones.FlatAppearance.BorderSize = 0;
+            btnsalir.FlatStyle = FlatStyle.Flat;
+            btnsalir.FlatAppearance.BorderSize = 0;
+
         }
 
         private void btnofertasprestamo_Click(object sender, EventArgs e)

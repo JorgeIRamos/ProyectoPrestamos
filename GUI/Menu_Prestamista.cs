@@ -23,6 +23,7 @@ namespace GUI
             servicePrestamista = new Service<Prestamista>();
             serviceOfertaPrestamo = new Service<OfertaPrestamo>();
             InitializeComponent();
+            QuitarBordes();
             idPrestamistaActual = idPrestamista;
             Nombre = nombre;
             pnlconsultarprestamo.Visible = false;
@@ -31,6 +32,24 @@ namespace GUI
             CargarPrestamos();
         }
 
+        private void QuitarBordes()
+        {
+            btninicio.FlatStyle = FlatStyle.Flat;
+            btninicio.FlatAppearance.BorderSize = 0;
+            btncrearprestamo.FlatStyle = FlatStyle.Flat;
+            btncrearprestamo.FlatAppearance.BorderSize = 0;
+            btnconsultarprestamos.FlatStyle = FlatStyle.Flat;
+            btnconsultarprestamos.FlatAppearance.BorderSize = 0;
+            btnrecordatorios.FlatStyle = FlatStyle.Flat;
+            btnrecordatorios.FlatAppearance.BorderSize = 0;
+            btncontrolpago.FlatStyle = FlatStyle.Flat;
+            btncontrolpago.FlatAppearance.BorderSize = 0;
+            btnhistorial.FlatStyle = FlatStyle.Flat;
+            btnhistorial.FlatAppearance.BorderSize = 0;
+            btnsalir.FlatStyle = FlatStyle.Flat;
+            btnsalir.FlatAppearance.BorderSize = 0;
+
+        }
         private void btncrearprestamo_Click(object sender, EventArgs e)
         {
             pnlcrearprestamo.Visible = true;
