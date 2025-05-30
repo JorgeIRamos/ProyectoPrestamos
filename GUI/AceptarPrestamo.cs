@@ -54,7 +54,8 @@ namespace GUI
             string resultado = serviceOfertaPrestamo.Modificar(oferta);
 
             MessageBox.Show("Proposito y pago guardados con exito");
-            this.Dispose();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
 
         }
     }

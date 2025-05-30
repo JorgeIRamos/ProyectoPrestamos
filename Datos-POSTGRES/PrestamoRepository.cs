@@ -14,7 +14,7 @@ namespace Datos_POSTGRES
             List<Prestamo> lista = new List<Prestamo>();
             string sentencia = @"
         SELECT 
-            p.id_prestamo AS id,
+            p.id_prestamo,
             p.saldo_restante,
             p.estado,
             p.id_ofertaprestamo,
@@ -38,6 +38,8 @@ namespace Datos_POSTGRES
             o.cantidad,
             o.intereses,
             o.plazo,
+            o.cuotas,
+            o.frecuencia,
             o.fechainicio,
             o.fechavencimiento,
             o.proposito,
@@ -98,7 +100,7 @@ namespace Datos_POSTGRES
         {
             var prestamo = new Prestamo
             {
-                id_prestamo = reader.GetInt32(reader.GetOrdinal("id")),
+                id_prestamo = reader.GetInt32(reader.GetOrdinal("id_prestamo")),
                 saldo_restante = reader.GetDecimal(reader.GetOrdinal("saldo_restante")),
                 estado = reader.GetString(reader.GetOrdinal("estado")),
                 id_ofertaprestamo = reader.GetInt32(reader.GetOrdinal("id_ofertaprestamo")),
@@ -134,6 +136,8 @@ namespace Datos_POSTGRES
                     cantidad = reader.GetDecimal(reader.GetOrdinal("cantidad")),
                     intereses = reader.GetDecimal(reader.GetOrdinal("intereses")),
                     plazo = reader.GetInt32(reader.GetOrdinal("plazo")),
+                    cuotas = reader.GetInt32(reader.GetOrdinal("cuotas")),
+                    frecuencia = reader.GetString(reader.GetOrdinal("frecuencia")),
                     fechainicio = reader.GetDateTime(reader.GetOrdinal("fechainicio")),
                     fechavencimiento = reader.GetDateTime(reader.GetOrdinal("fechavencimiento")),
                     proposito = reader.GetString(reader.GetOrdinal("proposito")),
@@ -220,7 +224,7 @@ namespace Datos_POSTGRES
                 id_ofertaprestamo = @id_ofertaprestamo,
                 saldo_restante = @saldo_restante,
                 estado = @estado
-            WHERE id_prestamo = @id";
+            WHERE id_prestamo = @id_prestamo";
 
             using (var cmd = new NpgsqlCommand(sentencia, conexion))
             {
@@ -252,11 +256,11 @@ namespace Datos_POSTGRES
             if (id <= 0)
                 return "ID inválido";
 
-            string sentencia = "DELETE FROM prestamo WHERE id_prestamo = @id";
+            string sentencia = "DELETE FROM prestamo WHERE id_prestamo = @id_prestamo";
 
             using (var cmd = new NpgsqlCommand(sentencia, conexion))
             {
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@id_prestamo", id);
 
                 try
                 {
@@ -280,11 +284,67 @@ namespace Datos_POSTGRES
             if (id <= 0)
                 return null;
 
-            string sentencia = "SELECT * FROM prestamo WHERE id_prestamo = @id";
+          string sentencia = @"
+    SELECT
+        p.id_prestamo,
+        p.saldo_restante,
+        p.estado,
+        p.id_oferta_prestamo,
+        p.id_prestatario,
+        
+        per_pr.id_persona AS id_persona_prestatario,
+        per_pr.nombre AS nombre_prestatario,
+        per_pr.apellido AS apellido_prestatario,
+        per_pr.numero_documento AS numero_documento_prestatario,
+        per_pr.tipo_documento AS tipo_documento_prestatario,
+        per_pr.telefono AS telefono_prestatario,
+        per_pr.sexo AS sexo_prestatario,
+        per_pr.direccion AS direccion_prestatario,
+        per_pr.email AS email_prestatario,
+        per_pr.username AS username_prestatario,
+        per_pr.contrasena AS contrasena_prestatario,
+        td_pr.nombre AS nombre_doc_prestatario,
+        
+        o.id AS id_oferta,
+        o.cantidad,
+        o.intereses,
+        o.plazos,
+        o.cuotas,
+        o.frecuencia,
+        o.fecha_inicio,
+        o.fecha_vencimiento,
+        o.proposito,
+        o.tipo_pago,
+        o.estado AS estado_oferta,
+        o.id_prestamista,
+        
+        pm.id_prestamista,
+        per_pm.id_persona AS id_persona_prestamista,
+        per_pm.nombre AS nombre_prestamista,
+        per_pm.apellido AS apellido_prestamista,
+        per_pm.numero_documento AS numero_documento_prestamista,
+        per_pm.tipo_documento AS tipo_documento_prestamista,
+        per_pm.telefono AS telefono_prestamista,
+        per_pm.sexo AS sexo_prestamista,
+        per_pm.direccion AS direccion_prestamista,
+        per_pm.email AS email_prestamista,
+        per_pm.username AS username_prestamista,
+        per_pm.contrasena AS contrasena_prestamista,
+        td_pm.nombre AS nombre_doc_prestamista
+        
+    FROM prestamo p
+    JOIN prestatario pr ON p.id_prestatario = pr.id_prestatario
+    JOIN persona per_pr ON pr.id_prestatario = per_pr.id_persona
+    JOIN tipo_documento td_pr ON per_pr.tipo_documento = td_pr.id_documento
+    JOIN oferta_prestamo o ON p.id_oferta_prestamo = o.id
+    JOIN prestamista pm ON o.id_prestamista = pm.id_prestamista
+    JOIN persona per_pm ON pm.id_prestamista = per_pm.id_persona
+    JOIN tipo_documento td_pm ON per_pm.tipo_documento = td_pm.id_documento
+    WHERE p.id_prestamo = @id_prestamo"; ;
 
             using (var cmd = new NpgsqlCommand(sentencia, conexion))
             {
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@id_prestamo", id);
 
                 try
                 {
@@ -295,8 +355,9 @@ namespace Datos_POSTGRES
                             return Mappear(reader);
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Console.WriteLine("Error en BuscarPorId: " + ex.Message);
                     return null;
                 }
                 finally
@@ -307,6 +368,7 @@ namespace Datos_POSTGRES
 
             return null;
         }
+
 
         public int GetId(Prestamo entity)
         {

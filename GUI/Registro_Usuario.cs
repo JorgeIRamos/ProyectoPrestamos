@@ -280,16 +280,11 @@ namespace GUI
             {
                 return 1;
             }
-            else if (boxtipodocumento.SelectedItem.ToString() == "Tarjeta de Identidad")
+            else if (boxtipodocumento.SelectedItem.ToString() == "Cedula de Extranjeria")
             {
                 return 2;
             }
-            else if (boxtipodocumento.SelectedItem.ToString() == "Cedula de Extranjeria")
-            {
-                return 3;
-            }
-
-            return 4;
+            return 3;
         }
 
         private char ValorSexo()

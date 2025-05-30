@@ -56,6 +56,8 @@ namespace Datos_POSTGRES
                 cantidad = reader.GetDecimal(reader.GetOrdinal("cantidad")),
                 intereses = reader.GetDecimal(reader.GetOrdinal("intereses")),
                 plazo = reader.GetInt32(reader.GetOrdinal("plazo")),
+                cuotas = reader.GetInt32(reader.GetOrdinal("cuotas")),
+                frecuencia = reader.IsDBNull(reader.GetOrdinal("frecuencia")) ? null : reader.GetString(reader.GetOrdinal("frecuencia")),
                 fechainicio = reader.GetDateTime(reader.GetOrdinal("fechainicio")),
                 fechavencimiento = reader.GetDateTime(reader.GetOrdinal("fechavencimiento")),
                 proposito = reader.IsDBNull(reader.GetOrdinal("proposito")) ? null : reader.GetString(reader.GetOrdinal("proposito")),
@@ -94,9 +96,9 @@ namespace Datos_POSTGRES
                 return "Datos inválidos";
 
             string sentencia = @"INSERT INTO oferta_prestamo 
-                        (cantidad, intereses, plazo, fechainicio, fechavencimiento, proposito, tipopago, estado, id_prestamista)
+                        (cantidad, intereses, plazo, cuotas, frecuencia, fechainicio, fechavencimiento, proposito, tipopago, estado, id_prestamista)
                         VALUES 
-                        (@Cantidad, @Intereses, @Plazo, @FechaInicio, @FechaVencimiento, @Proposito, @TipoPago, @Estado, @IdPrestamista)
+                        (@Cantidad, @Intereses, @Plazo, @cuotas, @frecuencia, @FechaInicio, @FechaVencimiento, @Proposito, @TipoPago, @Estado, @IdPrestamista)
                         RETURNING id";
 
             using (var cmd = new NpgsqlCommand(sentencia, conexion))
@@ -104,6 +106,8 @@ namespace Datos_POSTGRES
                 cmd.Parameters.AddWithValue("@Cantidad", entity.cantidad);
                 cmd.Parameters.AddWithValue("@Intereses", entity.intereses);
                 cmd.Parameters.AddWithValue("@Plazo", entity.plazo);
+                cmd.Parameters.AddWithValue("@cuotas", entity.cuotas);
+                cmd.Parameters.AddWithValue("@frecuencia", entity.frecuencia ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@FechaInicio", entity.fechainicio);
                 cmd.Parameters.AddWithValue("@FechaVencimiento", entity.fechavencimiento);
                 cmd.Parameters.AddWithValue("@Proposito", (object)entity.proposito ?? DBNull.Value);
@@ -134,7 +138,8 @@ namespace Datos_POSTGRES
                 return "Datos inválidos";
 
             string sentencia = @"UPDATE oferta_prestamo SET 
-                                cantidad=@Cantidad, intereses=@Intereses, plazo=@Plazo, 
+                                cantidad=@Cantidad, intereses=@Intereses, plazo=@Plazo,
+                                cuotas=@cuotas, frecuencia=@frecuencia,
                                 fechainicio=@FechaInicio, fechavencimiento=@FechaVencimiento, 
                                 proposito=@Proposito, tipopago=@TipoPago, estado=@Estado, 
                                 id_prestamista=@IdPrestamista 
@@ -145,6 +150,8 @@ namespace Datos_POSTGRES
                 cmd.Parameters.AddWithValue("@Cantidad", entity.cantidad);
                 cmd.Parameters.AddWithValue("@Intereses", entity.intereses);
                 cmd.Parameters.AddWithValue("@Plazo", entity.plazo);
+                cmd.Parameters.AddWithValue("@cuotas", entity.cuotas);
+                cmd.Parameters.AddWithValue("@frecuencia", (object)entity.frecuencia ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@FechaInicio", entity.fechainicio);
                 cmd.Parameters.AddWithValue("@FechaVencimiento", entity.fechavencimiento);
                 cmd.Parameters.AddWithValue("@Proposito", (object)entity.proposito ?? DBNull.Value);

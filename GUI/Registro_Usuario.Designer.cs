@@ -286,7 +286,6 @@
             this.boxtipodocumento.FormattingEnabled = true;
             this.boxtipodocumento.Items.AddRange(new object[] {
             "Cedula de Ciudadania",
-            "Tarjeta de Identidad",
             "Cedula de Extranjeria",
             "Pasaporte"});
             this.boxtipodocumento.Location = new System.Drawing.Point(196, 151);
