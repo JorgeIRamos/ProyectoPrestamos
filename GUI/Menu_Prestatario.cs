@@ -19,6 +19,8 @@ namespace GUI
     {
         private int idPrestatarioActual;
         private string Nombre;
+        private byte[] CargarImagen;
+        private decimal montopagar;
         private Service<OfertaPrestamo> serviceOfertaPrestamo;
         private Service<Prestamista> servicePrestamista;
         private Service<Prestatario> servicePrestatario;
@@ -90,6 +92,7 @@ namespace GUI
             pnlprestamosactivos.Visible = false;
             pnlinicio.Visible = false;
             pnlconsultarpagos.Visible = false;
+            pnlnotificaciones.Visible = false;
         }
 
         private void btnprestamosactivos_Click(object sender, EventArgs e)
@@ -101,6 +104,7 @@ namespace GUI
             pnlpagos.Visible = false;
             pnlinicio.Visible = false;
             pnlconsultarpagos.Visible = false;
+            pnlnotificaciones.Visible = false;
         }
 
         private void btnpagar_Click(object sender, EventArgs e)
@@ -112,6 +116,7 @@ namespace GUI
             pnlprestamosactivos.Visible = false;
             pnlofertasprestamo.Visible = false;
             pnlconsultarpagos.Visible = false;
+            pnlnotificaciones.Visible = false;
         }
 
         private void btnhistorial_Click(object sender, EventArgs e)
@@ -123,6 +128,7 @@ namespace GUI
             pnlprestamosactivos.Visible = false;
             pnlofertasprestamo.Visible = false;
             pnlconsultarpagos.Visible = true;
+            pnlnotificaciones.Visible = false;
         }
 
         private void btnnotificaciones_Click(object sender, EventArgs e)
@@ -285,14 +291,15 @@ namespace GUI
                 .ToList();
             dgvnotificaciones.DataSource = null;
             dgvnotificaciones.DataSource = recordatorios;
-            dgvnotificaciones.Columns["id_recordatorio"].Visible = false; // Ocultar columna de ID
-            dgvnotificaciones.Columns["Prestamo"].Visible = false; // Ocultar columna de préstamo completo
+            dgvnotificaciones.Columns["id_recordatorio"].Visible = false; 
+            dgvnotificaciones.Columns["Prestamo"].Visible = false; 
         }
         
 
 
         private void btncontinuar_Click(object sender, EventArgs e)
         {
+            btnconfirmarpago.Enabled = false;
             if (dgvmostrarpagos.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Debe seleccionar una oferta de préstamo.");
@@ -339,7 +346,7 @@ namespace GUI
             lblfrecuencia.Text = prestamo.ofertaPrestamo.frecuencia;
         }
 
-        private decimal montopagar;
+    
         private void CalcularPago(int idoferta)
         {
             var buscarofertaprestamo = serviceOfertaPrestamo.BuscarPorId(idoferta, new OfertaPrestamo());
@@ -381,6 +388,7 @@ namespace GUI
             pnlconfirmarpago.Visible = false;
             pnlpagos.Visible = true;
             CargarPrestamosPagar();
+            CargarHistorialPagos();
         }
 
         private void GuardarPrestamo(int idOferta)
@@ -399,6 +407,20 @@ namespace GUI
             CargarPrestamosPagar();
         }
 
+        private void btnsubirimagen_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    CargarImagen = System.IO.File.ReadAllBytes(openFileDialog.FileName);
+                    MessageBox.Show("Imagen cargada correctamente.");
+                    btnconfirmarpago.Enabled = true;
+                }
+            }
+        }
+
         private void GuardarTransaccion(int idPrestamo)
         {
             var buscarprestamo = servicePrestamo.Consultar(new Prestamo());
@@ -407,6 +429,7 @@ namespace GUI
                 id_prestamo = idPrestamo,
                 monto = montopagar,
                 fecha = DateTime.Now,
+                imagen = CargarImagen,
                 tipo_transaccion = lbltipopago.Text.ToString()
             };
             var resultado = serviceTransaccion.Guardar(transaccion);

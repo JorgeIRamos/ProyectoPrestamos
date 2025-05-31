@@ -32,9 +32,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtproposito = new System.Windows.Forms.TextBox();
             this.txtpago = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnfinalizar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -79,17 +80,6 @@
             this.txtpago.Size = new System.Drawing.Size(203, 22);
             this.txtpago.TabIndex = 3;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(116, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(260, 34);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "CONFIRMAR PRESTAMO";
-            // 
             // btnfinalizar
             // 
             this.btnfinalizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
@@ -103,13 +93,30 @@
             this.btnfinalizar.UseVisualStyleBackColor = false;
             this.btnfinalizar.Click += new System.EventHandler(this.btnfinalizar_Click);
             // 
-            // panel1
+            // panel3
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(47)))), ((int)(((byte)(74)))));
-            this.panel1.Location = new System.Drawing.Point(-19, 50);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(531, 12);
-            this.panel1.TabIndex = 6;
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.AutoSize = true;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(47)))), ((int)(((byte)(74)))));
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Location = new System.Drawing.Point(-303, -4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1099, 74);
+            this.panel3.TabIndex = 25;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Impact", 26.25F);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(401, 18);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(291, 43);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "ACEPTAR PRESTAMO";
             // 
             // AceptarPrestamo
             // 
@@ -117,15 +124,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(492, 386);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnfinalizar);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtpago);
             this.Controls.Add(this.txtproposito);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "AceptarPrestamo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AceptarPrestamo";
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -137,8 +147,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtproposito;
         private System.Windows.Forms.TextBox txtpago;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnfinalizar;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -8,6 +8,7 @@ namespace Entidades
         public int id_prestamo { get; set; }
         public decimal monto { get; set; }
         public DateTime fecha { get; set; }
+        public byte[] imagen { get; set; }
         public string tipo_transaccion { get; set; }
     }
 }

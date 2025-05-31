@@ -64,6 +64,8 @@ namespace GUI
             pnlconsultarprestamo.Visible = false;
             pnlinicio.Visible = false;
             pnlcontrolpago.Visible = false;
+            pnlmandarecordatorio.Visible = false;
+            pnlrecordatorio.Visible = false;
         }
 
         private void btnconsultarprestamos_Click(object sender, EventArgs e)
@@ -73,6 +75,8 @@ namespace GUI
             pnlcrearprestamo.Visible = false;
             pnlconsultarprestamo.Visible = true;
             pnlcontrolpago.Visible = false;
+            pnlmandarecordatorio.Visible = false;
+            pnlrecordatorio.Visible = false;
             CargarPrestamos();
         }
 
@@ -83,6 +87,20 @@ namespace GUI
             pnlcrearprestamo.Visible = false;
             pnlconsultarprestamo.Visible = false;
             pnlcontrolpago.Visible = true;
+            pnlmandarecordatorio.Visible = false;
+            pnlrecordatorio.Visible = false;
+
+        }
+
+        private void btnrecordatorios_Click(object sender, EventArgs e)
+        {
+            ResaltarBoton(btnrecordatorios);
+            pnlinicio.Visible = false;
+            pnlcrearprestamo.Visible = false;
+            pnlconsultarprestamo.Visible = false;
+            pnlcontrolpago.Visible = false;
+            pnlmandarecordatorio.Visible = false;
+            pnlrecordatorio.Visible = true;
         }
 
         private void btncrear_Click(object sender, EventArgs e)
@@ -143,13 +161,26 @@ namespace GUI
                         ApellidoPrestatario = persona?.apellido ?? "Desconocido",
                         NumeroDocumentoPrestatario = persona?.NumeroDocumento ?? "Desconocido",
                         Intereses = ofertas.FirstOrDefault(o => o.id == prestamo?.id_ofertaprestamo)?.intereses ?? 0,
-                        cuota = ofertas.FirstOrDefault(o => o.id == prestamo?.id_ofertaprestamo)?.cuotas ?? 0
+                        cuota = ofertas.FirstOrDefault(o => o.id == prestamo?.id_ofertaprestamo)?.cuotas ?? 0,
+                        estado = prestamo?.estado ?? "Desconocido"
                     };
                 })
                 .ToList();
 
             dgvcontrolpagos.DataSource = null;
             dgvcontrolpagos.DataSource = transacciones;
+        }
+
+        private void btnmirarcomprobante_Click(object sender, EventArgs e)
+        {
+            if (dgvcontrolpagos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar una oferta de préstamo.");
+                return;
+            }
+            var transaccionSeleccionada = (TransaccionDTO)dgvcontrolpagos.SelectedRows[0].DataBoundItem;
+            MostrarComprobante mostrarComprobante = new MostrarComprobante(transaccionSeleccionada.id);
+            mostrarComprobante.ShowDialog();
         }
 
         private void CargarUsuarios()
@@ -329,6 +360,8 @@ namespace GUI
             pnlcrearprestamo.Visible = false;
             pnlinicio.Visible = true;
             pnlcontrolpago.Visible = false;
+            pnlconsultarprestamo.Visible = false;
+
         }
 
         private void btnsalir_Click(object sender, EventArgs e)

@@ -36,7 +36,6 @@
             this.pnlmenu = new System.Windows.Forms.Panel();
             this.btnpagar = new System.Windows.Forms.Button();
             this.btnhistorial = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnsalir = new System.Windows.Forms.Button();
             this.btninicio = new System.Windows.Forms.Button();
             this.btnnotificaciones = new System.Windows.Forms.Button();
@@ -93,8 +92,10 @@
             this.label18 = new System.Windows.Forms.Label();
             this.dgvnotificaciones = new System.Windows.Forms.DataGridView();
             this.btnvolver = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.btnsubirimagen = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlmenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlinicio.SuspendLayout();
             this.pnlofertasprestamo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPrestamos)).BeginInit();
@@ -107,6 +108,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvhistorialpago)).BeginInit();
             this.pnlnotificaciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvnotificaciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlmenu
@@ -154,15 +156,6 @@
             this.btnhistorial.UseVisualStyleBackColor = false;
             this.btnhistorial.Click += new System.EventHandler(this.btnhistorial_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources.Logo_PresTech_blanco;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(155, 50);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnsalir
             // 
             this.btnsalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -175,6 +168,7 @@
             this.btnsalir.TabIndex = 5;
             this.btnsalir.Text = "Salir";
             this.btnsalir.UseVisualStyleBackColor = false;
+            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
             // btninicio
             // 
@@ -473,6 +467,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlconfirmarpago.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlconfirmarpago.Controls.Add(this.btnsubirimagen);
+            this.pnlconfirmarpago.Controls.Add(this.label21);
             this.pnlconfirmarpago.Controls.Add(this.btnvolver);
             this.pnlconfirmarpago.Controls.Add(this.lblfrecuencia);
             this.pnlconfirmarpago.Controls.Add(this.label16);
@@ -513,7 +509,7 @@
             this.lblfrecuencia.AutoSize = true;
             this.lblfrecuencia.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfrecuencia.ForeColor = System.Drawing.Color.Black;
-            this.lblfrecuencia.Location = new System.Drawing.Point(614, 255);
+            this.lblfrecuencia.Location = new System.Drawing.Point(620, 243);
             this.lblfrecuencia.Name = "lblfrecuencia";
             this.lblfrecuencia.Size = new System.Drawing.Size(77, 16);
             this.lblfrecuencia.TabIndex = 27;
@@ -525,7 +521,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(242, 255);
+            this.label16.Location = new System.Drawing.Point(248, 243);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(74, 16);
             this.label16.TabIndex = 26;
@@ -537,7 +533,7 @@
             this.lblnumeroprestamista.AutoSize = true;
             this.lblnumeroprestamista.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblnumeroprestamista.ForeColor = System.Drawing.Color.Black;
-            this.lblnumeroprestamista.Location = new System.Drawing.Point(615, 367);
+            this.lblnumeroprestamista.Location = new System.Drawing.Point(621, 355);
             this.lblnumeroprestamista.Name = "lblnumeroprestamista";
             this.lblnumeroprestamista.Size = new System.Drawing.Size(139, 16);
             this.lblnumeroprestamista.TabIndex = 25;
@@ -549,7 +545,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(243, 367);
+            this.label14.Location = new System.Drawing.Point(249, 355);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(157, 16);
             this.label14.TabIndex = 24;
@@ -561,7 +557,7 @@
             this.lbldocumentoprestamista.AutoSize = true;
             this.lbldocumentoprestamista.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldocumentoprestamista.ForeColor = System.Drawing.Color.Black;
-            this.lbldocumentoprestamista.Location = new System.Drawing.Point(614, 339);
+            this.lbldocumentoprestamista.Location = new System.Drawing.Point(620, 327);
             this.lbldocumentoprestamista.Name = "lbldocumentoprestamista";
             this.lbldocumentoprestamista.Size = new System.Drawing.Size(163, 16);
             this.lbldocumentoprestamista.TabIndex = 23;
@@ -573,7 +569,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(242, 339);
+            this.label11.Location = new System.Drawing.Point(248, 327);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(180, 16);
             this.label11.TabIndex = 22;
@@ -585,7 +581,7 @@
             this.lblsaldorestante.AutoSize = true;
             this.lblsaldorestante.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblsaldorestante.ForeColor = System.Drawing.Color.Black;
-            this.lblsaldorestante.Location = new System.Drawing.Point(614, 168);
+            this.lblsaldorestante.Location = new System.Drawing.Point(620, 156);
             this.lblsaldorestante.Name = "lblsaldorestante";
             this.lblsaldorestante.Size = new System.Drawing.Size(104, 16);
             this.lblsaldorestante.TabIndex = 21;
@@ -597,7 +593,7 @@
             this.A.AutoSize = true;
             this.A.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.A.ForeColor = System.Drawing.Color.Black;
-            this.A.Location = new System.Drawing.Point(242, 168);
+            this.A.Location = new System.Drawing.Point(248, 156);
             this.A.Name = "A";
             this.A.Size = new System.Drawing.Size(101, 16);
             this.A.TabIndex = 20;
@@ -609,7 +605,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(246, 427);
+            this.label20.Location = new System.Drawing.Point(252, 415);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(134, 19);
             this.label20.TabIndex = 19;
@@ -621,7 +617,7 @@
             this.lblnombreprestamista.AutoSize = true;
             this.lblnombreprestamista.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblnombreprestamista.ForeColor = System.Drawing.Color.Black;
-            this.lblnombreprestamista.Location = new System.Drawing.Point(614, 311);
+            this.lblnombreprestamista.Location = new System.Drawing.Point(620, 299);
             this.lblnombreprestamista.Name = "lblnombreprestamista";
             this.lblnombreprestamista.Size = new System.Drawing.Size(138, 16);
             this.lblnombreprestamista.TabIndex = 18;
@@ -633,7 +629,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(243, 311);
+            this.label19.Location = new System.Drawing.Point(249, 299);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(133, 16);
             this.label19.TabIndex = 17;
@@ -646,7 +642,7 @@
             this.btnconfirmarpago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
             this.btnconfirmarpago.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnconfirmarpago.ForeColor = System.Drawing.Color.Transparent;
-            this.btnconfirmarpago.Location = new System.Drawing.Point(424, 587);
+            this.btnconfirmarpago.Location = new System.Drawing.Point(423, 628);
             this.btnconfirmarpago.Name = "btnconfirmarpago";
             this.btnconfirmarpago.Size = new System.Drawing.Size(178, 41);
             this.btnconfirmarpago.TabIndex = 16;
@@ -660,7 +656,7 @@
             this.lbltipopago.AutoSize = true;
             this.lbltipopago.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltipopago.ForeColor = System.Drawing.Color.Black;
-            this.lbltipopago.Location = new System.Drawing.Point(617, 531);
+            this.lbltipopago.Location = new System.Drawing.Point(623, 519);
             this.lbltipopago.Name = "lbltipopago";
             this.lbltipopago.Size = new System.Drawing.Size(66, 16);
             this.lbltipopago.TabIndex = 15;
@@ -672,7 +668,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(242, 531);
+            this.label17.Location = new System.Drawing.Point(248, 519);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(84, 16);
             this.label17.TabIndex = 14;
@@ -684,7 +680,7 @@
             this.lblfechavencimiento.AutoSize = true;
             this.lblfechavencimiento.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfechavencimiento.ForeColor = System.Drawing.Color.Black;
-            this.lblfechavencimiento.Location = new System.Drawing.Point(615, 501);
+            this.lblfechavencimiento.Location = new System.Drawing.Point(621, 489);
             this.lblfechavencimiento.Name = "lblfechavencimiento";
             this.lblfechavencimiento.Size = new System.Drawing.Size(123, 16);
             this.lblfechavencimiento.TabIndex = 13;
@@ -696,7 +692,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(243, 501);
+            this.label15.Location = new System.Drawing.Point(249, 489);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(139, 16);
             this.label15.TabIndex = 12;
@@ -708,7 +704,7 @@
             this.lblmontopagar.AutoSize = true;
             this.lblmontopagar.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblmontopagar.ForeColor = System.Drawing.Color.Black;
-            this.lblmontopagar.Location = new System.Drawing.Point(615, 471);
+            this.lblmontopagar.Location = new System.Drawing.Point(621, 459);
             this.lblmontopagar.Name = "lblmontopagar";
             this.lblmontopagar.Size = new System.Drawing.Size(91, 16);
             this.lblmontopagar.TabIndex = 11;
@@ -720,7 +716,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(243, 471);
+            this.label12.Location = new System.Drawing.Point(249, 459);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(103, 16);
             this.label12.TabIndex = 10;
@@ -732,7 +728,7 @@
             this.lblinteres.AutoSize = true;
             this.lblinteres.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblinteres.ForeColor = System.Drawing.Color.Black;
-            this.lblinteres.Location = new System.Drawing.Point(615, 285);
+            this.lblinteres.Location = new System.Drawing.Point(621, 273);
             this.lblinteres.Name = "lblinteres";
             this.lblinteres.Size = new System.Drawing.Size(54, 16);
             this.lblinteres.TabIndex = 9;
@@ -744,7 +740,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(243, 285);
+            this.label10.Location = new System.Drawing.Point(249, 273);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 16);
             this.label10.TabIndex = 8;
@@ -756,7 +752,7 @@
             this.lblcuotas.AutoSize = true;
             this.lblcuotas.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcuotas.ForeColor = System.Drawing.Color.Black;
-            this.lblcuotas.Location = new System.Drawing.Point(614, 229);
+            this.lblcuotas.Location = new System.Drawing.Point(620, 217);
             this.lblcuotas.Name = "lblcuotas";
             this.lblcuotas.Size = new System.Drawing.Size(54, 16);
             this.lblcuotas.TabIndex = 7;
@@ -768,7 +764,7 @@
             this.lbl.AutoSize = true;
             this.lbl.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl.ForeColor = System.Drawing.Color.Black;
-            this.lbl.Location = new System.Drawing.Point(242, 229);
+            this.lbl.Location = new System.Drawing.Point(248, 217);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(51, 16);
             this.lbl.TabIndex = 6;
@@ -780,7 +776,7 @@
             this.lblplazo.AutoSize = true;
             this.lblplazo.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblplazo.ForeColor = System.Drawing.Color.Black;
-            this.lblplazo.Location = new System.Drawing.Point(614, 198);
+            this.lblplazo.Location = new System.Drawing.Point(620, 186);
             this.lblplazo.Name = "lblplazo";
             this.lblplazo.Size = new System.Drawing.Size(44, 16);
             this.lblplazo.TabIndex = 5;
@@ -792,7 +788,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(242, 198);
+            this.label8.Location = new System.Drawing.Point(248, 186);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 16);
             this.label8.TabIndex = 4;
@@ -804,7 +800,7 @@
             this.lbltotalprestamo.AutoSize = true;
             this.lbltotalprestamo.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltotalprestamo.ForeColor = System.Drawing.Color.Black;
-            this.lbltotalprestamo.Location = new System.Drawing.Point(614, 139);
+            this.lbltotalprestamo.Location = new System.Drawing.Point(620, 127);
             this.lbltotalprestamo.Name = "lbltotalprestamo";
             this.lbltotalprestamo.Size = new System.Drawing.Size(107, 16);
             this.lbltotalprestamo.TabIndex = 3;
@@ -816,7 +812,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(242, 139);
+            this.label6.Location = new System.Drawing.Point(248, 127);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(175, 16);
             this.label6.TabIndex = 2;
@@ -828,7 +824,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(242, 101);
+            this.label4.Location = new System.Drawing.Point(248, 89);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 19);
             this.label4.TabIndex = 1;
@@ -956,19 +952,55 @@
             this.btnvolver.UseVisualStyleBackColor = true;
             this.btnvolver.Click += new System.EventHandler(this.btnvolver_Click);
             // 
+            // label21
+            // 
+            this.label21.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(440, 557);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(146, 16);
+            this.label21.TabIndex = 29;
+            this.label21.Text = "CARGAR COMPROBANTE";
+            // 
+            // btnsubirimagen
+            // 
+            this.btnsubirimagen.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnsubirimagen.AutoSize = true;
+            this.btnsubirimagen.BackColor = System.Drawing.Color.Gray;
+            this.btnsubirimagen.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsubirimagen.ForeColor = System.Drawing.Color.Transparent;
+            this.btnsubirimagen.Location = new System.Drawing.Point(424, 582);
+            this.btnsubirimagen.Name = "btnsubirimagen";
+            this.btnsubirimagen.Size = new System.Drawing.Size(177, 35);
+            this.btnsubirimagen.TabIndex = 30;
+            this.btnsubirimagen.Text = "SUBIR IMAGEN";
+            this.btnsubirimagen.UseVisualStyleBackColor = false;
+            this.btnsubirimagen.Click += new System.EventHandler(this.btnsubirimagen_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources.Logo_PresTech_blanco;
+            this.pictureBox1.Location = new System.Drawing.Point(9, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(155, 50);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // Menu_Prestatario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.pnlconfirmarpago);
+            this.Controls.Add(this.pnlconsultarpagos);
             this.Controls.Add(this.pnlnotificaciones);
             this.Controls.Add(this.pnlinicio);
-            this.Controls.Add(this.pnlconsultarpagos);
+            this.Controls.Add(this.pnlconfirmarpago);
             this.Controls.Add(this.pnlprestamosactivos);
-            this.Controls.Add(this.pnlpagos);
             this.Controls.Add(this.pnlofertasprestamo);
+            this.Controls.Add(this.pnlpagos);
             this.Controls.Add(this.pnlmenu);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.Color.Coral;
@@ -978,7 +1010,6 @@
             this.Text = "Menu_Prestatario";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.pnlmenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlinicio.ResumeLayout(false);
             this.pnlinicio.PerformLayout();
             this.pnlofertasprestamo.ResumeLayout(false);
@@ -998,6 +1029,7 @@
             this.pnlnotificaciones.ResumeLayout(false);
             this.pnlnotificaciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvnotificaciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1064,5 +1096,7 @@
         private System.Windows.Forms.DataGridView dgvnotificaciones;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnvolver;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btnsubirimagen;
     }
 }

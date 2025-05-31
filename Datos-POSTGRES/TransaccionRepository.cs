@@ -48,6 +48,7 @@ namespace Datos_POSTGRES
                 id_transaccion = reader.GetInt32(reader.GetOrdinal("id_transaccion")),
                 tipo_transaccion = reader.GetString(reader.GetOrdinal("tipo_transaccion")),
                 monto = reader.GetDecimal(reader.GetOrdinal("monto")),
+                imagen = reader.IsDBNull(reader.GetOrdinal("imagen")) ? null : (byte[])reader["imagen"],
                 fecha = reader.GetDateTime(reader.GetOrdinal("fecha")),
                 id_prestamo = reader.GetInt32(reader.GetOrdinal("id_prestamo"))
             };
@@ -58,8 +59,8 @@ namespace Datos_POSTGRES
             if (entity == null || string.IsNullOrWhiteSpace(entity.tipo_transaccion) || entity.id_prestamo <= 0)
                 return "Datos inválidos";
 
-            string sentencia = @"INSERT INTO transaccion (tipo_transaccion, monto, fecha, id_prestamo) 
-                        VALUES (@tipo_transaccion, @monto, @fecha, @id_prestamo) RETURNING id_transaccion";
+            string sentencia = @"INSERT INTO transaccion (tipo_transaccion, monto, fecha, imagen, id_prestamo) 
+                        VALUES (@tipo_transaccion, @monto, @fecha, @imagen, @id_prestamo) RETURNING id_transaccion";
 
             using (var cmd = new NpgsqlCommand(sentencia, conexion))
             {
@@ -67,6 +68,8 @@ namespace Datos_POSTGRES
                 cmd.Parameters.AddWithValue("@monto", entity.monto);
                 cmd.Parameters.AddWithValue("@fecha", entity.fecha);
                 cmd.Parameters.AddWithValue("@id_prestamo", entity.id_prestamo);
+                cmd.Parameters.AddWithValue("@imagen", entity.imagen ?? (object)DBNull.Value);
+
 
                 try
                 {
