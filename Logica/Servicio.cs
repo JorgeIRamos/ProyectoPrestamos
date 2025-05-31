@@ -84,21 +84,31 @@ namespace Logica
             return repo.Modificar(entity);
         }
 
+        //public T BuscarPorId(int id, T entity)
+        //{
+        //    if (typeof(T) == typeof(OfertaPrestamo))
+        //    {
+        //        var repo = new Datos_POSTGRES.OfertaPrestamoRepository();
+        //        return (T)(object)repo.BuscarPorId(id);
+        //    }
+        //    return default(T);
+        //}
+
         public T BuscarPorId(int id, T entity)
         {
-            if (typeof(T) == typeof(OfertaPrestamo))
+            var repo = new Estrategia<T>().Repositorio(entity);
+            var resultado = repo.BuscarPorId(id);
+            if (resultado == null)
             {
-                var repo = new Datos_POSTGRES.OfertaPrestamoRepository();
-                return (T)(object)repo.BuscarPorId(id);
+                throw new Exception($"No se encontró un registro con ID = {id}.");
             }
-            // Agrega más casos para otros tipos si es necesario
-            return default(T);
+            return resultado;
+
+
+
+
+
+
         }
-
-
-
-
-
-
     }
 }

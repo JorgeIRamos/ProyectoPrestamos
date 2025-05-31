@@ -19,6 +19,7 @@ namespace Entidades
         public decimal intereses { get; set; }
         public int plazo { get; set; }
         public int cuotas { get; set; }
+        public int cuotas_restantes { get; set; }
         public string frecuencia { get; set; }
         public DateTime fechainicio { get; set; }
         public DateTime fechavencimiento { get; set; }

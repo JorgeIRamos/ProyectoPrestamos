@@ -39,6 +39,7 @@ namespace Datos_POSTGRES
             o.intereses,
             o.plazo,
             o.cuotas,
+            o.cuotas_restantes,
             o.frecuencia,
             o.fechainicio,
             o.fechavencimiento,
@@ -103,7 +104,7 @@ namespace Datos_POSTGRES
                 id_prestamo = reader.GetInt32(reader.GetOrdinal("id_prestamo")),
                 saldo_restante = reader.GetDecimal(reader.GetOrdinal("saldo_restante")),
                 estado = reader.GetString(reader.GetOrdinal("estado")),
-                id_ofertaprestamo = reader.GetInt32(reader.GetOrdinal("id_ofertaprestamo")),
+                id_ofertaprestamo = reader.GetInt32(reader.GetOrdinal("id_oferta")),
                 id_prestatario = reader.GetInt32(reader.GetOrdinal("id_prestatario")),
 
                 prestatario = new Prestatario
@@ -137,6 +138,7 @@ namespace Datos_POSTGRES
                     intereses = reader.GetDecimal(reader.GetOrdinal("intereses")),
                     plazo = reader.GetInt32(reader.GetOrdinal("plazo")),
                     cuotas = reader.GetInt32(reader.GetOrdinal("cuotas")),
+                    cuotas_restantes = reader.GetInt32(reader.GetOrdinal("cuotas_restantes")),
                     frecuencia = reader.GetString(reader.GetOrdinal("frecuencia")),
                     fechainicio = reader.GetDateTime(reader.GetOrdinal("fechainicio")),
                     fechavencimiento = reader.GetDateTime(reader.GetOrdinal("fechavencimiento")),
@@ -232,7 +234,7 @@ namespace Datos_POSTGRES
                 cmd.Parameters.AddWithValue("@id_ofertaprestamo", entity.id_ofertaprestamo);
                 cmd.Parameters.AddWithValue("@saldo_restante", entity.saldo_restante);
                 cmd.Parameters.AddWithValue("@estado", entity.estado);
-                cmd.Parameters.AddWithValue("@id", entity.id_prestamo);
+                cmd.Parameters.AddWithValue("@id_prestamo", entity.id_prestamo);
 
                 try
                 {
@@ -284,63 +286,67 @@ namespace Datos_POSTGRES
             if (id <= 0)
                 return null;
 
-          string sentencia = @"
-    SELECT
+            string sentencia = @"
+    SELECT 
         p.id_prestamo,
         p.saldo_restante,
         p.estado,
-        p.id_oferta_prestamo,
+        p.id_ofertaprestamo,
         p.id_prestatario,
-        
-        per_pr.id_persona AS id_persona_prestatario,
-        per_pr.nombre AS nombre_prestatario,
-        per_pr.apellido AS apellido_prestatario,
-        per_pr.numero_documento AS numero_documento_prestatario,
-        per_pr.tipo_documento AS tipo_documento_prestatario,
-        per_pr.telefono AS telefono_prestatario,
-        per_pr.sexo AS sexo_prestatario,
-        per_pr.direccion AS direccion_prestatario,
-        per_pr.email AS email_prestatario,
-        per_pr.username AS username_prestatario,
-        per_pr.contrasena AS contrasena_prestatario,
-        td_pr.nombre AS nombre_doc_prestatario,
-        
+
+        pr.id_prestatario,
+        persona_pre.id_persona AS id_persona,
+        persona_pre.nombre AS nombre_prestatario,
+        persona_pre.apellido AS apellido_prestatario,
+        persona_pre.numerodocumento AS numerodocumento_prestatario,
+        persona_pre.tipo_documento AS tipo_documento_prestatario,
+        persona_pre.telefono AS telefono_prestatario,
+        persona_pre.sexo AS sexo_prestatario,
+        persona_pre.direccion AS direccion_prestatario,
+        persona_pre.email AS email_prestatario,
+        persona_pre.username AS username_prestatario,
+        persona_pre.contraseña AS contraseña_prestatario,
+        td_pre.nombre AS nombre_doc_prestatario,
+
         o.id AS id_oferta,
         o.cantidad,
         o.intereses,
-        o.plazos,
+        o.plazo,
         o.cuotas,
+        o.cuotas_restantes,
         o.frecuencia,
-        o.fecha_inicio,
-        o.fecha_vencimiento,
+        o.fechainicio,
+        o.fechavencimiento,
         o.proposito,
-        o.tipo_pago,
+        o.tipopago,
         o.estado AS estado_oferta,
         o.id_prestamista,
-        
+
         pm.id_prestamista,
-        per_pm.id_persona AS id_persona_prestamista,
-        per_pm.nombre AS nombre_prestamista,
-        per_pm.apellido AS apellido_prestamista,
-        per_pm.numero_documento AS numero_documento_prestamista,
-        per_pm.tipo_documento AS tipo_documento_prestamista,
-        per_pm.telefono AS telefono_prestamista,
-        per_pm.sexo AS sexo_prestamista,
-        per_pm.direccion AS direccion_prestamista,
-        per_pm.email AS email_prestamista,
-        per_pm.username AS username_prestamista,
-        per_pm.contrasena AS contrasena_prestamista,
+        persona_pm.id_persona AS id_persona_prestamista,
+        persona_pm.nombre AS nombre_prestamista,
+        persona_pm.apellido AS apellido_prestamista,
+        persona_pm.numerodocumento AS numerodocumento_prestamista,
+        persona_pm.tipo_documento AS tipo_documento_prestamista,
+        persona_pm.telefono AS telefono_prestamista,
+        persona_pm.sexo AS sexo_prestamista,
+        persona_pm.direccion AS direccion_prestamista,
+        persona_pm.email AS email_prestamista,
+        persona_pm.username AS username_prestamista,
+        persona_pm.contraseña AS contraseña_prestamista,
         td_pm.nombre AS nombre_doc_prestamista
-        
+
     FROM prestamo p
     JOIN prestatario pr ON p.id_prestatario = pr.id_prestatario
-    JOIN persona per_pr ON pr.id_prestatario = per_pr.id_persona
-    JOIN tipo_documento td_pr ON per_pr.tipo_documento = td_pr.id_documento
-    JOIN oferta_prestamo o ON p.id_oferta_prestamo = o.id
+    JOIN persona persona_pre ON pr.id_prestatario = persona_pre.id_persona
+    JOIN tipo_documento td_pre ON persona_pre.tipo_documento = td_pre.id_documento
+    JOIN oferta_prestamo o ON p.id_ofertaprestamo = o.id
     JOIN prestamista pm ON o.id_prestamista = pm.id_prestamista
-    JOIN persona per_pm ON pm.id_prestamista = per_pm.id_persona
-    JOIN tipo_documento td_pm ON per_pm.tipo_documento = td_pm.id_documento
-    WHERE p.id_prestamo = @id_prestamo"; ;
+    JOIN persona persona_pm ON pm.id_prestamista = persona_pm.id_persona
+    JOIN tipo_documento td_pm ON persona_pm.tipo_documento = td_pm.id_documento
+    WHERE p.id_prestamo = @id_prestamo
+";
+
 
             using (var cmd = new NpgsqlCommand(sentencia, conexion))
             {

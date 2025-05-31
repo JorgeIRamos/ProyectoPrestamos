@@ -16,20 +16,27 @@ namespace GUI
     {
         private Service<Prestamista> servicePrestamista;
         private Service<OfertaPrestamo> serviceOfertaPrestamo;
+        private Service<Transaccion> serviceTransaccion;
+        private Service<Prestamo> servicePrestamo;
         private int idPrestamistaActual;
         private string Nombre;
         public Menu_Prestamista(int idPrestamista, string nombre)
         {
             servicePrestamista = new Service<Prestamista>();
             serviceOfertaPrestamo = new Service<OfertaPrestamo>();
+            serviceTransaccion = new Service<Transaccion>();
+            servicePrestamo = new Service<Prestamo>();
             InitializeComponent();
             QuitarBordes();
             idPrestamistaActual = idPrestamista;
             Nombre = nombre;
             pnlconsultarprestamo.Visible = false;
             pnlcrearprestamo.Visible = false;
+            pnlcontrolpago.Visible = false;
             labeluser.Text = "BIENVENIDO " + Nombre.ToUpper();
             CargarPrestamos();
+            CargarControlPagos();
+            CargarUsuarios();
         }
 
         private void QuitarBordes()
@@ -54,6 +61,7 @@ namespace GUI
             pnlcrearprestamo.Visible = true;
             pnlconsultarprestamo.Visible = false;
             pnlinicio.Visible = false;
+            pnlcontrolpago.Visible = false;
         }
 
         private void btnconsultarprestamos_Click(object sender, EventArgs e)
@@ -62,9 +70,17 @@ namespace GUI
             pnlinicio.Visible = false;
             pnlcrearprestamo.Visible = false;
             pnlconsultarprestamo.Visible = true;
+            pnlcontrolpago.Visible = false;
             CargarPrestamos();
+        }
 
-
+        private void btncontrolpago_Click(object sender, EventArgs e)
+        {
+            ResaltarBoton(btncontrolpago);
+            pnlinicio.Visible = false;
+            pnlcrearprestamo.Visible = false;
+            pnlconsultarprestamo.Visible = false;
+            pnlcontrolpago.Visible = true;
         }
 
         private void btncrear_Click(object sender, EventArgs e)
@@ -94,7 +110,66 @@ namespace GUI
             OcultarColumnas();
         }
 
+        private void CargarControlPagos()
+        {
 
+            var ofertas = serviceOfertaPrestamo.Consultar(new OfertaPrestamo())
+                .Where(o => o.id_prestamista == idPrestamistaActual)
+                .ToList();
+
+            var prestamos = servicePrestamo.Consultar(new Prestamo())
+                .Where(pr => ofertas.Any(o => o.id == pr.id_ofertaprestamo))
+                .ToList();
+
+            var transacciones = serviceTransaccion.Consultar(new Transaccion())
+                .Where(t => prestamos.Any(pr => pr.id_prestamo == t.id_prestamo))
+                .OrderBy(t => t.fecha)
+                .Select(t =>
+                {
+                    var prestamo = prestamos.FirstOrDefault(pr => pr.id_prestamo == t.id_prestamo);
+                    var prestatario = prestamo?.prestatario;
+                    var persona = prestatario?.Persona;
+
+                    return new TransaccionDTO
+                    {
+                        id = t.id_transaccion,
+                        id_prestamo = t.id_prestamo,
+                        monto = t.monto,
+                        fecha = t.fecha,
+                        tipo_transaccion = t.tipo_transaccion,
+                        NombrePrestatario = persona?.nombre ?? "Desconocido",
+                        ApellidoPrestatario = persona?.apellido ?? "Desconocido",
+                        NumeroDocumentoPrestatario = persona?.NumeroDocumento ?? "Desconocido",
+                        Intereses = ofertas.FirstOrDefault(o => o.id == prestamo?.id_ofertaprestamo)?.intereses ?? 0,
+                        cuota = ofertas.FirstOrDefault(o => o.id == prestamo?.id_ofertaprestamo)?.cuotas ?? 0
+                    };
+                })
+                .ToList();
+
+            dgvcontrolpagos.DataSource = null;
+            dgvcontrolpagos.DataSource = transacciones;
+        }
+
+        private void CargarUsuarios()
+        {
+            var prestamos = servicePrestamo.Consultar(new Prestamo())
+                .Where(pr => pr.ofertaPrestamo.id_prestamista == idPrestamistaActual)
+                .Select(pr => new UsuariosDTO
+                {
+                    id = pr.id_prestatario.ToString(),
+                    Nombre = pr.prestatario.Persona.nombre,
+                    Apellido = pr.prestatario.Persona.apellido,
+                    NumeroDocumento = pr.prestatario.Persona.NumeroDocumento,
+                    CorreoElectronico = pr.prestatario.Persona.email,
+                    Telefono = pr.prestatario.Persona.telefono,
+                    sexo = pr.prestatario.Persona.sexo
+                }).ToList();
+
+            dgvusuarios.DataSource = null;
+            dgvusuarios.DataSource = prestamos;
+
+            dgvusuarios.Columns["id"].Visible = false;
+        }
         private void GuardarPrestamo()
         {
             int cuota = ValorCuota();
@@ -104,6 +179,7 @@ namespace GUI
                 intereses = decimal.Parse(txtintereses.Text.Trim().Replace('.', ',')),
                 plazo = int.Parse(txtplazo.Text.Trim()),
                 cuotas = cuota,
+                cuotas_restantes = cuota,
                 frecuencia = boxfrecuencia.SelectedItem.ToString(),
                 fechainicio = DateTime.Now,
                 fechavencimiento = DateTime.Now.AddMonths(int.Parse(txtplazo.Text.Trim())),
@@ -195,6 +271,7 @@ namespace GUI
             pnlconsultarprestamo.Visible = false;
             pnlcrearprestamo.Visible = false;
             pnlinicio.Visible = true;
+            pnlcontrolpago.Visible = false;
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -212,16 +289,6 @@ namespace GUI
                 dgvDatosPrestamos.Columns["prestamista"].Visible = false;
         }
 
-        private void pnlcrearprestamo_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ResaltarBoton(Button botonActivo)
         {
             var botones = new List<Button> { btninicio, btnconsultarprestamos, btncrearprestamo, btncontrolpago, btnrecordatorios, btnsalir };
@@ -236,5 +303,6 @@ namespace GUI
             botonActivo.ForeColor = Color.White;
         }
 
+        
     }
 }

@@ -40,7 +40,6 @@
             this.labeluser = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlconsultarprestamo = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.dgvDatosPrestamos = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.pnlcrearprestamo = new System.Windows.Forms.Panel();
@@ -56,12 +55,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pnlcontrolpago = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dgvcontrolpagos = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvusuarios = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btncontinuar = new System.Windows.Forms.Button();
             this.pnlmenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlinicio.SuspendLayout();
             this.pnlconsultarprestamo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPrestamos)).BeginInit();
             this.pnlcrearprestamo.SuspendLayout();
+            this.pnlcontrolpago.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvcontrolpagos)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlmenu
@@ -92,6 +103,7 @@
             this.btncontrolpago.TabIndex = 7;
             this.btncontrolpago.Text = "Control de pago";
             this.btncontrolpago.UseVisualStyleBackColor = false;
+            this.btncontrolpago.Click += new System.EventHandler(this.btncontrolpago_Click);
             // 
             // pictureBox1
             // 
@@ -214,23 +226,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlconsultarprestamo.AutoSize = true;
             this.pnlconsultarprestamo.BackColor = System.Drawing.Color.Gainsboro;
-            this.pnlconsultarprestamo.Controls.Add(this.panel1);
             this.pnlconsultarprestamo.Controls.Add(this.dgvDatosPrestamos);
             this.pnlconsultarprestamo.Controls.Add(this.label13);
             this.pnlconsultarprestamo.Location = new System.Drawing.Point(173, -2);
             this.pnlconsultarprestamo.Name = "pnlconsultarprestamo";
             this.pnlconsultarprestamo.Size = new System.Drawing.Size(1097, 700);
             this.pnlconsultarprestamo.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(263, 95);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(607, 10);
-            this.panel1.TabIndex = 24;
             // 
             // dgvDatosPrestamos
             // 
@@ -282,7 +283,6 @@
             this.pnlcrearprestamo.Name = "pnlcrearprestamo";
             this.pnlcrearprestamo.Size = new System.Drawing.Size(1280, 720);
             this.pnlcrearprestamo.TabIndex = 1;
-            this.pnlcrearprestamo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlcrearprestamo_Paint);
             // 
             // boxfrecuencia
             // 
@@ -392,7 +392,6 @@
             this.txtcantidad.Name = "txtcantidad";
             this.txtcantidad.Size = new System.Drawing.Size(334, 22);
             this.txtcantidad.TabIndex = 6;
-            this.txtcantidad.TextChanged += new System.EventHandler(this.txtcantidad_TextChanged);
             // 
             // label4
             // 
@@ -448,7 +447,121 @@
             this.label2.Size = new System.Drawing.Size(355, 60);
             this.label2.TabIndex = 0;
             this.label2.Text = "CREAR PRESTAMO";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // pnlcontrolpago
+            // 
+            this.pnlcontrolpago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlcontrolpago.AutoSize = true;
+            this.pnlcontrolpago.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlcontrolpago.Controls.Add(this.dgvcontrolpagos);
+            this.pnlcontrolpago.Controls.Add(this.label7);
+            this.pnlcontrolpago.Location = new System.Drawing.Point(173, 0);
+            this.pnlcontrolpago.Name = "pnlcontrolpago";
+            this.pnlcontrolpago.Size = new System.Drawing.Size(1097, 700);
+            this.pnlcontrolpago.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(413, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(221, 43);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "CONTROL PAGO";
+            // 
+            // dgvcontrolpagos
+            // 
+            this.dgvcontrolpagos.AllowUserToAddRows = false;
+            this.dgvcontrolpagos.AllowUserToDeleteRows = false;
+            this.dgvcontrolpagos.AllowUserToResizeColumns = false;
+            this.dgvcontrolpagos.AllowUserToResizeRows = false;
+            this.dgvcontrolpagos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgvcontrolpagos.BackgroundColor = System.Drawing.Color.Gray;
+            this.dgvcontrolpagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvcontrolpagos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
+            this.dgvcontrolpagos.Location = new System.Drawing.Point(74, 93);
+            this.dgvcontrolpagos.Name = "dgvcontrolpagos";
+            this.dgvcontrolpagos.Size = new System.Drawing.Size(916, 489);
+            this.dgvcontrolpagos.TabIndex = 6;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoSize = true;
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.btncontinuar);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.dgvusuarios);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Location = new System.Drawing.Point(175, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1097, 700);
+            this.panel1.TabIndex = 7;
+            // 
+            // dgvusuarios
+            // 
+            this.dgvusuarios.AllowUserToAddRows = false;
+            this.dgvusuarios.AllowUserToDeleteRows = false;
+            this.dgvusuarios.AllowUserToResizeColumns = false;
+            this.dgvusuarios.AllowUserToResizeRows = false;
+            this.dgvusuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgvusuarios.BackgroundColor = System.Drawing.Color.Gray;
+            this.dgvusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvusuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
+            this.dgvusuarios.Location = new System.Drawing.Point(72, 128);
+            this.dgvusuarios.Name = "dgvusuarios";
+            this.dgvusuarios.Size = new System.Drawing.Size(916, 489);
+            this.dgvusuarios.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(413, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(227, 43);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "RECORDATORIO";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(310, 99);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(485, 19);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "SELECCIONE EL USUARIO AL QUE LE VA A MANDAR UN RECORDATORIO";
+            // 
+            // btncontinuar
+            // 
+            this.btncontinuar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncontinuar.AutoSize = true;
+            this.btncontinuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btncontinuar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncontinuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btncontinuar.Location = new System.Drawing.Point(446, 630);
+            this.btncontinuar.Name = "btncontinuar";
+            this.btncontinuar.Size = new System.Drawing.Size(186, 39);
+            this.btncontinuar.TabIndex = 14;
+            this.btncontinuar.Text = "CONTINUAR";
+            this.btncontinuar.UseVisualStyleBackColor = false;
             // 
             // Menu_Prestamista
             // 
@@ -456,10 +569,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlcontrolpago);
+            this.Controls.Add(this.pnlconsultarprestamo);
             this.Controls.Add(this.pnlcrearprestamo);
             this.Controls.Add(this.pnlinicio);
             this.Controls.Add(this.pnlmenu);
-            this.Controls.Add(this.pnlconsultarprestamo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Menu_Prestamista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -473,6 +588,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPrestamos)).EndInit();
             this.pnlcrearprestamo.ResumeLayout(false);
             this.pnlcrearprestamo.PerformLayout();
+            this.pnlcontrolpago.ResumeLayout(false);
+            this.pnlcontrolpago.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvcontrolpagos)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,11 +623,18 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgvDatosPrestamos;
         private System.Windows.Forms.Button btncontrolpago;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtintereses;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlcrearprestamo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox boxfrecuencia;
+        private System.Windows.Forms.Panel pnlcontrolpago;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dgvcontrolpagos;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btncontinuar;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dgvusuarios;
+        private System.Windows.Forms.Label label8;
     }
 }

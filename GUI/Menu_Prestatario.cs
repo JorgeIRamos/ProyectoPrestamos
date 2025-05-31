@@ -23,12 +23,14 @@ namespace GUI
         private Service<Prestamista> servicePrestamista;
         private Service<Prestatario> servicePrestatario;
         private Service<Prestamo> servicePrestamo;
+        private Service<Transaccion> serviceTransaccion;
         public Menu_Prestatario(int idPrestatario, string nombre)
         {
             serviceOfertaPrestamo = new Service<OfertaPrestamo>();
             servicePrestamista = new Service<Prestamista>();
             servicePrestatario = new Service<Prestatario>();
             servicePrestamo = new Service<Prestamo>();
+            serviceTransaccion = new Service<Transaccion>();
             InitializeComponent();
             QuitarBordes();
             dgvDatosPrestamos.DefaultCellStyle.ForeColor = Color.Black;
@@ -40,9 +42,11 @@ namespace GUI
             pnlprestamosactivos.Visible = false;
             pnlpagos.Visible = false;
             pnlconfirmarpago.Visible = false;
+            pnlconsultarpagos.Visible = false;
             CargarPrestamos();
             CargarPrestamosActivos();
             CargarPrestamosPagar();
+            CargarHistorialPagos();
         }
 
         private void QuitarBordes()
@@ -70,6 +74,7 @@ namespace GUI
             pnlofertasprestamo.Visible = true;
             pnlprestamosactivos.Visible = false;
             pnlinicio.Visible = false;
+            pnlconsultarpagos.Visible = false;
         }
 
         private void btnprestamosactivos_Click(object sender, EventArgs e)
@@ -80,6 +85,7 @@ namespace GUI
             pnlinicio.Visible = false;
             pnlpagos.Visible = false;
             pnlinicio.Visible = false;
+            pnlconsultarpagos.Visible = false;
         }
 
         private void btnpagar_Click(object sender, EventArgs e)
@@ -90,6 +96,18 @@ namespace GUI
             pnlinicio.Visible = false;
             pnlprestamosactivos.Visible = false;
             pnlofertasprestamo.Visible = false;
+            pnlconsultarpagos.Visible = false;
+        }
+
+        private void btnhistorial_Click(object sender, EventArgs e)
+        {
+            ResaltarBoton(btnhistorial);
+            pnlconfirmarpago.Visible = false;
+            pnlpagos.Visible = false;
+            pnlinicio.Visible = false;
+            pnlprestamosactivos.Visible = false;
+            pnlofertasprestamo.Visible = false;
+            pnlconsultarpagos.Visible = true;
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -133,6 +151,7 @@ namespace GUI
                     id_prestamo = p.id_prestamo,
                     saldo_restante = p.saldo_restante,
                     estado = p.estado,
+                    id_ofertaprestamo = p.id_ofertaprestamo,
                     NombrePrestamista = p.ofertaPrestamo?.prestamista?.Persona?.nombre,
                     ApellidoPrestamista = p.ofertaPrestamo?.prestamista?.Persona?.apellido,
                     NumeroDocumentoPrestamista = p.ofertaPrestamo?.prestamista?.Persona?.NumeroDocumento,
@@ -140,6 +159,7 @@ namespace GUI
                     intereses = p.ofertaPrestamo?.intereses ?? 0,
                     plazo = p.ofertaPrestamo?.plazo ?? 0,
                     cuotas = p.ofertaPrestamo?.cuotas ?? 0,
+                    cuotas_restantes = p.ofertaPrestamo?.cuotas_restantes ?? 0,
                     frecuencia = p.ofertaPrestamo?.frecuencia,
                     fechainicio = p.ofertaPrestamo?.fechainicio ?? DateTime.MinValue,
                     fechavencimiento = p.ofertaPrestamo?.fechavencimiento ?? DateTime.MinValue,
@@ -195,6 +215,7 @@ namespace GUI
                     intereses = p.ofertaPrestamo?.intereses ?? 0,
                     plazo = p.ofertaPrestamo?.plazo ?? 0,
                     cuotas = p.ofertaPrestamo?.cuotas ?? 0,
+                    cuotas_restantes = p.ofertaPrestamo?.cuotas_restantes ?? 0,
                     frecuencia = p.ofertaPrestamo?.frecuencia,
                     fechainicio = p.ofertaPrestamo?.fechainicio ?? DateTime.MinValue,
                     fechavencimiento = p.ofertaPrestamo?.fechavencimiento ?? DateTime.MinValue,
@@ -205,6 +226,30 @@ namespace GUI
             dgvmostrarpagos.DataSource = null;
             dgvmostrarpagos.DataSource = prestamoDTO;
         }
+
+        private void CargarHistorialPagos()
+        {
+            var prestamos = servicePrestamo.Consultar(new Prestamo())
+                .Where(p => p.id_prestatario == idPrestatarioActual)
+                .Select(p => p.id_prestamo)
+                .ToList();
+
+            var transacciones = serviceTransaccion.Consultar(new Transaccion())
+                .Where(t => prestamos.Contains(t.id_prestamo))
+                .OrderBy(t => t.fecha)
+                .Select(t => new
+                {
+                    t.monto,
+                    t.fecha,
+                    t.id_prestamo,
+                    t.tipo_transaccion
+                })
+                .ToList();
+
+            dgvhistorialpago.DataSource = null;
+            dgvhistorialpago.DataSource = transacciones;
+        }
+
 
         private void btncontinuar_Click(object sender, EventArgs e)
         {
@@ -222,8 +267,6 @@ namespace GUI
             var buscarprestamo = servicePrestamo.Consultar(new Prestamo());
 
         }
-
-
 
         private void MostrarDatos(int idPrestamo)
         {
@@ -243,14 +286,18 @@ namespace GUI
                 return;
             }
 
-            lblcuotas.Text = prestamo.ofertaPrestamo.cuotas.ToString();
-            lblestadopago.Text = prestamo.estado;
+            lblcuotas.Text = prestamo.ofertaPrestamo.cuotas.ToString() + " ( " + prestamo.ofertaPrestamo.cuotas_restantes.ToString() + " cuotas restantes )";
+            lblnombreprestamista.Text = prestamo.estado;
             lblfechavencimiento.Text = prestamo.ofertaPrestamo.fechavencimiento.ToString("dd/MM/yyyy");
             lbltotalprestamo.Text = prestamo.ofertaPrestamo.cantidad.ToString("C2");
             lbltipopago.Text = prestamo.ofertaPrestamo.tipopago;
             lblinteres.Text = prestamo.ofertaPrestamo.intereses.ToString() + " %";
             lblplazo.Text = prestamo.ofertaPrestamo.plazo.ToString();
-            lblestadopago.Text = "Pendiente";
+            lblnombreprestamista.Text = prestamo.ofertaPrestamo.prestamista.Persona.nombre.ToString();
+            lbldocumentoprestamista.Text = prestamo.ofertaPrestamo.prestamista.Persona.NumeroDocumento.ToString();
+            lblsaldorestante.Text = prestamo.saldo_restante.ToString("C2");
+            lblnumeroprestamista.Text = prestamo.ofertaPrestamo.prestamista.Persona.NumeroDocumento.ToString();
+            lblfrecuencia.Text = prestamo.ofertaPrestamo.frecuencia;
         }
 
         private decimal montopagar;
@@ -274,6 +321,7 @@ namespace GUI
         {
             int idPrestamo = ((PrestamoDTO)dgvmostrarpagos.SelectedRows[0].DataBoundItem).id_prestamo;
             var prestamo = servicePrestamo.BuscarPorId(idPrestamo, new Prestamo());
+            var ofertaprestamo = serviceOfertaPrestamo.BuscarPorId(prestamo.id_ofertaprestamo, new OfertaPrestamo());
             if (prestamo == null)
             {
                 MessageBox.Show("No se encontró el préstamo seleccionado.");
@@ -284,43 +332,45 @@ namespace GUI
                 MessageBox.Show("El monto a pagar no puede ser mayor al saldo restante del préstamo.");
                 return;
             }
-            // Actualizar el saldo restante del préstamo
+            prestamo.id_ofertaprestamo = ((PrestamoDTO)dgvmostrarpagos.SelectedRows[0].DataBoundItem).id_ofertaprestamo; 
             prestamo.saldo_restante -= montopagar;
-            if (prestamo.saldo_restante <= 0)
-            {
-                prestamo.estado = "Pagado"; // Cambiar el estado a Pagado si el saldo es 0 o menor
-            }
-            else
-            {
-                prestamo.estado = "Pendiente"; // Mantener el estado Pendiente si aún hay saldo restante
-            }
-            var resultado = servicePrestamo.Modificar(prestamo);
-            if (resultado != "Modificación exitosa")
-            {
-                MessageBox.Show($"Error al modificar el préstamo: {resultado}");
-                return;
-            }
+            ofertaprestamo.cuotas_restantes -= 1;
+            servicePrestamo.Modificar(prestamo);
+            serviceOfertaPrestamo.Modificar(ofertaprestamo);
             MessageBox.Show("Pago realizado con éxito.");
+            GuardarTransaccion(idPrestamo);
             pnlconfirmarpago.Visible = false;
             pnlpagos.Visible = true;
-
             CargarPrestamosPagar();
         }
 
-
-
         private void GuardarPrestamo(int idOferta)
         {
+            var ofertaSeleccionada = (OfertaPrestamoDTO)dgvDatosPrestamos.SelectedRows[0].DataBoundItem;
             var prestamo = new Prestamo
             {
                 id_prestatario = idPrestatarioActual,
                 id_ofertaprestamo = idOferta,
-                saldo_restante = ((OfertaPrestamoDTO)dgvDatosPrestamos.SelectedRows[0].DataBoundItem).cantidad,
+                saldo_restante = ofertaSeleccionada.cantidad * (1 + ofertaSeleccionada.intereses),
                 estado = "Activo",
             };
             var resultado = servicePrestamo.Guardar(prestamo);
             CargarPrestamos();
             CargarPrestamosActivos();
+            CargarPrestamosPagar();
+        }
+
+        private void GuardarTransaccion(int idPrestamo)
+        {
+            var buscarprestamo = servicePrestamo.Consultar(new Prestamo());
+            var transaccion = new Transaccion
+            {
+                id_prestamo = idPrestamo,
+                monto = montopagar,
+                fecha = DateTime.Now,
+                tipo_transaccion = lbltipopago.Text.ToString()
+            };
+            var resultado = serviceTransaccion.Guardar(transaccion);
         }
 
         private void Cambiar_Estado(int idOferta)
