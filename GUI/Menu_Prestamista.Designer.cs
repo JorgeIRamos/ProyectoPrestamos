@@ -56,13 +56,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlcontrolpago = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.dgvcontrolpagos = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pnlrecordatorio = new System.Windows.Forms.Panel();
+            this.btncontinuar = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.dgvusuarios = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btncontinuar = new System.Windows.Forms.Button();
+            this.pnlmandarecordatorio = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtmensaje = new System.Windows.Forms.TextBox();
+            this.btnmandarecordatorio = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.boxprestamosactivos = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.lblnombreprestatario = new System.Windows.Forms.Label();
+            this.lblapellidoprestatario = new System.Windows.Forms.Label();
+            this.lbldocumentoprestatario = new System.Windows.Forms.Label();
             this.pnlmenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlinicio.SuspendLayout();
@@ -71,8 +84,9 @@
             this.pnlcrearprestamo.SuspendLayout();
             this.pnlcontrolpago.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvcontrolpagos)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlrecordatorio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).BeginInit();
+            this.pnlmandarecordatorio.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlmenu
@@ -462,19 +476,6 @@
             this.pnlcontrolpago.Size = new System.Drawing.Size(1097, 700);
             this.pnlcontrolpago.TabIndex = 6;
             // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(413, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(221, 43);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "CONTROL PAGO";
-            // 
             // dgvcontrolpagos
             // 
             this.dgvcontrolpagos.AllowUserToAddRows = false;
@@ -490,21 +491,64 @@
             this.dgvcontrolpagos.Size = new System.Drawing.Size(916, 489);
             this.dgvcontrolpagos.TabIndex = 6;
             // 
-            // panel1
+            // label7
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(413, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(221, 43);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "CONTROL PAGO";
+            // 
+            // pnlrecordatorio
+            // 
+            this.pnlrecordatorio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.Controls.Add(this.btncontinuar);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.dgvusuarios);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Location = new System.Drawing.Point(175, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1097, 700);
-            this.panel1.TabIndex = 7;
+            this.pnlrecordatorio.AutoSize = true;
+            this.pnlrecordatorio.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlrecordatorio.Controls.Add(this.btncontinuar);
+            this.pnlrecordatorio.Controls.Add(this.label10);
+            this.pnlrecordatorio.Controls.Add(this.dgvusuarios);
+            this.pnlrecordatorio.Controls.Add(this.label8);
+            this.pnlrecordatorio.Location = new System.Drawing.Point(175, 0);
+            this.pnlrecordatorio.Name = "pnlrecordatorio";
+            this.pnlrecordatorio.Size = new System.Drawing.Size(1097, 700);
+            this.pnlrecordatorio.TabIndex = 7;
+            // 
+            // btncontinuar
+            // 
+            this.btncontinuar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncontinuar.AutoSize = true;
+            this.btncontinuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btncontinuar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncontinuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btncontinuar.Location = new System.Drawing.Point(446, 630);
+            this.btncontinuar.Name = "btncontinuar";
+            this.btncontinuar.Size = new System.Drawing.Size(186, 39);
+            this.btncontinuar.TabIndex = 14;
+            this.btncontinuar.Text = "CONTINUAR";
+            this.btncontinuar.UseVisualStyleBackColor = false;
+            this.btncontinuar.Click += new System.EventHandler(this.btncontinuar_Click);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(310, 99);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(485, 19);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "SELECCIONE EL USUARIO AL QUE LE VA A MANDAR UN RECORDATORIO";
             // 
             // dgvusuarios
             // 
@@ -534,34 +578,179 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "RECORDATORIO";
             // 
-            // label10
+            // pnlmandarecordatorio
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlmandarecordatorio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(310, 99);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(485, 19);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "SELECCIONE EL USUARIO AL QUE LE VA A MANDAR UN RECORDATORIO";
+            this.pnlmandarecordatorio.AutoSize = true;
+            this.pnlmandarecordatorio.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlmandarecordatorio.Controls.Add(this.lbldocumentoprestatario);
+            this.pnlmandarecordatorio.Controls.Add(this.lblapellidoprestatario);
+            this.pnlmandarecordatorio.Controls.Add(this.lblnombreprestatario);
+            this.pnlmandarecordatorio.Controls.Add(this.label17);
+            this.pnlmandarecordatorio.Controls.Add(this.label16);
+            this.pnlmandarecordatorio.Controls.Add(this.label15);
+            this.pnlmandarecordatorio.Controls.Add(this.boxprestamosactivos);
+            this.pnlmandarecordatorio.Controls.Add(this.label14);
+            this.pnlmandarecordatorio.Controls.Add(this.btnmandarecordatorio);
+            this.pnlmandarecordatorio.Controls.Add(this.txtmensaje);
+            this.pnlmandarecordatorio.Controls.Add(this.label11);
+            this.pnlmandarecordatorio.Controls.Add(this.label12);
+            this.pnlmandarecordatorio.Location = new System.Drawing.Point(175, 0);
+            this.pnlmandarecordatorio.Name = "pnlmandarecordatorio";
+            this.pnlmandarecordatorio.Size = new System.Drawing.Size(1146, 700);
+            this.pnlmandarecordatorio.TabIndex = 15;
             // 
-            // btncontinuar
+            // label11
             // 
-            this.btncontinuar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(413, 11);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(227, 43);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "RECORDATORIO";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(233, 259);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(71, 19);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "MENSAJE";
+            // 
+            // txtmensaje
+            // 
+            this.txtmensaje.Location = new System.Drawing.Point(328, 259);
+            this.txtmensaje.Multiline = true;
+            this.txtmensaje.Name = "txtmensaje";
+            this.txtmensaje.Size = new System.Drawing.Size(445, 136);
+            this.txtmensaje.TabIndex = 6;
+            // 
+            // btnmandarecordatorio
+            // 
+            this.btnmandarecordatorio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncontinuar.AutoSize = true;
-            this.btncontinuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
-            this.btncontinuar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncontinuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btncontinuar.Location = new System.Drawing.Point(446, 630);
-            this.btncontinuar.Name = "btncontinuar";
-            this.btncontinuar.Size = new System.Drawing.Size(186, 39);
-            this.btncontinuar.TabIndex = 14;
-            this.btncontinuar.Text = "CONTINUAR";
-            this.btncontinuar.UseVisualStyleBackColor = false;
+            this.btnmandarecordatorio.AutoSize = true;
+            this.btnmandarecordatorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btnmandarecordatorio.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmandarecordatorio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnmandarecordatorio.Location = new System.Drawing.Point(419, 479);
+            this.btnmandarecordatorio.Name = "btnmandarecordatorio";
+            this.btnmandarecordatorio.Size = new System.Drawing.Size(235, 39);
+            this.btnmandarecordatorio.TabIndex = 14;
+            this.btnmandarecordatorio.Text = "MANDAR RECORDATORIO";
+            this.btnmandarecordatorio.UseVisualStyleBackColor = false;
+            this.btnmandarecordatorio.Click += new System.EventHandler(this.btnmandarecordatorio_Click);
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(233, 218);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(183, 19);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "PRESTAMOS ACTIVOS (ID)";
+            // 
+            // boxprestamosactivos
+            // 
+            this.boxprestamosactivos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boxprestamosactivos.FormattingEnabled = true;
+            this.boxprestamosactivos.Location = new System.Drawing.Point(585, 220);
+            this.boxprestamosactivos.Name = "boxprestamosactivos";
+            this.boxprestamosactivos.Size = new System.Drawing.Size(188, 21);
+            this.boxprestamosactivos.TabIndex = 16;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(233, 110);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(166, 19);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "NOMBRE PRESTATARIO";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(233, 145);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(171, 19);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "APELLIDO PRESTATARIO";
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(233, 182);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(261, 19);
+            this.label17.TabIndex = 19;
+            this.label17.Text = "NUMERO DOCUMENTO PRESTATARIO";
+            // 
+            // lblnombreprestatario
+            // 
+            this.lblnombreprestatario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblnombreprestatario.AutoSize = true;
+            this.lblnombreprestatario.BackColor = System.Drawing.Color.Transparent;
+            this.lblnombreprestatario.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnombreprestatario.ForeColor = System.Drawing.Color.Black;
+            this.lblnombreprestatario.Location = new System.Drawing.Point(581, 110);
+            this.lblnombreprestatario.Name = "lblnombreprestatario";
+            this.lblnombreprestatario.Size = new System.Drawing.Size(162, 19);
+            this.lblnombreprestatario.TabIndex = 20;
+            this.lblnombreprestatario.Text = "NOMBREPRESTATARIO";
+            // 
+            // lblapellidoprestatario
+            // 
+            this.lblapellidoprestatario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblapellidoprestatario.AutoSize = true;
+            this.lblapellidoprestatario.BackColor = System.Drawing.Color.Transparent;
+            this.lblapellidoprestatario.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblapellidoprestatario.ForeColor = System.Drawing.Color.Black;
+            this.lblapellidoprestatario.Location = new System.Drawing.Point(581, 147);
+            this.lblapellidoprestatario.Name = "lblapellidoprestatario";
+            this.lblapellidoprestatario.Size = new System.Drawing.Size(167, 19);
+            this.lblapellidoprestatario.TabIndex = 21;
+            this.lblapellidoprestatario.Text = "APELLIDOPRESTATARIO";
+            // 
+            // lbldocumentoprestatario
+            // 
+            this.lbldocumentoprestatario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lbldocumentoprestatario.AutoSize = true;
+            this.lbldocumentoprestatario.BackColor = System.Drawing.Color.Transparent;
+            this.lbldocumentoprestatario.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldocumentoprestatario.ForeColor = System.Drawing.Color.Black;
+            this.lbldocumentoprestatario.Location = new System.Drawing.Point(581, 184);
+            this.lbldocumentoprestatario.Name = "lbldocumentoprestatario";
+            this.lbldocumentoprestatario.Size = new System.Drawing.Size(192, 19);
+            this.lbldocumentoprestatario.TabIndex = 22;
+            this.lbldocumentoprestatario.Text = "DOCUMENTOPRESTATARIO";
             // 
             // Menu_Prestamista
             // 
@@ -569,7 +758,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlrecordatorio);
+            this.Controls.Add(this.pnlmandarecordatorio);
             this.Controls.Add(this.pnlcontrolpago);
             this.Controls.Add(this.pnlconsultarprestamo);
             this.Controls.Add(this.pnlcrearprestamo);
@@ -591,9 +781,11 @@
             this.pnlcontrolpago.ResumeLayout(false);
             this.pnlcontrolpago.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvcontrolpagos)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlrecordatorio.ResumeLayout(false);
+            this.pnlrecordatorio.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).EndInit();
+            this.pnlmandarecordatorio.ResumeLayout(false);
+            this.pnlmandarecordatorio.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,10 +823,23 @@
         private System.Windows.Forms.Panel pnlcontrolpago;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvcontrolpagos;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlrecordatorio;
         private System.Windows.Forms.Button btncontinuar;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgvusuarios;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel pnlmandarecordatorio;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnmandarecordatorio;
+        private System.Windows.Forms.TextBox txtmensaje;
+        private System.Windows.Forms.Label lbldocumentoprestatario;
+        private System.Windows.Forms.Label lblapellidoprestatario;
+        private System.Windows.Forms.Label lblnombreprestatario;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        internal System.Windows.Forms.ComboBox boxprestamosactivos;
+        private System.Windows.Forms.Label label14;
     }
 }

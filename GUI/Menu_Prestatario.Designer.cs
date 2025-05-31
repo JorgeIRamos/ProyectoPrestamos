@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlmenu = new System.Windows.Forms.Panel();
             this.btnpagar = new System.Windows.Forms.Button();
             this.btnhistorial = new System.Windows.Forms.Button();
@@ -57,6 +58,14 @@
             this.dgvmostrarpagos = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlconfirmarpago = new System.Windows.Forms.Panel();
+            this.lblfrecuencia = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lblnumeroprestamista = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lbldocumentoprestamista = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblsaldorestante = new System.Windows.Forms.Label();
+            this.A = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.lblnombreprestamista = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -77,17 +86,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblsaldorestante = new System.Windows.Forms.Label();
-            this.A = new System.Windows.Forms.Label();
-            this.lbldocumentoprestamista = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblnumeroprestamista = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.lblfrecuencia = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.pnlconsultarpagos = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.dgvhistorialpago = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pnlnotificaciones = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dgvnotificaciones = new System.Windows.Forms.DataGridView();
+            this.btnvolver = new System.Windows.Forms.Button();
             this.pnlmenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlinicio.SuspendLayout();
@@ -100,6 +105,8 @@
             this.pnlconfirmarpago.SuspendLayout();
             this.pnlconsultarpagos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvhistorialpago)).BeginInit();
+            this.pnlnotificaciones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvnotificaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlmenu
@@ -180,6 +187,7 @@
             this.btninicio.TabIndex = 3;
             this.btninicio.Text = "Inicio";
             this.btninicio.UseVisualStyleBackColor = false;
+            this.btninicio.Click += new System.EventHandler(this.btninicio_Click);
             // 
             // btnnotificaciones
             // 
@@ -193,6 +201,7 @@
             this.btnnotificaciones.TabIndex = 2;
             this.btnnotificaciones.Text = "Notificaciones";
             this.btnnotificaciones.UseVisualStyleBackColor = false;
+            this.btnnotificaciones.Click += new System.EventHandler(this.btnnotificaciones_Click);
             // 
             // btnmisprestamos
             // 
@@ -299,14 +308,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDatosPrestamos.BackgroundColor = System.Drawing.Color.Gray;
             this.dgvDatosPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Coral;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDatosPrestamos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Coral;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDatosPrestamos.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDatosPrestamos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
             this.dgvDatosPrestamos.Location = new System.Drawing.Point(95, 99);
             this.dgvDatosPrestamos.MultiSelect = false;
@@ -350,14 +359,14 @@
             this.dgvPrestamosActivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dgvPrestamosActivos.BackgroundColor = System.Drawing.Color.Gray;
             this.dgvPrestamosActivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Coral;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPrestamosActivos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Coral;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPrestamosActivos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPrestamosActivos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
             this.dgvPrestamosActivos.Location = new System.Drawing.Point(95, 91);
             this.dgvPrestamosActivos.Name = "dgvPrestamosActivos";
@@ -429,14 +438,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvmostrarpagos.BackgroundColor = System.Drawing.Color.Gray;
             this.dgvmostrarpagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Coral;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvmostrarpagos.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Coral;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvmostrarpagos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvmostrarpagos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
             this.dgvmostrarpagos.Location = new System.Drawing.Point(110, 141);
             this.dgvmostrarpagos.MultiSelect = false;
@@ -464,6 +473,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlconfirmarpago.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlconfirmarpago.Controls.Add(this.btnvolver);
             this.pnlconfirmarpago.Controls.Add(this.lblfrecuencia);
             this.pnlconfirmarpago.Controls.Add(this.label16);
             this.pnlconfirmarpago.Controls.Add(this.lblnumeroprestamista);
@@ -496,6 +506,102 @@
             this.pnlconfirmarpago.Name = "pnlconfirmarpago";
             this.pnlconfirmarpago.Size = new System.Drawing.Size(1095, 685);
             this.pnlconfirmarpago.TabIndex = 7;
+            // 
+            // lblfrecuencia
+            // 
+            this.lblfrecuencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblfrecuencia.AutoSize = true;
+            this.lblfrecuencia.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfrecuencia.ForeColor = System.Drawing.Color.Black;
+            this.lblfrecuencia.Location = new System.Drawing.Point(614, 255);
+            this.lblfrecuencia.Name = "lblfrecuencia";
+            this.lblfrecuencia.Size = new System.Drawing.Size(77, 16);
+            this.lblfrecuencia.TabIndex = 27;
+            this.lblfrecuencia.Text = "FRECUENCIA";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(242, 255);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(74, 16);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "FRECUENCIA";
+            // 
+            // lblnumeroprestamista
+            // 
+            this.lblnumeroprestamista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblnumeroprestamista.AutoSize = true;
+            this.lblnumeroprestamista.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnumeroprestamista.ForeColor = System.Drawing.Color.Black;
+            this.lblnumeroprestamista.Location = new System.Drawing.Point(615, 367);
+            this.lblnumeroprestamista.Name = "lblnumeroprestamista";
+            this.lblnumeroprestamista.Size = new System.Drawing.Size(139, 16);
+            this.lblnumeroprestamista.TabIndex = 25;
+            this.lblnumeroprestamista.Text = "NUMEROPRESTAMISTA";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(243, 367);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(157, 16);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "NUMERO DEL PRESTAMISTA";
+            // 
+            // lbldocumentoprestamista
+            // 
+            this.lbldocumentoprestamista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lbldocumentoprestamista.AutoSize = true;
+            this.lbldocumentoprestamista.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldocumentoprestamista.ForeColor = System.Drawing.Color.Black;
+            this.lbldocumentoprestamista.Location = new System.Drawing.Point(614, 339);
+            this.lbldocumentoprestamista.Name = "lbldocumentoprestamista";
+            this.lbldocumentoprestamista.Size = new System.Drawing.Size(163, 16);
+            this.lbldocumentoprestamista.TabIndex = 23;
+            this.lbldocumentoprestamista.Text = "DOCUMENTOPRESTAMISTA";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(242, 339);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(180, 16);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "DOCUMENTO DEL PRESTAMISTA";
+            // 
+            // lblsaldorestante
+            // 
+            this.lblsaldorestante.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblsaldorestante.AutoSize = true;
+            this.lblsaldorestante.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsaldorestante.ForeColor = System.Drawing.Color.Black;
+            this.lblsaldorestante.Location = new System.Drawing.Point(614, 168);
+            this.lblsaldorestante.Name = "lblsaldorestante";
+            this.lblsaldorestante.Size = new System.Drawing.Size(104, 16);
+            this.lblsaldorestante.TabIndex = 21;
+            this.lblsaldorestante.Text = "SALDORESTANTE";
+            // 
+            // A
+            // 
+            this.A.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.A.AutoSize = true;
+            this.A.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.A.ForeColor = System.Drawing.Color.Black;
+            this.A.Location = new System.Drawing.Point(242, 168);
+            this.A.Name = "A";
+            this.A.Size = new System.Drawing.Size(101, 16);
+            this.A.TabIndex = 20;
+            this.A.Text = "SALDO RESTANTE";
             // 
             // label20
             // 
@@ -741,102 +847,6 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "REALIZAR PAGO";
             // 
-            // lblsaldorestante
-            // 
-            this.lblsaldorestante.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lblsaldorestante.AutoSize = true;
-            this.lblsaldorestante.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsaldorestante.ForeColor = System.Drawing.Color.Black;
-            this.lblsaldorestante.Location = new System.Drawing.Point(614, 168);
-            this.lblsaldorestante.Name = "lblsaldorestante";
-            this.lblsaldorestante.Size = new System.Drawing.Size(104, 16);
-            this.lblsaldorestante.TabIndex = 21;
-            this.lblsaldorestante.Text = "SALDORESTANTE";
-            // 
-            // A
-            // 
-            this.A.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.A.AutoSize = true;
-            this.A.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.A.ForeColor = System.Drawing.Color.Black;
-            this.A.Location = new System.Drawing.Point(242, 168);
-            this.A.Name = "A";
-            this.A.Size = new System.Drawing.Size(101, 16);
-            this.A.TabIndex = 20;
-            this.A.Text = "SALDO RESTANTE";
-            // 
-            // lbldocumentoprestamista
-            // 
-            this.lbldocumentoprestamista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lbldocumentoprestamista.AutoSize = true;
-            this.lbldocumentoprestamista.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldocumentoprestamista.ForeColor = System.Drawing.Color.Black;
-            this.lbldocumentoprestamista.Location = new System.Drawing.Point(614, 339);
-            this.lbldocumentoprestamista.Name = "lbldocumentoprestamista";
-            this.lbldocumentoprestamista.Size = new System.Drawing.Size(163, 16);
-            this.lbldocumentoprestamista.TabIndex = 23;
-            this.lbldocumentoprestamista.Text = "DOCUMENTOPRESTAMISTA";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(242, 339);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(180, 16);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "DOCUMENTO DEL PRESTAMISTA";
-            // 
-            // lblnumeroprestamista
-            // 
-            this.lblnumeroprestamista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lblnumeroprestamista.AutoSize = true;
-            this.lblnumeroprestamista.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnumeroprestamista.ForeColor = System.Drawing.Color.Black;
-            this.lblnumeroprestamista.Location = new System.Drawing.Point(615, 367);
-            this.lblnumeroprestamista.Name = "lblnumeroprestamista";
-            this.lblnumeroprestamista.Size = new System.Drawing.Size(139, 16);
-            this.lblnumeroprestamista.TabIndex = 25;
-            this.lblnumeroprestamista.Text = "NUMEROPRESTAMISTA";
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(243, 367);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(157, 16);
-            this.label14.TabIndex = 24;
-            this.label14.Text = "NUMERO DEL PRESTAMISTA";
-            // 
-            // lblfrecuencia
-            // 
-            this.lblfrecuencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lblfrecuencia.AutoSize = true;
-            this.lblfrecuencia.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblfrecuencia.ForeColor = System.Drawing.Color.Black;
-            this.lblfrecuencia.Location = new System.Drawing.Point(614, 255);
-            this.lblfrecuencia.Name = "lblfrecuencia";
-            this.lblfrecuencia.Size = new System.Drawing.Size(77, 16);
-            this.lblfrecuencia.TabIndex = 27;
-            this.lblfrecuencia.Text = "FRECUENCIA";
-            // 
-            // label16
-            // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(242, 255);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(74, 16);
-            this.label16.TabIndex = 26;
-            this.label16.Text = "FRECUENCIA";
-            // 
             // pnlconsultarpagos
             // 
             this.pnlconsultarpagos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -849,6 +859,29 @@
             this.pnlconsultarpagos.Name = "pnlconsultarpagos";
             this.pnlconsultarpagos.Size = new System.Drawing.Size(1095, 682);
             this.pnlconsultarpagos.TabIndex = 5;
+            // 
+            // dgvhistorialpago
+            // 
+            this.dgvhistorialpago.AllowUserToAddRows = false;
+            this.dgvhistorialpago.AllowUserToDeleteRows = false;
+            this.dgvhistorialpago.AllowUserToResizeColumns = false;
+            this.dgvhistorialpago.AllowUserToResizeRows = false;
+            this.dgvhistorialpago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgvhistorialpago.BackgroundColor = System.Drawing.Color.Gray;
+            this.dgvhistorialpago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Coral;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvhistorialpago.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvhistorialpago.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
+            this.dgvhistorialpago.Location = new System.Drawing.Point(94, 118);
+            this.dgvhistorialpago.Name = "dgvhistorialpago";
+            this.dgvhistorialpago.Size = new System.Drawing.Size(880, 463);
+            this.dgvhistorialpago.TabIndex = 6;
             // 
             // label7
             // 
@@ -863,28 +896,65 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "HISTORIAL DE PAGOS";
             // 
-            // dgvhistorialpago
+            // pnlnotificaciones
             // 
-            this.dgvhistorialpago.AllowUserToAddRows = false;
-            this.dgvhistorialpago.AllowUserToDeleteRows = false;
-            this.dgvhistorialpago.AllowUserToResizeColumns = false;
-            this.dgvhistorialpago.AllowUserToResizeRows = false;
-            this.dgvhistorialpago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.dgvhistorialpago.BackgroundColor = System.Drawing.Color.Gray;
-            this.dgvhistorialpago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Coral;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvhistorialpago.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvhistorialpago.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
-            this.dgvhistorialpago.Location = new System.Drawing.Point(94, 118);
-            this.dgvhistorialpago.Name = "dgvhistorialpago";
-            this.dgvhistorialpago.Size = new System.Drawing.Size(880, 463);
-            this.dgvhistorialpago.TabIndex = 6;
+            this.pnlnotificaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlnotificaciones.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlnotificaciones.Controls.Add(this.dgvnotificaciones);
+            this.pnlnotificaciones.Controls.Add(this.label18);
+            this.pnlnotificaciones.Location = new System.Drawing.Point(175, 0);
+            this.pnlnotificaciones.Name = "pnlnotificaciones";
+            this.pnlnotificaciones.Size = new System.Drawing.Size(1095, 682);
+            this.pnlnotificaciones.TabIndex = 6;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Impact", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(417, 13);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(243, 43);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "NOTIFICACIONES";
+            // 
+            // dgvnotificaciones
+            // 
+            this.dgvnotificaciones.AllowUserToAddRows = false;
+            this.dgvnotificaciones.AllowUserToDeleteRows = false;
+            this.dgvnotificaciones.AllowUserToResizeColumns = false;
+            this.dgvnotificaciones.AllowUserToResizeRows = false;
+            this.dgvnotificaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgvnotificaciones.BackgroundColor = System.Drawing.Color.Gray;
+            this.dgvnotificaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Coral;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvnotificaciones.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvnotificaciones.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
+            this.dgvnotificaciones.Location = new System.Drawing.Point(95, 84);
+            this.dgvnotificaciones.Name = "dgvnotificaciones";
+            this.dgvnotificaciones.Size = new System.Drawing.Size(880, 463);
+            this.dgvnotificaciones.TabIndex = 7;
+            // 
+            // btnvolver
+            // 
+            this.btnvolver.ForeColor = System.Drawing.Color.Black;
+            this.btnvolver.Location = new System.Drawing.Point(16, 13);
+            this.btnvolver.Name = "btnvolver";
+            this.btnvolver.Size = new System.Drawing.Size(75, 30);
+            this.btnvolver.TabIndex = 28;
+            this.btnvolver.Text = "VOLVER";
+            this.btnvolver.UseVisualStyleBackColor = true;
+            this.btnvolver.Click += new System.EventHandler(this.btnvolver_Click);
             // 
             // Menu_Prestatario
             // 
@@ -892,10 +962,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.pnlconfirmarpago);
+            this.Controls.Add(this.pnlnotificaciones);
             this.Controls.Add(this.pnlinicio);
             this.Controls.Add(this.pnlconsultarpagos);
             this.Controls.Add(this.pnlprestamosactivos);
-            this.Controls.Add(this.pnlconfirmarpago);
             this.Controls.Add(this.pnlpagos);
             this.Controls.Add(this.pnlofertasprestamo);
             this.Controls.Add(this.pnlmenu);
@@ -924,6 +995,9 @@
             this.pnlconsultarpagos.ResumeLayout(false);
             this.pnlconsultarpagos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvhistorialpago)).EndInit();
+            this.pnlnotificaciones.ResumeLayout(false);
+            this.pnlnotificaciones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvnotificaciones)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -986,5 +1060,9 @@
         private System.Windows.Forms.Panel pnlconsultarpagos;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvhistorialpago;
+        private System.Windows.Forms.Panel pnlnotificaciones;
+        private System.Windows.Forms.DataGridView dgvnotificaciones;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnvolver;
     }
 }

@@ -24,6 +24,7 @@ namespace GUI
         private Service<Prestatario> servicePrestatario;
         private Service<Prestamo> servicePrestamo;
         private Service<Transaccion> serviceTransaccion;
+        private Service<Recordatorio> serviceRecordatorio;
         public Menu_Prestatario(int idPrestatario, string nombre)
         {
             serviceOfertaPrestamo = new Service<OfertaPrestamo>();
@@ -31,6 +32,7 @@ namespace GUI
             servicePrestatario = new Service<Prestatario>();
             servicePrestamo = new Service<Prestamo>();
             serviceTransaccion = new Service<Transaccion>();
+            serviceRecordatorio = new Service<Recordatorio>();
             InitializeComponent();
             QuitarBordes();
             dgvDatosPrestamos.DefaultCellStyle.ForeColor = Color.Black;
@@ -43,10 +45,12 @@ namespace GUI
             pnlpagos.Visible = false;
             pnlconfirmarpago.Visible = false;
             pnlconsultarpagos.Visible = false;
+            pnlnotificaciones.Visible = false;
             CargarPrestamos();
             CargarPrestamosActivos();
             CargarPrestamosPagar();
             CargarHistorialPagos();
+            CargarRecordatorios();
         }
 
         private void QuitarBordes()
@@ -66,6 +70,17 @@ namespace GUI
             btnsalir.FlatStyle = FlatStyle.Flat;
             btnsalir.FlatAppearance.BorderSize = 0;
 
+        }
+        private void btninicio_Click(object sender, EventArgs e)
+        {
+            ResaltarBoton(btninicio);
+            pnlinicio.Visible = true;
+            pnlofertasprestamo.Visible = false;
+            pnlnotificaciones.Visible = false;
+            pnlprestamosactivos.Visible = false;
+            pnlpagos.Visible = false;
+            pnlconfirmarpago.Visible = false;
+            pnlconsultarpagos.Visible = false;
         }
 
         private void btnofertasprestamo_Click(object sender, EventArgs e)
@@ -108,6 +123,18 @@ namespace GUI
             pnlprestamosactivos.Visible = false;
             pnlofertasprestamo.Visible = false;
             pnlconsultarpagos.Visible = true;
+        }
+
+        private void btnnotificaciones_Click(object sender, EventArgs e)
+        {
+            ResaltarBoton(btnnotificaciones);
+            pnlconfirmarpago.Visible = false;
+            pnlpagos.Visible = false;
+            pnlinicio.Visible = false;
+            pnlprestamosactivos.Visible = false;
+            pnlofertasprestamo.Visible = false;
+            pnlconsultarpagos.Visible = false;
+            pnlnotificaciones.Visible = true;
         }
 
         private void btnsalir_Click(object sender, EventArgs e)
@@ -250,6 +277,19 @@ namespace GUI
             dgvhistorialpago.DataSource = transacciones;
         }
 
+        private void CargarRecordatorios()
+        {
+            var recordatorios = serviceRecordatorio.Consultar(new Recordatorio())
+                .Where(r => r.Prestamo.id_prestatario == idPrestatarioActual)
+                .OrderBy(r => r.fecharecordatorio)
+                .ToList();
+            dgvnotificaciones.DataSource = null;
+            dgvnotificaciones.DataSource = recordatorios;
+            dgvnotificaciones.Columns["id_recordatorio"].Visible = false; // Ocultar columna de ID
+            dgvnotificaciones.Columns["Prestamo"].Visible = false; // Ocultar columna de préstamo completo
+        }
+        
+
 
         private void btncontinuar_Click(object sender, EventArgs e)
         {
@@ -270,7 +310,6 @@ namespace GUI
 
         private void MostrarDatos(int idPrestamo)
         {
-            // Buscar el préstamo por su id usando Consultar
             var prestamos = servicePrestamo.Consultar(new Prestamo());
             var prestamo = prestamos.FirstOrDefault(p => p.id_prestamo == idPrestamo);
 
@@ -397,6 +436,10 @@ namespace GUI
             botonActivo.ForeColor = Color.White;
         }
 
-        
+        private void btnvolver_Click(object sender, EventArgs e)
+        {
+            pnlpagos.Visible = true;
+            pnlconfirmarpago.Visible = false;
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace GUI
         private Service<OfertaPrestamo> serviceOfertaPrestamo;
         private Service<Transaccion> serviceTransaccion;
         private Service<Prestamo> servicePrestamo;
+        private Service<Recordatorio> serviceRecordatorio;
         private int idPrestamistaActual;
         private string Nombre;
         public Menu_Prestamista(int idPrestamista, string nombre)
@@ -26,6 +27,7 @@ namespace GUI
             serviceOfertaPrestamo = new Service<OfertaPrestamo>();
             serviceTransaccion = new Service<Transaccion>();
             servicePrestamo = new Service<Prestamo>();
+            serviceRecordatorio = new Service<Recordatorio>();
             InitializeComponent();
             QuitarBordes();
             idPrestamistaActual = idPrestamista;
@@ -170,6 +172,61 @@ namespace GUI
 
             dgvusuarios.Columns["id"].Visible = false;
         }
+
+        private void btncontinuar_Click(object sender, EventArgs e)
+        {
+            if (dgvusuarios.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Debe seleccionar una oferta de préstamo.");
+                return;
+            }
+            var usuarioSeleccionado = (UsuariosDTO)dgvusuarios.SelectedRows[0].DataBoundItem;
+            int idusuario = int.Parse(usuarioSeleccionado.id);
+            pnlmandarecordatorio.Visible = true;
+            pnlrecordatorio.Visible = false;
+            CargarDatosRecordatorio(idusuario);
+        }
+
+        private void CargarDatosRecordatorio(int Usuario)
+        {
+            var prestamos = servicePrestamo.Consultar(new Prestamo());
+            var prestamo = prestamos.FirstOrDefault(p => p.id_prestatario == Usuario);
+
+            lblnombreprestatario.Text = prestamo?.prestatario.Persona.nombre ?? "Desconocido";
+            lblapellidoprestatario.Text = prestamo?.prestatario.Persona.apellido ?? "Desconocido";
+            lbldocumentoprestatario.Text = prestamo?.prestatario.Persona.NumeroDocumento ?? "Desconocido";
+            boxprestamosactivos.DataSource = prestamos
+                .Where(p => p.id_prestatario == Usuario && p.estado == "Activo")
+                .Select(p => p.id_prestamo)
+                .ToList();
+        }
+
+        private void btnmandarecordatorio_Click(object sender, EventArgs e)
+        {
+            string mensaje = txtmensaje.Text.Trim();
+            if (string.IsNullOrEmpty(mensaje))
+            {
+                MessageBox.Show("Debe ingresar un mensaje para el recordatorio.");
+                return;
+            }
+            GuardarRecordatorio();
+            MessageBox.Show("Recordatorio mandado exitosamente.");
+            pnlmandarecordatorio.Visible = false;
+            pnlrecordatorio.Visible = true;
+        }
+
+        private void GuardarRecordatorio()
+        {
+            var recordatorio = new Recordatorio
+            {
+                id_prestamo = (int)boxprestamosactivos.SelectedItem,
+                fecharecordatorio = DateTime.Now,
+                mensaje = txtmensaje.Text.Trim()
+            };
+
+            serviceRecordatorio.Guardar(recordatorio);
+        }
+
         private void GuardarPrestamo()
         {
             int cuota = ValorCuota();

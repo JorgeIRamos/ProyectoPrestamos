@@ -83,7 +83,7 @@ namespace GUI
             bool combinacionCorrecta = listapersona.Any(p => p.username == usuario && p.contraseña == contrasena);
             if (!combinacionCorrecta)
             {
-                MessageBox.Show("El usuario y la contraseña no corresponden a la misma persona.");
+                MessageBox.Show("El usuario o la contraseña no son correctas.");
                 return false;
             }
             servicePersona.CerrarConexion();
