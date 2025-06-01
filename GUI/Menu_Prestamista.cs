@@ -39,6 +39,7 @@ namespace GUI
             CargarPrestamos();
             CargarControlPagos();
             CargarUsuarios();
+            CargarUltimosDatos();
         }
 
         private void QuitarBordes()
@@ -89,6 +90,7 @@ namespace GUI
             pnlcontrolpago.Visible = true;
             pnlmandarecordatorio.Visible = false;
             pnlrecordatorio.Visible = false;
+            CargarControlPagos();
 
         }
 
@@ -101,6 +103,7 @@ namespace GUI
             pnlcontrolpago.Visible = false;
             pnlmandarecordatorio.Visible = false;
             pnlrecordatorio.Visible = true;
+            CargarUsuarios();
         }
 
         private void btncrear_Click(object sender, EventArgs e)
@@ -111,8 +114,50 @@ namespace GUI
             }
 
             GuardarPrestamo();
+        }
 
+        private void CargarUltimosDatos()
+        {
+            var ultimaOferta = serviceOfertaPrestamo.Consultar(new OfertaPrestamo())
+            .Where(o => o.id_prestamista == idPrestamistaActual)
+            .OrderByDescending(o => o.id)
+            .FirstOrDefault();
 
+            var prestamosDelPrestamista = servicePrestamo.Consultar(new Prestamo())
+                .Where(p => p.ofertaPrestamo != null && p.ofertaPrestamo.id_prestamista == idPrestamistaActual)
+                .Select(p => p.id_prestamo)
+                .ToList();
+
+            var ultimaTransaccion = serviceTransaccion.Consultar(new Transaccion())
+                .Where(t => prestamosDelPrestamista.Contains(t.id_prestamo))
+                .OrderByDescending(t => t.fecha)
+                .FirstOrDefault();
+
+            var ultimoCliente = servicePrestamo.Consultar(new Prestamo())
+                .Where(p => p.ofertaPrestamo != null && p.ofertaPrestamo.id_prestamista == idPrestamistaActual)
+                .OrderByDescending(p => p.id_prestamo)
+                .Select(p => p.prestatario)
+                .FirstOrDefault();
+
+            if (ultimaOferta == null || ultimaTransaccion == null || ultimoCliente == null)
+            {
+                pnlclientereciente.Visible = false;
+                pnlprestamosrecientes.Visible = false;
+                pnltransferenciareciente.Visible = false;
+                lblresumen.Visible = false;
+                return;
+            }
+
+            lblmonto.Text = ultimaOferta.cantidad.ToString("C2");
+            lblinteres.Text = ultimaOferta.intereses.ToString() + "%";
+            lblcuota.Text = ultimaOferta.cuotas.ToString();
+            lblestado.Text = ultimaOferta.estado;
+            lblpago.Text = ultimaTransaccion.monto.ToString("C2");
+            lblfecha.Text = ultimaTransaccion.fecha.ToString("dd/MM/yyyy");
+            lbltipotransaccion.Text = ultimaTransaccion.tipo_transaccion.ToString();
+            lblnombrecliente.Text = ultimoCliente.Persona.nombre;
+            lbltelefonocliente.Text = ultimoCliente.Persona.telefono;
+            lblemailcliente.Text = ultimoCliente.Persona.email;
         }
 
         private void CargarPrestamos()
@@ -123,10 +168,10 @@ namespace GUI
                 .Where(p => p.id_prestamista == idPrestamistaActual)
                 .OrderBy(p => p.id)
                 .ToList();
-
+            dgvDatosPrestamos.DefaultCellStyle.ForeColor = Color.Black;
             dgvDatosPrestamos.DataSource = null;
             dgvDatosPrestamos.DataSource = prestamosFiltrados;
-
+            dgvDatosPrestamos.ClearSelection();
             OcultarColumnas();
         }
 
@@ -162,13 +207,14 @@ namespace GUI
                         NumeroDocumentoPrestatario = persona?.NumeroDocumento ?? "Desconocido",
                         Intereses = ofertas.FirstOrDefault(o => o.id == prestamo?.id_ofertaprestamo)?.intereses ?? 0,
                         cuota = ofertas.FirstOrDefault(o => o.id == prestamo?.id_ofertaprestamo)?.cuotas ?? 0,
-                        estado = prestamo?.estado ?? "Desconocido"
                     };
                 })
                 .ToList();
-
+            dgvcontrolpagos.DefaultCellStyle.ForeColor = Color.Black;
             dgvcontrolpagos.DataSource = null;
             dgvcontrolpagos.DataSource = transacciones;
+            dgvcontrolpagos.ClearSelection();
+            dgvcontrolpagos.Columns["estado"].Visible = false;
         }
 
         private void btnmirarcomprobante_Click(object sender, EventArgs e)
@@ -187,6 +233,8 @@ namespace GUI
         {
             var prestamos = servicePrestamo.Consultar(new Prestamo())
                 .Where(pr => pr.ofertaPrestamo.id_prestamista == idPrestamistaActual)
+                .GroupBy(pr => pr.id_prestatario)
+                .Select(g => g.First())
                 .Select(pr => new UsuariosDTO
                 {
                     id = pr.id_prestatario.ToString(),
@@ -197,9 +245,10 @@ namespace GUI
                     Telefono = pr.prestatario.Persona.telefono,
                     sexo = pr.prestatario.Persona.sexo
                 }).ToList();
-
+            dgvusuarios.DefaultCellStyle.ForeColor = Color.Black;
             dgvusuarios.DataSource = null;
             dgvusuarios.DataSource = prestamos;
+            dgvusuarios.ClearSelection();
 
             dgvusuarios.Columns["id"].Visible = false;
         }
@@ -393,6 +442,32 @@ namespace GUI
             botonActivo.ForeColor = Color.White;
         }
 
-        
+        private void btnvolver_Click(object sender, EventArgs e)
+        {
+            pnlmandarecordatorio.Visible = false;
+            pnlrecordatorio.Visible = true;
+        }
+
+        private void btnestadoprestamo_Click(object sender, EventArgs e)
+        {
+            if (boxestadoprestamo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un estado de préstamo.");
+                return;
+            }
+            string estadoSeleccionado = boxestadoprestamo.SelectedItem.ToString();
+            var ofertasprestamo = serviceOfertaPrestamo.Consultar(new OfertaPrestamo())
+                .Where(p => p.id_prestamista == idPrestamistaActual && p.estado == estadoSeleccionado)
+                .ToList();
+            dgvDatosPrestamos.DataSource = null;
+            dgvDatosPrestamos.DataSource = ofertasprestamo;
+            dgvDatosPrestamos.ClearSelection();
+            OcultarColumnas();
+        }
+
+        private void btnrestablecer_Click(object sender, EventArgs e)
+        {
+            CargarPrestamos();
+        }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -140,10 +141,21 @@ namespace GUI
         private bool ValidarNumeroDocumento()
         {
             string nrodocumento = txtnrodocumento.Text.Trim();
-            if (string.IsNullOrEmpty(nrodocumento) || !nrodocumento.All(char.IsDigit))
+            int tipoDocumento = ValorTipoDocumento();
+            var listapersonas = servicePersona.Consultar(new Persona());
+
+            foreach (var item in listapersonas)
             {
-                MessageBox.Show("El numero de documento no esta digitado de manera correcta.");
-                return false;
+                if (string.IsNullOrEmpty(nrodocumento) || !nrodocumento.All(char.IsDigit) || nrodocumento.Length != 10)
+                {
+                    MessageBox.Show("El numero de documento no esta digitado de manera correcta.");
+                    return false;
+                }
+                else if (item.NumeroDocumento == nrodocumento && item.tipo_documento == tipoDocumento )
+                {
+                    MessageBox.Show("El numero de documento ya esta registrado por otro usuario.");
+                    return false;
+                }
             }
             return true;
         }
@@ -151,11 +163,22 @@ namespace GUI
         private bool ValidarTelefono()
         {
             string telefono = txttelefono.Text.Trim();
-            if (string.IsNullOrEmpty(telefono) || !telefono.All(char.IsDigit))
+            var listapersonas = servicePersona.Consultar(new Persona());
+            foreach (var item in listapersonas)
             {
-                MessageBox.Show("El telefono no esta digitado de manera correcta.");
-                return false;
+                if (string.IsNullOrEmpty(telefono) || !telefono.All(char.IsDigit) || telefono.Length != 10)
+                {
+                    MessageBox.Show("El telefono no esta digitado de manera correcta.");
+                    return false;
+
+                } else if(item.telefono == telefono){
+
+                    MessageBox.Show("Este telefono ya se encuentra registrado");
+                    return false;
+
+                }
             }
+            
             return true;
         }
 
@@ -173,6 +196,7 @@ namespace GUI
         private bool ValidarDireccion()
         {
             string direccion = txtdireccion.Text.Trim();
+            
             if (string.IsNullOrEmpty(direccion))
             {
                 MessageBox.Show("la direccion no puede estar vacia.");
@@ -216,9 +240,10 @@ namespace GUI
 
             servicePersona.AbrirConexion();
             string usuario = txtusuario.Text.Trim();
+            var regex = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z0-9_]{3,20}$");
             var listapersona = servicePersona.Consultar(new Persona());
 
-            if (string.IsNullOrEmpty(usuario))
+            if (string.IsNullOrEmpty(usuario) || !regex.IsMatch(usuario))
             {
                 MessageBox.Show("El usuario no puede estar vacio.");
                 return false;
@@ -241,7 +266,9 @@ namespace GUI
         private bool validarContrasena()
         {
             string contrasena = txtcontraseña.Text.Trim();
-            if (string.IsNullOrEmpty(contrasena))
+            var regex = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z0-9]{6}$");
+
+            if (string.IsNullOrEmpty(contrasena) || !regex.IsMatch(contrasena))
             {
                 MessageBox.Show("la contraseña no puede estar vacia.");
                 return false;

@@ -32,6 +32,7 @@
             this.btnsalir = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.btndescargar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picturecomprobante)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,7 @@
             this.btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
             this.btnsalir.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnsalir.Location = new System.Drawing.Point(147, 512);
+            this.btnsalir.Location = new System.Drawing.Point(68, 513);
             this.btnsalir.Name = "btnsalir";
             this.btnsalir.Size = new System.Drawing.Size(112, 39);
             this.btnsalir.TabIndex = 16;
@@ -86,12 +87,29 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "COMPROBANTE";
             // 
+            // btndescargar
+            // 
+            this.btndescargar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btndescargar.AutoSize = true;
+            this.btndescargar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btndescargar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndescargar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btndescargar.Location = new System.Drawing.Point(218, 513);
+            this.btndescargar.Name = "btndescargar";
+            this.btndescargar.Size = new System.Drawing.Size(121, 39);
+            this.btndescargar.TabIndex = 26;
+            this.btndescargar.Text = "DESCARGAR";
+            this.btndescargar.UseVisualStyleBackColor = false;
+            this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            // 
             // MostrarComprobante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(426, 580);
+            this.Controls.Add(this.btndescargar);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.picturecomprobante);
@@ -112,5 +130,6 @@
         private System.Windows.Forms.Button btnsalir;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btndescargar;
     }
 }
