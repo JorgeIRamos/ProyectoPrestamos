@@ -92,9 +92,9 @@
             this.btnsalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.btnsalir.Image = global::GUI.Properties.Resources.exit;
             this.btnsalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnsalir.Location = new System.Drawing.Point(58, 513);
+            this.btnsalir.Location = new System.Drawing.Point(55, 513);
             this.btnsalir.Name = "btnsalir";
-            this.btnsalir.Size = new System.Drawing.Size(105, 38);
+            this.btnsalir.Size = new System.Drawing.Size(108, 38);
             this.btnsalir.TabIndex = 16;
             this.btnsalir.Text = "SALIR";
             this.btnsalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -124,7 +124,7 @@
             this.MaximizeBox = false;
             this.Name = "MostrarComprobante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MostrarComprobante";
+            this.Text = "Mostrar Comprobante";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturecomprobante)).EndInit();

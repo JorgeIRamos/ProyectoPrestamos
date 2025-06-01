@@ -141,7 +141,7 @@
             this.MaximizeBox = false;
             this.Name = "AceptarPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AceptarPrestamo";
+            this.Text = "Aceptar Prestamo";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);

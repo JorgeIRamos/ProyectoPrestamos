@@ -325,6 +325,7 @@ namespace GUI
             dgvmostrarpagos.DataSource = null;
             dgvmostrarpagos.DataSource = prestamoDTO;
             dgvmostrarpagos.ClearSelection();
+            dgvmostrarpagos.Columns["id_ofertaprestamo"].Visible = false;
 
         }
 

@@ -87,6 +87,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlmisprestamos = new System.Windows.Forms.Panel();
+            this.btndescargarprestamos = new System.Windows.Forms.Button();
             this.btnestadoprestamo = new System.Windows.Forms.Button();
             this.btnrestablecer = new System.Windows.Forms.Button();
             this.boxestadoprestamo = new System.Windows.Forms.ComboBox();
@@ -134,6 +135,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlconsultarpagos = new System.Windows.Forms.Panel();
+            this.btndescargarpagos = new System.Windows.Forms.Button();
             this.btnrestablecerpago = new System.Windows.Forms.Button();
             this.btnfiltrarpago = new System.Windows.Forms.Button();
             this.boxtipodepago = new System.Windows.Forms.ComboBox();
@@ -146,8 +148,6 @@
             this.dgvnotificaciones = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
-            this.btndescargarprestamos = new System.Windows.Forms.Button();
-            this.btndescargarpagos = new System.Windows.Forms.Button();
             this.pnlmenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlinicio.SuspendLayout();
@@ -745,6 +745,25 @@
             this.pnlmisprestamos.Name = "pnlmisprestamos";
             this.pnlmisprestamos.Size = new System.Drawing.Size(1094, 682);
             this.pnlmisprestamos.TabIndex = 6;
+            // 
+            // btndescargarprestamos
+            // 
+            this.btndescargarprestamos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btndescargarprestamos.AutoSize = true;
+            this.btndescargarprestamos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btndescargarprestamos.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndescargarprestamos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btndescargarprestamos.Image = global::GUI.Properties.Resources.download1;
+            this.btndescargarprestamos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btndescargarprestamos.Location = new System.Drawing.Point(468, 617);
+            this.btndescargarprestamos.Name = "btndescargarprestamos";
+            this.btndescargarprestamos.Size = new System.Drawing.Size(164, 41);
+            this.btndescargarprestamos.TabIndex = 45;
+            this.btndescargarprestamos.Text = "DESCARGAR EXCEL";
+            this.btndescargarprestamos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btndescargarprestamos.UseVisualStyleBackColor = false;
+            this.btndescargarprestamos.Click += new System.EventHandler(this.btndescargarprestamos_Click);
             // 
             // btnestadoprestamo
             // 
@@ -1461,6 +1480,25 @@
             this.pnlconsultarpagos.Size = new System.Drawing.Size(1095, 682);
             this.pnlconsultarpagos.TabIndex = 5;
             // 
+            // btndescargarpagos
+            // 
+            this.btndescargarpagos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btndescargarpagos.AutoSize = true;
+            this.btndescargarpagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btndescargarpagos.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndescargarpagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btndescargarpagos.Image = global::GUI.Properties.Resources.download1;
+            this.btndescargarpagos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btndescargarpagos.Location = new System.Drawing.Point(468, 632);
+            this.btndescargarpagos.Name = "btndescargarpagos";
+            this.btndescargarpagos.Size = new System.Drawing.Size(164, 37);
+            this.btndescargarpagos.TabIndex = 45;
+            this.btndescargarpagos.Text = "DESCARGAR EXCEL";
+            this.btndescargarpagos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btndescargarpagos.UseVisualStyleBackColor = false;
+            this.btndescargarpagos.Click += new System.EventHandler(this.btndescargarpagos_Click);
+            // 
             // btnrestablecerpago
             // 
             this.btnrestablecerpago.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1697,53 +1735,15 @@
             this.label23.TabIndex = 0;
             this.label23.Text = "NOTIFICACIONES";
             // 
-            // btndescargarprestamos
-            // 
-            this.btndescargarprestamos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btndescargarprestamos.AutoSize = true;
-            this.btndescargarprestamos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
-            this.btndescargarprestamos.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndescargarprestamos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btndescargarprestamos.Image = global::GUI.Properties.Resources.download1;
-            this.btndescargarprestamos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btndescargarprestamos.Location = new System.Drawing.Point(483, 628);
-            this.btndescargarprestamos.Name = "btndescargarprestamos";
-            this.btndescargarprestamos.Size = new System.Drawing.Size(125, 30);
-            this.btndescargarprestamos.TabIndex = 45;
-            this.btndescargarprestamos.Text = "DESCARGAR ";
-            this.btndescargarprestamos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btndescargarprestamos.UseVisualStyleBackColor = false;
-            this.btndescargarprestamos.Click += new System.EventHandler(this.btndescargarprestamos_Click);
-            // 
-            // btndescargarpagos
-            // 
-            this.btndescargarpagos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btndescargarpagos.AutoSize = true;
-            this.btndescargarpagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
-            this.btndescargarpagos.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btndescargarpagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btndescargarpagos.Image = global::GUI.Properties.Resources.download1;
-            this.btndescargarpagos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btndescargarpagos.Location = new System.Drawing.Point(468, 632);
-            this.btndescargarpagos.Name = "btndescargarpagos";
-            this.btndescargarpagos.Size = new System.Drawing.Size(164, 37);
-            this.btndescargarpagos.TabIndex = 45;
-            this.btndescargarpagos.Text = "DESCARGAR EXCEL";
-            this.btndescargarpagos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btndescargarpagos.UseVisualStyleBackColor = false;
-            this.btndescargarpagos.Click += new System.EventHandler(this.btndescargarpagos_Click);
-            // 
             // Menu_Prestatario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.pnlmisprestamos);
             this.Controls.Add(this.pnlinicio);
             this.Controls.Add(this.pnlofertasprestamo);
-            this.Controls.Add(this.pnlmisprestamos);
             this.Controls.Add(this.pnlpagos);
             this.Controls.Add(this.pnlconfirmarpago);
             this.Controls.Add(this.pnlconsultarpagos);
@@ -1755,7 +1755,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu_Prestatario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu_Prestatario";
+            this.Text = "Menu Prestatario";
             this.pnlmenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlinicio.ResumeLayout(false);
