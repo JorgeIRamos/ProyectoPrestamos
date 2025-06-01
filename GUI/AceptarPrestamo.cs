@@ -52,7 +52,7 @@ namespace GUI
 
             string resultado = serviceOfertaPrestamo.Modificar(oferta);
 
-            MessageBox.Show("Proposito y pago guardados con exito");
+            MessageBox.Show("Prestamo aceptado con exito.");
             this.DialogResult = DialogResult.OK;
             this.Close();
 

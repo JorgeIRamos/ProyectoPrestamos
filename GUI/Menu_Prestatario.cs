@@ -78,20 +78,17 @@ namespace GUI
 
         private void CargarUltimosDatos()
         {
-            // Último préstamo aceptado (estado "Activo" o "Finalizado") del prestatario actual
             var ultimoPrestamo = servicePrestamo.Consultar(new Prestamo())
                 .Where(p => p.id_prestatario == idPrestatarioActual &&
                             (p.estado == "Activo" || p.estado == "Finalizado"))
                 .OrderByDescending(p => p.id_prestamo)
                 .FirstOrDefault();
 
-            // Última notificación (recordatorio) recibida
             var ultimaNotificacion = serviceRecordatorio.Consultar(new Recordatorio())
                 .Where(r => r.Prestamo != null && r.Prestamo.id_prestatario == idPrestatarioActual)
                 .OrderByDescending(r => r.fecharecordatorio)
                 .FirstOrDefault();
 
-            // Última transferencia (transacción) realizada
             var prestamosIds = servicePrestamo.Consultar(new Prestamo())
                 .Where(p => p.id_prestatario == idPrestatarioActual)
                 .Select(p => p.id_prestamo)
@@ -110,7 +107,6 @@ namespace GUI
                 lblresumen.Visible = false;
                 return;
             }
-
 
             lblmonto.Text = ultimoPrestamo.ofertaPrestamo.cantidad.ToString("C2");
             lblinteresesrecientes.Text = ultimoPrestamo.ofertaPrestamo.intereses.ToString() + " %";
@@ -515,7 +511,10 @@ namespace GUI
             var buscarprestamo = serviceOfertaPrestamo.BuscarPorId(idOferta, new OfertaPrestamo());
             buscarprestamo.estado = "Activo";
             var resultado = serviceOfertaPrestamo.Modificar(buscarprestamo);
-            MessageBox.Show(resultado);
+            if (resultado == null) {
+                MessageBox.Show("Error al actualizar el estado de la oferta de préstamo.");
+                return;
+            }
             CargarPrestamos();
             CargarMisPrestamos();
         }
