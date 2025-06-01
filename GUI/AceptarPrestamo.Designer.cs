@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AceptarPrestamo));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtproposito = new System.Windows.Forms.TextBox();
-            this.txtpago = new System.Windows.Forms.TextBox();
             this.btnfinalizar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
+            this.boxtipopago = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,33 +64,26 @@
             // txtproposito
             // 
             this.txtproposito.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtproposito.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtproposito.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtproposito.ForeColor = System.Drawing.Color.Black;
             this.txtproposito.Location = new System.Drawing.Point(214, 115);
             this.txtproposito.Name = "txtproposito";
-            this.txtproposito.Size = new System.Drawing.Size(203, 22);
+            this.txtproposito.Size = new System.Drawing.Size(203, 23);
             this.txtproposito.TabIndex = 2;
-            // 
-            // txtpago
-            // 
-            this.txtpago.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtpago.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpago.ForeColor = System.Drawing.Color.Black;
-            this.txtpago.Location = new System.Drawing.Point(214, 180);
-            this.txtpago.Name = "txtpago";
-            this.txtpago.Size = new System.Drawing.Size(203, 22);
-            this.txtpago.TabIndex = 3;
             // 
             // btnfinalizar
             // 
             this.btnfinalizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
             this.btnfinalizar.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnfinalizar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnfinalizar.Location = new System.Drawing.Point(177, 239);
+            this.btnfinalizar.Image = global::GUI.Properties.Resources.accept;
+            this.btnfinalizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnfinalizar.Location = new System.Drawing.Point(177, 236);
             this.btnfinalizar.Name = "btnfinalizar";
-            this.btnfinalizar.Size = new System.Drawing.Size(112, 34);
+            this.btnfinalizar.Size = new System.Drawing.Size(127, 37);
             this.btnfinalizar.TabIndex = 5;
             this.btnfinalizar.Text = "FINALIZAR";
+            this.btnfinalizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnfinalizar.UseVisualStyleBackColor = false;
             this.btnfinalizar.Click += new System.EventHandler(this.btnfinalizar_Click);
             // 
@@ -118,18 +112,32 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "ACEPTAR PRESTAMO";
             // 
+            // boxtipopago
+            // 
+            this.boxtipopago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boxtipopago.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.boxtipopago.FormattingEnabled = true;
+            this.boxtipopago.Items.AddRange(new object[] {
+            "Efectivo",
+            "Transferencia"});
+            this.boxtipopago.Location = new System.Drawing.Point(215, 179);
+            this.boxtipopago.Name = "boxtipopago";
+            this.boxtipopago.Size = new System.Drawing.Size(202, 23);
+            this.boxtipopago.TabIndex = 26;
+            // 
             // AceptarPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(492, 386);
+            this.Controls.Add(this.boxtipopago);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnfinalizar);
-            this.Controls.Add(this.txtpago);
             this.Controls.Add(this.txtproposito);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AceptarPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -146,9 +154,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtproposito;
-        private System.Windows.Forms.TextBox txtpago;
         private System.Windows.Forms.Button btnfinalizar;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox boxtipopago;
     }
 }

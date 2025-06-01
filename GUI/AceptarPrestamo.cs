@@ -32,13 +32,12 @@ namespace GUI
                 MessageBox.Show("Ingrese un propósito válido.");
                 return;
             }
-
-            string tipoPago = txtpago.Text.Trim();
-            if (string.IsNullOrEmpty(tipoPago))
+            if (boxtipopago.SelectedItem == null)
             {
-                MessageBox.Show("Ingrese un tipo de pago válido.");
+                MessageBox.Show("Seleccione un tipo de pago.");
                 return;
             }
+            string tipoPago = boxtipopago.SelectedItem?.ToString();
             OfertaPrestamo ofertaPrestamo = new OfertaPrestamo();
             var oferta = serviceOfertaPrestamo.BuscarPorId(idofertaprestamo, ofertaPrestamo);
 

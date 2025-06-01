@@ -38,12 +38,12 @@ namespace GUI
             InitializeComponent();
             QuitarBordes();
             dgvDatosPrestamos.DefaultCellStyle.ForeColor = Color.Black;
-            dgvPrestamosActivos.DefaultCellStyle.ForeColor = Color.Black;
+            dgvmisprestamos.DefaultCellStyle.ForeColor = Color.Black;
             idPrestatarioActual = idPrestatario;
             Nombre = nombre;
             labeluser.Text = "BIENVENIDO " + Nombre.ToUpper();
             pnlofertasprestamo.Visible = false;
-            pnlprestamosactivos.Visible = false;
+            pnlmisprestamos.Visible = false;
             pnlpagos.Visible = false;
             pnlconfirmarpago.Visible = false;
             pnlconsultarpagos.Visible = false;
@@ -138,7 +138,7 @@ namespace GUI
             pnlinicio.Visible = true;
             pnlofertasprestamo.Visible = false;
             pnlnotificaciones.Visible = false;
-            pnlprestamosactivos.Visible = false;
+            pnlmisprestamos.Visible = false;
             pnlpagos.Visible = false;
             pnlconfirmarpago.Visible = false;
             pnlconsultarpagos.Visible = false;
@@ -149,7 +149,7 @@ namespace GUI
         {
             ResaltarBoton(btnofertaprestamo);
             pnlofertasprestamo.Visible = true;
-            pnlprestamosactivos.Visible = false;
+            pnlmisprestamos.Visible = false;
             pnlinicio.Visible = false;
             pnlconsultarpagos.Visible = false;
             pnlnotificaciones.Visible = false;
@@ -161,7 +161,7 @@ namespace GUI
         private void btnprestamosactivos_Click(object sender, EventArgs e)
         {
             ResaltarBoton(btnmisprestamos);
-            pnlprestamosactivos.Visible = true;
+            pnlmisprestamos.Visible = true;
             pnlofertasprestamo.Visible = false;
             pnlpagos.Visible = false;
             pnlinicio.Visible = false;
@@ -177,7 +177,7 @@ namespace GUI
             pnlpagos.Visible = true;
             pnlconfirmarpago.Visible = false;
             pnlinicio.Visible = false;
-            pnlprestamosactivos.Visible = false;
+            pnlmisprestamos.Visible = false;
             pnlofertasprestamo.Visible = false;
             pnlconsultarpagos.Visible = false;
             pnlnotificaciones.Visible = false;
@@ -190,7 +190,7 @@ namespace GUI
             pnlconfirmarpago.Visible = false;
             pnlpagos.Visible = false;
             pnlinicio.Visible = false;
-            pnlprestamosactivos.Visible = false;
+            pnlmisprestamos.Visible = false;
             pnlofertasprestamo.Visible = false;
             pnlconsultarpagos.Visible = true;
             pnlnotificaciones.Visible = false;
@@ -203,7 +203,7 @@ namespace GUI
             pnlconfirmarpago.Visible = false;
             pnlpagos.Visible = false;
             pnlinicio.Visible = false;
-            pnlprestamosactivos.Visible = false;
+            pnlmisprestamos.Visible = false;
             pnlofertasprestamo.Visible = false;
             pnlconsultarpagos.Visible = false;
             pnlnotificaciones.Visible = true;
@@ -267,9 +267,10 @@ namespace GUI
                     tipopago = p.ofertaPrestamo?.tipopago
                 })
                 .ToList();
-            dgvPrestamosActivos.DataSource = null;
-            dgvPrestamosActivos.DataSource = prestamosDTO;
-            dgvPrestamosActivos.ClearSelection();
+            dgvmisprestamos.DataSource = null;
+            dgvmisprestamos.DataSource = prestamosDTO;
+            dgvmisprestamos.ClearSelection();
+            dgvmisprestamos.Columns["id_ofertaprestamo"].Visible = false;
         }
 
         private void btnaceptaroferta_Click(object sender, EventArgs e)
@@ -577,9 +578,46 @@ namespace GUI
                     tipopago = p.ofertaPrestamo?.tipopago
                 })
                 .ToList();
-            dgvPrestamosActivos.DataSource = null;
-            dgvPrestamosActivos.DataSource = prestamosFiltrados;
-            dgvPrestamosActivos.ClearSelection();
+            dgvmisprestamos.DataSource = null;
+            dgvmisprestamos.DataSource = prestamosFiltrados;
+            dgvmisprestamos.ClearSelection();
+            dgvmisprestamos.Columns["id_ofertaprestamo"].Visible = false;
+        }
+
+        private void btnrestablecerpago_Click(object sender, EventArgs e)
+        {
+            CargarHistorialPagos();
+        }
+
+        private void btnfiltrarpago_Click(object sender, EventArgs e)
+        {
+            if (boxtipodepago.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un estado de préstamo.");
+                return;
+            }
+            string tipopagoSeleccionado = boxtipodepago.SelectedItem.ToString();
+            var prestamos = servicePrestamo.Consultar(new Prestamo())
+                .Where(p => p.id_prestatario == idPrestatarioActual)
+                .Select(p => p.id_prestamo)
+                .ToList();
+
+            var transacciones = serviceTransaccion.Consultar(new Transaccion())
+                .Where(t => prestamos.Contains(t.id_prestamo) && t.tipo_transaccion == tipopagoSeleccionado)
+                .OrderBy(t => t.fecha)
+                .Select(t => new
+                {
+                    t.monto,
+                    t.fecha,
+                    t.id_prestamo,
+                    t.tipo_transaccion
+                })
+                .ToList();
+
+            dgvhistorialpago.DataSource = null;
+            dgvhistorialpago.DataSource = transacciones;
+            dgvhistorialpago.ClearSelection();
+
         }
     }
 }

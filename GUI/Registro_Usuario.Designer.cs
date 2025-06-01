@@ -65,15 +65,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.btningresar = new System.Windows.Forms.Button();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -320,13 +320,16 @@
             // btnregistrar
             // 
             this.btnregistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(140)))), ((int)(((byte)(204)))));
-            this.btnregistrar.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnregistrar.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnregistrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnregistrar.Location = new System.Drawing.Point(204, 548);
+            this.btnregistrar.Image = global::GUI.Properties.Resources.register;
+            this.btnregistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnregistrar.Location = new System.Drawing.Point(204, 556);
             this.btnregistrar.Name = "btnregistrar";
-            this.btnregistrar.Size = new System.Drawing.Size(159, 42);
+            this.btnregistrar.Size = new System.Drawing.Size(137, 34);
             this.btnregistrar.TabIndex = 25;
             this.btnregistrar.Text = "REGISTRARSE";
+            this.btnregistrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnregistrar.UseVisualStyleBackColor = false;
             this.btnregistrar.Click += new System.EventHandler(this.btnregistrar_Click);
             // 
@@ -445,24 +448,6 @@
             this.panel2.Size = new System.Drawing.Size(230, 1);
             this.panel2.TabIndex = 26;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::GUI.Properties.Resources.Ellipse_2;
-            this.pictureBox1.Location = new System.Drawing.Point(665, -8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(132, 125);
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::GUI.Properties.Resources.Ellipse_3;
-            this.pictureBox2.Location = new System.Drawing.Point(-5, 701);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(78, 71);
-            this.pictureBox2.TabIndex = 28;
-            this.pictureBox2.TabStop = false;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -479,11 +464,14 @@
             this.btningresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
             this.btningresar.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btningresar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btningresar.Location = new System.Drawing.Point(188, 4);
+            this.btningresar.Image = global::GUI.Properties.Resources.login;
+            this.btningresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btningresar.Location = new System.Drawing.Point(197, 3);
             this.btningresar.Name = "btningresar";
-            this.btningresar.Size = new System.Drawing.Size(140, 30);
+            this.btningresar.Size = new System.Drawing.Size(110, 30);
             this.btningresar.TabIndex = 1;
             this.btningresar.Text = "INGRESAR";
+            this.btningresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btningresar.UseVisualStyleBackColor = false;
             this.btningresar.Click += new System.EventHandler(this.btningresar_Click);
             // 
@@ -497,12 +485,30 @@
             this.panel11.Size = new System.Drawing.Size(347, 37);
             this.panel11.TabIndex = 29;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::GUI.Properties.Resources.Ellipse_3;
+            this.pictureBox2.Location = new System.Drawing.Point(-5, 701);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(78, 71);
+            this.pictureBox2.TabIndex = 28;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GUI.Properties.Resources.Ellipse_2;
+            this.pictureBox1.Location = new System.Drawing.Point(665, -8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(132, 125);
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
+            // 
             // Registro_Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(186)))), ((int)(((byte)(139)))));
-            this.ClientSize = new System.Drawing.Size(734, 768);
+            this.ClientSize = new System.Drawing.Size(734, 766);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -515,10 +521,10 @@
             this.Text = "Registro_Usuario";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

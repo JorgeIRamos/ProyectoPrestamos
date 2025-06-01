@@ -469,5 +469,62 @@ namespace GUI
         {
             CargarPrestamos();
         }
+
+        private void btnrestablecerpago_Click(object sender, EventArgs e)
+        {
+            CargarControlPagos();
+        }
+
+        private void btnfiltrarpago_Click(object sender, EventArgs e)
+        {
+            if (boxtipodepago.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un tipo de pago.");
+                return;
+            }
+            string tipoPagoSeleccionado = boxtipodepago.SelectedItem.ToString();
+            var ofertas = serviceOfertaPrestamo.Consultar(new OfertaPrestamo())
+                .Where(o => o.id_prestamista == idPrestamistaActual)
+                .ToList();
+
+            var prestamos = servicePrestamo.Consultar(new Prestamo())
+                .Where(pr => ofertas.Any(o => o.id == pr.id_ofertaprestamo))
+                .ToList();
+
+            var transacciones = serviceTransaccion.Consultar(new Transaccion())
+                .Where(t => prestamos.Any(pr => pr.id_prestamo == t.id_prestamo) && t.tipo_transaccion == tipoPagoSeleccionado)
+                .OrderBy(t => t.fecha)
+                .Select(t =>
+                {
+                    var prestamo = prestamos.FirstOrDefault(pr => pr.id_prestamo == t.id_prestamo);
+                    var prestatario = prestamo?.prestatario;
+                    var persona = prestatario?.Persona;
+
+                    return new TransaccionDTO
+                    {
+                        id = t.id_transaccion,
+                        id_prestamo = t.id_prestamo,
+                        monto = t.monto,
+                        fecha = t.fecha,
+                        tipo_transaccion = t.tipo_transaccion,
+                        NombrePrestatario = persona?.nombre ?? "Desconocido",
+                        ApellidoPrestatario = persona?.apellido ?? "Desconocido",
+                        NumeroDocumentoPrestatario = persona?.NumeroDocumento ?? "Desconocido",
+                        Intereses = ofertas.FirstOrDefault(o => o.id == prestamo?.id_ofertaprestamo)?.intereses ?? 0,
+                        cuota = ofertas.FirstOrDefault(o => o.id == prestamo?.id_ofertaprestamo)?.cuotas ?? 0,
+                    };
+                })
+                .ToList();
+            dgvcontrolpagos.DefaultCellStyle.ForeColor = Color.Black;
+            dgvcontrolpagos.DataSource = null;
+            dgvcontrolpagos.DataSource = transacciones;
+            dgvcontrolpagos.ClearSelection();
+            dgvcontrolpagos.Columns["estado"].Visible = false;
+        }
+
+        private void pnlconsultarprestamo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

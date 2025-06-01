@@ -28,39 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.picturecomprobante = new System.Windows.Forms.PictureBox();
-            this.btnsalir = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MostrarComprobante));
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.btndescargar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.picturecomprobante)).BeginInit();
+            this.btnsalir = new System.Windows.Forms.Button();
+            this.picturecomprobante = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturecomprobante)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picturecomprobante
-            // 
-            this.picturecomprobante.Location = new System.Drawing.Point(44, 93);
-            this.picturecomprobante.Name = "picturecomprobante";
-            this.picturecomprobante.Size = new System.Drawing.Size(337, 395);
-            this.picturecomprobante.TabIndex = 1;
-            this.picturecomprobante.TabStop = false;
-            this.picturecomprobante.Click += new System.EventHandler(this.picturecomprobante_Click);
-            // 
-            // btnsalir
-            // 
-            this.btnsalir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnsalir.AutoSize = true;
-            this.btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
-            this.btnsalir.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnsalir.Location = new System.Drawing.Point(68, 513);
-            this.btnsalir.Name = "btnsalir";
-            this.btnsalir.Size = new System.Drawing.Size(112, 39);
-            this.btnsalir.TabIndex = 16;
-            this.btnsalir.Text = "SALIR";
-            this.btnsalir.UseVisualStyleBackColor = false;
-            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
             // panel3
             // 
@@ -95,13 +71,44 @@
             this.btndescargar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
             this.btndescargar.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndescargar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btndescargar.Location = new System.Drawing.Point(218, 513);
+            this.btndescargar.Image = global::GUI.Properties.Resources.download1;
+            this.btndescargar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btndescargar.Location = new System.Drawing.Point(216, 514);
             this.btndescargar.Name = "btndescargar";
-            this.btndescargar.Size = new System.Drawing.Size(121, 39);
+            this.btndescargar.Size = new System.Drawing.Size(144, 37);
             this.btndescargar.TabIndex = 26;
             this.btndescargar.Text = "DESCARGAR";
+            this.btndescargar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btndescargar.UseVisualStyleBackColor = false;
             this.btndescargar.Click += new System.EventHandler(this.btndescargar_Click);
+            // 
+            // btnsalir
+            // 
+            this.btnsalir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnsalir.AutoSize = true;
+            this.btnsalir.BackColor = System.Drawing.Color.Gray;
+            this.btnsalir.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnsalir.Image = global::GUI.Properties.Resources.exit;
+            this.btnsalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnsalir.Location = new System.Drawing.Point(58, 513);
+            this.btnsalir.Name = "btnsalir";
+            this.btnsalir.Size = new System.Drawing.Size(105, 38);
+            this.btnsalir.TabIndex = 16;
+            this.btnsalir.Text = "SALIR";
+            this.btnsalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnsalir.UseVisualStyleBackColor = false;
+            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
+            // 
+            // picturecomprobante
+            // 
+            this.picturecomprobante.Location = new System.Drawing.Point(44, 93);
+            this.picturecomprobante.Name = "picturecomprobante";
+            this.picturecomprobante.Size = new System.Drawing.Size(337, 395);
+            this.picturecomprobante.TabIndex = 1;
+            this.picturecomprobante.TabStop = false;
+            this.picturecomprobante.Click += new System.EventHandler(this.picturecomprobante_Click);
             // 
             // MostrarComprobante
             // 
@@ -113,13 +120,14 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnsalir);
             this.Controls.Add(this.picturecomprobante);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MostrarComprobante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MostrarComprobante";
-            ((System.ComponentModel.ISupportInitialize)(this.picturecomprobante)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturecomprobante)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
