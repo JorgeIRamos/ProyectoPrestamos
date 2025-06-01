@@ -40,6 +40,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu_Prestamista));
             this.pnlmenu = new System.Windows.Forms.Panel();
             this.btncontrolpago = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnsalir = new System.Windows.Forms.Button();
             this.btninicio = new System.Windows.Forms.Button();
             this.btnrecordatorios = new System.Windows.Forms.Button();
             this.btnconsultarprestamos = new System.Windows.Forms.Button();
@@ -75,6 +77,7 @@
             this.labeluser = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pnlconsultarprestamo = new System.Windows.Forms.Panel();
+            this.btnestadoprestamo = new System.Windows.Forms.Button();
             this.btnrestablecer = new System.Windows.Forms.Button();
             this.boxestadoprestamo = new System.Windows.Forms.ComboBox();
             this.ESTADO = new System.Windows.Forms.Label();
@@ -86,6 +89,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.btncrear = new System.Windows.Forms.Button();
             this.txtintereses = new System.Windows.Forms.TextBox();
             this.txtplazo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -94,6 +98,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlcontrolpago = new System.Windows.Forms.Panel();
+            this.btnfiltrarpago = new System.Windows.Forms.Button();
+            this.btnrestablecerpago = new System.Windows.Forms.Button();
+            this.boxtipodepago = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.dgvcontrolpagos = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
@@ -107,6 +115,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pnlmandarecordatorio = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnvolver = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.lbldocumentoprestatario = new System.Windows.Forms.Label();
             this.lblapellidoprestatario = new System.Windows.Forms.Label();
@@ -116,19 +125,13 @@
             this.label15 = new System.Windows.Forms.Label();
             this.boxprestamosactivos = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnmandarecordatorio = new System.Windows.Forms.Button();
             this.txtmensaje = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnrestablecerpago = new System.Windows.Forms.Button();
-            this.boxtipodepago = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.btncrear = new System.Windows.Forms.Button();
-            this.btnfiltrarpago = new System.Windows.Forms.Button();
-            this.btnvolver = new System.Windows.Forms.Button();
-            this.btnmandarecordatorio = new System.Windows.Forms.Button();
-            this.btnestadoprestamo = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnsalir = new System.Windows.Forms.Button();
+            this.btndescargarpagos = new System.Windows.Forms.Button();
+            this.btndescargarprestamos = new System.Windows.Forms.Button();
             this.pnlmenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlinicio.SuspendLayout();
             this.pnlclientereciente.SuspendLayout();
             this.pnltransferenciareciente.SuspendLayout();
@@ -146,7 +149,6 @@
             this.panel2.SuspendLayout();
             this.pnlmandarecordatorio.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlmenu
@@ -178,6 +180,31 @@
             this.btncontrolpago.Text = "Control de pago";
             this.btncontrolpago.UseVisualStyleBackColor = false;
             this.btncontrolpago.Click += new System.EventHandler(this.btncontrolpago_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources.Logo_PresTech_blanco;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(155, 50);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnsalir
+            // 
+            this.btnsalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(47)))), ((int)(((byte)(74)))));
+            this.btnsalir.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsalir.ForeColor = System.Drawing.Color.Transparent;
+            this.btnsalir.Image = global::GUI.Properties.Resources.exit;
+            this.btnsalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnsalir.Location = new System.Drawing.Point(9, 627);
+            this.btnsalir.Name = "btnsalir";
+            this.btnsalir.Size = new System.Drawing.Size(159, 42);
+            this.btnsalir.TabIndex = 5;
+            this.btnsalir.Text = "Salir";
+            this.btnsalir.UseVisualStyleBackColor = false;
+            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
             // 
             // btninicio
             // 
@@ -582,6 +609,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlconsultarprestamo.AutoSize = true;
             this.pnlconsultarprestamo.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlconsultarprestamo.Controls.Add(this.btndescargarprestamos);
             this.pnlconsultarprestamo.Controls.Add(this.btnestadoprestamo);
             this.pnlconsultarprestamo.Controls.Add(this.btnrestablecer);
             this.pnlconsultarprestamo.Controls.Add(this.boxestadoprestamo);
@@ -592,7 +620,25 @@
             this.pnlconsultarprestamo.Name = "pnlconsultarprestamo";
             this.pnlconsultarprestamo.Size = new System.Drawing.Size(1131, 700);
             this.pnlconsultarprestamo.TabIndex = 2;
-            this.pnlconsultarprestamo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlconsultarprestamo_Paint);
+            // 
+            // btnestadoprestamo
+            // 
+            this.btnestadoprestamo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnestadoprestamo.AutoSize = true;
+            this.btnestadoprestamo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btnestadoprestamo.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnestadoprestamo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnestadoprestamo.Image = global::GUI.Properties.Resources.search;
+            this.btnestadoprestamo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnestadoprestamo.Location = new System.Drawing.Point(343, 117);
+            this.btnestadoprestamo.Name = "btnestadoprestamo";
+            this.btnestadoprestamo.Size = new System.Drawing.Size(94, 30);
+            this.btnestadoprestamo.TabIndex = 44;
+            this.btnestadoprestamo.Text = "BUSCAR";
+            this.btnestadoprestamo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnestadoprestamo.UseVisualStyleBackColor = false;
+            this.btnestadoprestamo.Click += new System.EventHandler(this.btnestadoprestamo_Click);
             // 
             // btnrestablecer
             // 
@@ -785,6 +831,25 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "CREAR PRESTAMO";
             // 
+            // btncrear
+            // 
+            this.btncrear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncrear.AutoSize = true;
+            this.btncrear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btncrear.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btncrear.Image = global::GUI.Properties.Resources.create;
+            this.btncrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btncrear.Location = new System.Drawing.Point(443, 356);
+            this.btncrear.Name = "btncrear";
+            this.btncrear.Size = new System.Drawing.Size(199, 33);
+            this.btncrear.TabIndex = 13;
+            this.btncrear.Text = "CREAR PRESTAMO";
+            this.btncrear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btncrear.UseVisualStyleBackColor = false;
+            this.btncrear.Click += new System.EventHandler(this.btncrear_Click);
+            // 
             // txtintereses
             // 
             this.txtintereses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -888,6 +953,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlcontrolpago.AutoSize = true;
             this.pnlcontrolpago.BackColor = System.Drawing.Color.Gainsboro;
+            this.pnlcontrolpago.Controls.Add(this.btndescargarpagos);
             this.pnlcontrolpago.Controls.Add(this.btnfiltrarpago);
             this.pnlcontrolpago.Controls.Add(this.btnrestablecerpago);
             this.pnlcontrolpago.Controls.Add(this.boxtipodepago);
@@ -900,6 +966,64 @@
             this.pnlcontrolpago.Name = "pnlcontrolpago";
             this.pnlcontrolpago.Size = new System.Drawing.Size(1122, 700);
             this.pnlcontrolpago.TabIndex = 6;
+            // 
+            // btnfiltrarpago
+            // 
+            this.btnfiltrarpago.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnfiltrarpago.AutoSize = true;
+            this.btnfiltrarpago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btnfiltrarpago.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnfiltrarpago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnfiltrarpago.Image = global::GUI.Properties.Resources.search;
+            this.btnfiltrarpago.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnfiltrarpago.Location = new System.Drawing.Point(379, 106);
+            this.btnfiltrarpago.Name = "btnfiltrarpago";
+            this.btnfiltrarpago.Size = new System.Drawing.Size(94, 30);
+            this.btnfiltrarpago.TabIndex = 49;
+            this.btnfiltrarpago.Text = "BUSCAR";
+            this.btnfiltrarpago.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnfiltrarpago.UseVisualStyleBackColor = false;
+            this.btnfiltrarpago.Click += new System.EventHandler(this.btnfiltrarpago_Click);
+            // 
+            // btnrestablecerpago
+            // 
+            this.btnrestablecerpago.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnrestablecerpago.AutoSize = true;
+            this.btnrestablecerpago.BackColor = System.Drawing.Color.DimGray;
+            this.btnrestablecerpago.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnrestablecerpago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnrestablecerpago.Location = new System.Drawing.Point(475, 107);
+            this.btnrestablecerpago.Name = "btnrestablecerpago";
+            this.btnrestablecerpago.Size = new System.Drawing.Size(112, 29);
+            this.btnrestablecerpago.TabIndex = 48;
+            this.btnrestablecerpago.Text = "RESTABLECER";
+            this.btnrestablecerpago.UseVisualStyleBackColor = false;
+            this.btnrestablecerpago.Click += new System.EventHandler(this.btnrestablecerpago_Click);
+            // 
+            // boxtipodepago
+            // 
+            this.boxtipodepago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boxtipodepago.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boxtipodepago.FormattingEnabled = true;
+            this.boxtipodepago.Items.AddRange(new object[] {
+            "Efectivo",
+            "Transferencia"});
+            this.boxtipodepago.Location = new System.Drawing.Point(221, 108);
+            this.boxtipodepago.Name = "boxtipodepago";
+            this.boxtipodepago.Size = new System.Drawing.Size(152, 25);
+            this.boxtipodepago.TabIndex = 46;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(109, 109);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(106, 19);
+            this.label19.TabIndex = 45;
+            this.label19.Text = "TIPO DE PAGO";
             // 
             // dgvcontrolpagos
             // 
@@ -985,7 +1109,7 @@
             this.btnmirarcomprobante.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
             this.btnmirarcomprobante.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnmirarcomprobante.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnmirarcomprobante.Location = new System.Drawing.Point(448, 618);
+            this.btnmirarcomprobante.Location = new System.Drawing.Point(330, 619);
             this.btnmirarcomprobante.Name = "btnmirarcomprobante";
             this.btnmirarcomprobante.Size = new System.Drawing.Size(211, 39);
             this.btnmirarcomprobante.TabIndex = 15;
@@ -1165,6 +1289,25 @@
             this.panel3.Size = new System.Drawing.Size(1099, 74);
             this.panel3.TabIndex = 24;
             // 
+            // btnvolver
+            // 
+            this.btnvolver.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnvolver.AutoSize = true;
+            this.btnvolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btnvolver.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnvolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnvolver.Image = global::GUI.Properties.Resources.back1;
+            this.btnvolver.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnvolver.Location = new System.Drawing.Point(39, 22);
+            this.btnvolver.Name = "btnvolver";
+            this.btnvolver.Size = new System.Drawing.Size(96, 34);
+            this.btnvolver.TabIndex = 25;
+            this.btnvolver.Text = "VOLVER";
+            this.btnvolver.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnvolver.UseVisualStyleBackColor = false;
+            this.btnvolver.Click += new System.EventHandler(this.btnvolver_Click);
+            // 
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1279,6 +1422,25 @@
             this.label14.TabIndex = 15;
             this.label14.Text = "PRESTAMOS ACTIVOS (ID)";
             // 
+            // btnmandarecordatorio
+            // 
+            this.btnmandarecordatorio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnmandarecordatorio.AutoSize = true;
+            this.btnmandarecordatorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btnmandarecordatorio.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnmandarecordatorio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btnmandarecordatorio.Image = global::GUI.Properties.Resources.reminder;
+            this.btnmandarecordatorio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnmandarecordatorio.Location = new System.Drawing.Point(414, 462);
+            this.btnmandarecordatorio.Name = "btnmandarecordatorio";
+            this.btnmandarecordatorio.Size = new System.Drawing.Size(267, 39);
+            this.btnmandarecordatorio.TabIndex = 14;
+            this.btnmandarecordatorio.Text = "MANDAR RECORDATORIO";
+            this.btnmandarecordatorio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnmandarecordatorio.UseVisualStyleBackColor = false;
+            this.btnmandarecordatorio.Click += new System.EventHandler(this.btnmandarecordatorio_Click);
+            // 
             // txtmensaje
             // 
             this.txtmensaje.BackColor = System.Drawing.Color.Gainsboro;
@@ -1302,162 +1464,43 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "MENSAJE";
             // 
-            // btnrestablecerpago
+            // btndescargarpagos
             // 
-            this.btnrestablecerpago.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btndescargarpagos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnrestablecerpago.AutoSize = true;
-            this.btnrestablecerpago.BackColor = System.Drawing.Color.DimGray;
-            this.btnrestablecerpago.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnrestablecerpago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnrestablecerpago.Location = new System.Drawing.Point(475, 107);
-            this.btnrestablecerpago.Name = "btnrestablecerpago";
-            this.btnrestablecerpago.Size = new System.Drawing.Size(112, 29);
-            this.btnrestablecerpago.TabIndex = 48;
-            this.btnrestablecerpago.Text = "RESTABLECER";
-            this.btnrestablecerpago.UseVisualStyleBackColor = false;
-            this.btnrestablecerpago.Click += new System.EventHandler(this.btnrestablecerpago_Click);
+            this.btndescargarpagos.AutoSize = true;
+            this.btndescargarpagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btndescargarpagos.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndescargarpagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btndescargarpagos.Image = global::GUI.Properties.Resources.download1;
+            this.btndescargarpagos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btndescargarpagos.Location = new System.Drawing.Point(558, 619);
+            this.btndescargarpagos.Name = "btndescargarpagos";
+            this.btndescargarpagos.Size = new System.Drawing.Size(197, 39);
+            this.btndescargarpagos.TabIndex = 50;
+            this.btndescargarpagos.Text = "DESCARGAR EXCEL";
+            this.btndescargarpagos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btndescargarpagos.UseVisualStyleBackColor = false;
+            this.btndescargarpagos.Click += new System.EventHandler(this.btndescargarpagos_Click);
             // 
-            // boxtipodepago
+            // btndescargarprestamos
             // 
-            this.boxtipodepago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.boxtipodepago.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boxtipodepago.FormattingEnabled = true;
-            this.boxtipodepago.Items.AddRange(new object[] {
-            "Efectivo",
-            "Transferencia"});
-            this.boxtipodepago.Location = new System.Drawing.Point(221, 108);
-            this.boxtipodepago.Name = "boxtipodepago";
-            this.boxtipodepago.Size = new System.Drawing.Size(152, 25);
-            this.boxtipodepago.TabIndex = 46;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(109, 109);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(106, 19);
-            this.label19.TabIndex = 45;
-            this.label19.Text = "TIPO DE PAGO";
-            // 
-            // btncrear
-            // 
-            this.btncrear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btndescargarprestamos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncrear.AutoSize = true;
-            this.btncrear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
-            this.btncrear.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btncrear.Image = global::GUI.Properties.Resources.create;
-            this.btncrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btncrear.Location = new System.Drawing.Point(443, 356);
-            this.btncrear.Name = "btncrear";
-            this.btncrear.Size = new System.Drawing.Size(199, 33);
-            this.btncrear.TabIndex = 13;
-            this.btncrear.Text = "CREAR PRESTAMO";
-            this.btncrear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btncrear.UseVisualStyleBackColor = false;
-            this.btncrear.Click += new System.EventHandler(this.btncrear_Click);
-            // 
-            // btnfiltrarpago
-            // 
-            this.btnfiltrarpago.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnfiltrarpago.AutoSize = true;
-            this.btnfiltrarpago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
-            this.btnfiltrarpago.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnfiltrarpago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnfiltrarpago.Image = global::GUI.Properties.Resources.search;
-            this.btnfiltrarpago.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnfiltrarpago.Location = new System.Drawing.Point(379, 106);
-            this.btnfiltrarpago.Name = "btnfiltrarpago";
-            this.btnfiltrarpago.Size = new System.Drawing.Size(94, 30);
-            this.btnfiltrarpago.TabIndex = 49;
-            this.btnfiltrarpago.Text = "BUSCAR";
-            this.btnfiltrarpago.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnfiltrarpago.UseVisualStyleBackColor = false;
-            // 
-            // btnvolver
-            // 
-            this.btnvolver.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnvolver.AutoSize = true;
-            this.btnvolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
-            this.btnvolver.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnvolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnvolver.Image = global::GUI.Properties.Resources.back1;
-            this.btnvolver.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnvolver.Location = new System.Drawing.Point(39, 22);
-            this.btnvolver.Name = "btnvolver";
-            this.btnvolver.Size = new System.Drawing.Size(96, 34);
-            this.btnvolver.TabIndex = 25;
-            this.btnvolver.Text = "VOLVER";
-            this.btnvolver.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnvolver.UseVisualStyleBackColor = false;
-            this.btnvolver.Click += new System.EventHandler(this.btnvolver_Click);
-            // 
-            // btnmandarecordatorio
-            // 
-            this.btnmandarecordatorio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnmandarecordatorio.AutoSize = true;
-            this.btnmandarecordatorio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
-            this.btnmandarecordatorio.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnmandarecordatorio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnmandarecordatorio.Image = global::GUI.Properties.Resources.reminder;
-            this.btnmandarecordatorio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnmandarecordatorio.Location = new System.Drawing.Point(414, 462);
-            this.btnmandarecordatorio.Name = "btnmandarecordatorio";
-            this.btnmandarecordatorio.Size = new System.Drawing.Size(267, 39);
-            this.btnmandarecordatorio.TabIndex = 14;
-            this.btnmandarecordatorio.Text = "MANDAR RECORDATORIO";
-            this.btnmandarecordatorio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnmandarecordatorio.UseVisualStyleBackColor = false;
-            this.btnmandarecordatorio.Click += new System.EventHandler(this.btnmandarecordatorio_Click);
-            // 
-            // btnestadoprestamo
-            // 
-            this.btnestadoprestamo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnestadoprestamo.AutoSize = true;
-            this.btnestadoprestamo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
-            this.btnestadoprestamo.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnestadoprestamo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.btnestadoprestamo.Image = global::GUI.Properties.Resources.search;
-            this.btnestadoprestamo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnestadoprestamo.Location = new System.Drawing.Point(343, 117);
-            this.btnestadoprestamo.Name = "btnestadoprestamo";
-            this.btnestadoprestamo.Size = new System.Drawing.Size(94, 30);
-            this.btnestadoprestamo.TabIndex = 44;
-            this.btnestadoprestamo.Text = "BUSCAR";
-            this.btnestadoprestamo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnestadoprestamo.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::GUI.Properties.Resources.Logo_PresTech_blanco;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(155, 50);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnsalir
-            // 
-            this.btnsalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnsalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(47)))), ((int)(((byte)(74)))));
-            this.btnsalir.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsalir.ForeColor = System.Drawing.Color.Transparent;
-            this.btnsalir.Image = global::GUI.Properties.Resources.exit;
-            this.btnsalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnsalir.Location = new System.Drawing.Point(9, 627);
-            this.btnsalir.Name = "btnsalir";
-            this.btnsalir.Size = new System.Drawing.Size(159, 42);
-            this.btnsalir.TabIndex = 5;
-            this.btnsalir.Text = "Salir";
-            this.btnsalir.UseVisualStyleBackColor = false;
-            this.btnsalir.Click += new System.EventHandler(this.btnsalir_Click);
+            this.btndescargarprestamos.AutoSize = true;
+            this.btndescargarprestamos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(132)))), ((int)(((byte)(209)))));
+            this.btndescargarprestamos.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndescargarprestamos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.btndescargarprestamos.Image = global::GUI.Properties.Resources.download1;
+            this.btndescargarprestamos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btndescargarprestamos.Location = new System.Drawing.Point(443, 626);
+            this.btndescargarprestamos.Name = "btndescargarprestamos";
+            this.btndescargarprestamos.Size = new System.Drawing.Size(197, 39);
+            this.btndescargarprestamos.TabIndex = 51;
+            this.btndescargarprestamos.Text = "DESCARGAR EXCEL";
+            this.btndescargarprestamos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btndescargarprestamos.UseVisualStyleBackColor = false;
+            this.btndescargarprestamos.Click += new System.EventHandler(this.btndescargarprestamos_Click);
             // 
             // Menu_Prestamista
             // 
@@ -1465,12 +1508,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.pnlconsultarprestamo);
             this.Controls.Add(this.pnlinicio);
             this.Controls.Add(this.pnlcrearprestamo);
             this.Controls.Add(this.pnlcontrolpago);
             this.Controls.Add(this.pnlrecordatorio);
             this.Controls.Add(this.pnlmandarecordatorio);
-            this.Controls.Add(this.pnlconsultarprestamo);
             this.Controls.Add(this.pnlmenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1478,6 +1521,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu_Prestamista";
             this.pnlmenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlinicio.ResumeLayout(false);
             this.pnlinicio.PerformLayout();
             this.pnlclientereciente.ResumeLayout(false);
@@ -1509,7 +1553,6 @@
             this.pnlmandarecordatorio.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1607,5 +1650,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btnestadoprestamo;
         private System.Windows.Forms.Button btnfiltrarpago;
+        private System.Windows.Forms.Button btndescargarpagos;
+        private System.Windows.Forms.Button btndescargarprestamos;
     }
 }

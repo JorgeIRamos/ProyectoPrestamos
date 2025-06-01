@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 
 namespace GUI
 {
@@ -110,15 +111,15 @@ namespace GUI
                 return;
             }
 
-            
+
             lblmonto.Text = ultimoPrestamo.ofertaPrestamo.cantidad.ToString("C2");
             lblinteresesrecientes.Text = ultimoPrestamo.ofertaPrestamo.intereses.ToString() + " %";
             lblcuota.Text = ultimoPrestamo.ofertaPrestamo.cuotas_restantes.ToString();
             lblultimosaldo.Text = ultimoPrestamo.saldo_restante.ToString("C2");
             lblfechareciente.Text = ultimaNotificacion.fecharecordatorio.ToString("dd/MM/yyyy");
-            if(ultimaNotificacion.mensaje.Length > 30)
+            if (ultimaNotificacion.mensaje.Length > 30)
             {
-                lblmensaje.Text = ultimaNotificacion.mensaje.Substring(0, 30) + "..."; 
+                lblmensaje.Text = ultimaNotificacion.mensaje.Substring(0, 30) + "...";
             }
             else
             {
@@ -155,7 +156,7 @@ namespace GUI
             pnlnotificaciones.Visible = false;
             pnlpagos.Visible = false;
             pnlconfirmarpago.Visible = false;
-            CargarPrestamos(); 
+            CargarPrestamos();
         }
 
         private void btnprestamosactivos_Click(object sender, EventArgs e)
@@ -364,10 +365,10 @@ namespace GUI
             dgvnotificaciones.DataSource = null;
             dgvnotificaciones.DataSource = recordatorios;
             dgvnotificaciones.ClearSelection();
-            dgvnotificaciones.Columns["id_recordatorio"].Visible = false; 
-            dgvnotificaciones.Columns["Prestamo"].Visible = false; 
+            dgvnotificaciones.Columns["id_recordatorio"].Visible = false;
+            dgvnotificaciones.Columns["Prestamo"].Visible = false;
         }
-        
+
 
 
         private void btncontinuar_Click(object sender, EventArgs e)
@@ -419,16 +420,16 @@ namespace GUI
             lblfrecuencia.Text = prestamo.ofertaPrestamo.frecuencia;
         }
 
-    
+
         private void CalcularPago(int idoferta)
         {
             var buscarofertaprestamo = serviceOfertaPrestamo.BuscarPorId(idoferta, new OfertaPrestamo());
-            
+
 
             decimal totalPrestamo = buscarofertaprestamo.cantidad;
             decimal interes = buscarofertaprestamo.intereses;
             int cuotas = buscarofertaprestamo.cuotas;
-            
+
             if (buscarofertaprestamo.frecuencia == "Mensual" || buscarofertaprestamo.frecuencia == "Quincenal" || buscarofertaprestamo.frecuencia == "Semanal")
             {
                 montopagar = buscarofertaprestamo.cuotas > 0 ? (buscarofertaprestamo.cantidad * (1 + buscarofertaprestamo.intereses)) / buscarofertaprestamo.cuotas : 0;
@@ -446,7 +447,7 @@ namespace GUI
                 MessageBox.Show("No se encontró el préstamo seleccionado.");
                 return;
             }
-            prestamo.id_ofertaprestamo = ((PrestamoDTO)dgvmostrarpagos.SelectedRows[0].DataBoundItem).id_ofertaprestamo; 
+            prestamo.id_ofertaprestamo = ((PrestamoDTO)dgvmostrarpagos.SelectedRows[0].DataBoundItem).id_ofertaprestamo;
             prestamo.saldo_restante -= montopagar;
             ofertaprestamo.cuotas_restantes -= 1;
             if (ofertaprestamo.cuotas_restantes == 0)
@@ -552,6 +553,15 @@ namespace GUI
                 MessageBox.Show("Debe seleccionar un estado de préstamo.");
                 return;
             }
+            var prestamosFiltrados = Filtrarporestado();
+            dgvmisprestamos.DataSource = null;
+            dgvmisprestamos.DataSource = prestamosFiltrados;
+            dgvmisprestamos.ClearSelection();
+            dgvmisprestamos.Columns["id_ofertaprestamo"].Visible = false;
+        }
+
+        private List<PrestamoDTO> Filtrarporestado()
+        {
             string estadoSeleccionado = boxestadoprestamo.SelectedItem.ToString();
             var prestamos = servicePrestamo.Consultar(new Prestamo());
             var prestamosFiltrados = prestamos
@@ -578,10 +588,7 @@ namespace GUI
                     tipopago = p.ofertaPrestamo?.tipopago
                 })
                 .ToList();
-            dgvmisprestamos.DataSource = null;
-            dgvmisprestamos.DataSource = prestamosFiltrados;
-            dgvmisprestamos.ClearSelection();
-            dgvmisprestamos.Columns["id_ofertaprestamo"].Visible = false;
+            return prestamosFiltrados;
         }
 
         private void btnrestablecerpago_Click(object sender, EventArgs e)
@@ -617,7 +624,67 @@ namespace GUI
             dgvhistorialpago.DataSource = null;
             dgvhistorialpago.DataSource = transacciones;
             dgvhistorialpago.ClearSelection();
+        }
 
+        private void ExportarDataGridViewAExcel(DataGridView dgv, string rutaArchivo, string nombreHoja)
+        {
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add(nombreHoja);
+                int excelCol = 1;
+                for (int col = 0; col < dgv.Columns.Count; col++)
+                {
+                    if (dgv.Columns[col].Visible)
+                    {
+                        worksheet.Cell(1, excelCol).Value = dgv.Columns[col].HeaderText;
+                        excelCol++;
+                    }
+                }
+
+                for (int row = 0; row < dgv.Rows.Count; row++)
+                {
+                    if (dgv.Rows[row].IsNewRow) continue;
+                    excelCol = 1;
+                    for (int col = 0; col < dgv.Columns.Count; col++)
+                    {
+                        if (dgv.Columns[col].Visible)
+                        {
+                            worksheet.Cell(row + 2, excelCol).Value = dgv.Rows[row].Cells[col].Value;
+                            excelCol++;
+                        }
+                    }
+                }
+                worksheet.Columns().AdjustToContents();
+                workbook.SaveAs(rutaArchivo);
+            }
+            MessageBox.Show("Informe descargado correctamente.");
+        }
+
+
+        private void btndescargarprestamos_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel files (*.xlsx)|*.xlsx";
+                sfd.FileName = "InformeMisPrestamos.xlsx";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportarDataGridViewAExcel(dgvmisprestamos, sfd.FileName, "Mis Prestamos");
+                }
+            }
+        }
+
+        private void btndescargarpagos_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel files (*.xlsx)|*.xlsx";
+                sfd.FileName = "InformeHistorialPagos.xlsx";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportarDataGridViewAExcel(dgvhistorialpago, sfd.FileName, "Historial de Pagos");
+                }
+            }
         }
     }
 }

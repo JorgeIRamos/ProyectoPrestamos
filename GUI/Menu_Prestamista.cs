@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using ClosedXML.Excel;
+using Entidades;
 using Logica;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace GUI
 {
     public partial class Menu_Prestamista : Form
     {
-        private Service<Prestamista> servicePrestamista;
+
         private Service<OfertaPrestamo> serviceOfertaPrestamo;
         private Service<Transaccion> serviceTransaccion;
         private Service<Prestamo> servicePrestamo;
@@ -23,7 +24,6 @@ namespace GUI
         private string Nombre;
         public Menu_Prestamista(int idPrestamista, string nombre)
         {
-            servicePrestamista = new Service<Prestamista>();
             serviceOfertaPrestamo = new Service<OfertaPrestamo>();
             serviceTransaccion = new Service<Transaccion>();
             servicePrestamo = new Service<Prestamo>();
@@ -56,6 +56,18 @@ namespace GUI
             btncontrolpago.FlatAppearance.BorderSize = 0;
             btnsalir.FlatStyle = FlatStyle.Flat;
             btnsalir.FlatAppearance.BorderSize = 0;
+
+        }
+
+        private void btninicio_Click(object sender, EventArgs e)
+        {
+            ResaltarBoton(btninicio);
+            pnlconsultarprestamo.Visible = false;
+            pnlcrearprestamo.Visible = false;
+            pnlinicio.Visible = true;
+            pnlcontrolpago.Visible = false;
+            pnlconsultarprestamo.Visible = false;
+            CargarUltimosDatos();
 
         }
         private void btncrearprestamo_Click(object sender, EventArgs e)
@@ -397,22 +409,6 @@ namespace GUI
             return plazo * 4;
         }
 
-        private void txtcantidad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btninicio_Click(object sender, EventArgs e)
-        {
-            ResaltarBoton(btninicio);
-            pnlconsultarprestamo.Visible = false;
-            pnlcrearprestamo.Visible = false;
-            pnlinicio.Visible = true;
-            pnlcontrolpago.Visible = false;
-            pnlconsultarprestamo.Visible = false;
-
-        }
-
         private void btnsalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -522,9 +518,65 @@ namespace GUI
             dgvcontrolpagos.Columns["estado"].Visible = false;
         }
 
-        private void pnlconsultarprestamo_Paint(object sender, PaintEventArgs e)
+        private void ExportarDataGridViewAExcel(DataGridView dgv, string rutaArchivo, string nombreHoja)
         {
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add(nombreHoja);
+                int excelCol = 1;
+                for (int col = 0; col < dgv.Columns.Count; col++)
+                {
+                    if (dgv.Columns[col].Visible)
+                    {
+                        worksheet.Cell(1, excelCol).Value = dgv.Columns[col].HeaderText;
+                        excelCol++;
+                    }
+                }
 
+                for (int row = 0; row < dgv.Rows.Count; row++)
+                {
+                    if (dgv.Rows[row].IsNewRow) continue;
+                    excelCol = 1;
+                    for (int col = 0; col < dgv.Columns.Count; col++)
+                    {
+                        if (dgv.Columns[col].Visible)
+                        {
+                            worksheet.Cell(row + 2, excelCol).Value = dgv.Rows[row].Cells[col].Value;
+                            excelCol++;
+                        }
+                    }
+                }
+                worksheet.Columns().AdjustToContents();
+                workbook.SaveAs(rutaArchivo);
+            }
+            MessageBox.Show("Informe descargado correctamente.");
+        }
+
+
+        private void btndescargarpagos_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel files (*.xlsx)|*.xlsx";
+                sfd.FileName = "InformeTransacciones.xlsx";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportarDataGridViewAExcel(dgvcontrolpagos, sfd.FileName, "Control de pagos");
+                }
+            }
+        }
+
+        private void btndescargarprestamos_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel files (*.xlsx)|*.xlsx";
+                sfd.FileName = "InformePrestamos.xlsx";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportarDataGridViewAExcel(dgvDatosPrestamos, sfd.FileName, "Prestamos");
+                }
+            }
         }
     }
 }
