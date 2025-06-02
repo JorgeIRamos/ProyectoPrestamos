@@ -288,7 +288,7 @@ namespace GUI
             lblapellidoprestatario.Text = prestamo?.prestatario.Persona.apellido ?? "Desconocido";
             lbldocumentoprestatario.Text = prestamo?.prestatario.Persona.NumeroDocumento ?? "Desconocido";
             boxprestamosactivos.DataSource = prestamos
-                .Where(p => p.id_prestatario == Usuario && p.estado == "Activo")
+                .Where(p => p.id_prestatario == Usuario && p.estado == "Activo" && p.ofertaPrestamo.id_prestamista == idPrestamistaActual)
                 .Select(p => p.id_prestamo)
                 .ToList();
         }

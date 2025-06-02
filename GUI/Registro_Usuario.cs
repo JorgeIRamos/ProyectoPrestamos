@@ -268,13 +268,16 @@ namespace GUI
             string contrasena = txtcontraseña.Text.Trim();
             var regex = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z0-9]{6}$");
 
-            if (string.IsNullOrEmpty(contrasena) || !regex.IsMatch(contrasena))
+            if (string.IsNullOrEmpty(contrasena))
             {
                 MessageBox.Show("la contraseña no puede estar vacia.");
                 return false;
+            } else if (!regex.IsMatch(contrasena))
+            {
+                MessageBox.Show("la contraseña debe tener 6 caracteres");
+                return false;
             }
             return true;
-
         }
 
         private bool validarConfirmarContrasena()
