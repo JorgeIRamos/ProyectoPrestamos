@@ -124,14 +124,15 @@ Para poder ejecutar el proyecto correctamente en tu entorno local, sigue los sig
 La conexión a la base de datos PostgreSQL se realiza mediante la siguiente cadena en el código:
 
 ```csharp
-protected string cadenaConexion = "Host=localhost;Port=5432;Username=postgres;Password=12345;Database=dbandp3project";
+protected string cadenaConexion = "Host=localhost;Port=5432;Username=postgres;Password=12345;Database=prestech";
 ```
 
 > 📌 **Importante:**
 > - Asegúrate de tener PostgreSQL corriendo correctamente, preferiblemente desde **Docker**.
-> - Antes de ejecutar el proyecto, debes crear una base de datos en PostgreSQL (por ejemplo, `dbandp3project`) y ejecutar el script SQL incluido más abajo.  
+> - Antes de ejecutar el proyecto, debes crear una base de datos en PostgreSQL (por ejemplo, `dbproject`) y ejecutar el script SQL incluido más abajo.  
 >   Puedes usar otro nombre si lo prefieres, pero recuerda actualizar también la cadena de conexión en el código.
->   Puedes usar el puerto, contraseña y nombre de database que desees, pero recuerda actualizar todo eso en la cadena de conexión. 
+>   Puedes usar el puerto, contraseña y nombre de database que desees, pero recuerda actualizar todo eso en la cadena de conexión.
+>   Está cadena de conexión se encuentra en la capa de Datos-POSTGRES, específicamente en la clase BaseDatosPost.
 ---
 
 ## 👥 Autores
@@ -143,6 +144,9 @@ Moisés Araujo Pisciotti, Jorge Iván Ramos Murgas y Rigoberto Márquez Fernánd
 ## 🧾 Script de la Base de Datos (PostgreSQL)
 
 ```sql
+DROP DATABASE IF EXISTS prestech;
+CREATE DATABASE prestech;
+
 DROP TABLE IF EXISTS tipo_documento CASCADE;
 DROP TABLE IF EXISTS persona CASCADE;
 DROP TABLE IF EXISTS prestamista CASCADE;
