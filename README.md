@@ -253,3 +253,135 @@ INSERT INTO tipo_documento (id_documento, nombre) VALUES
 (2, 'Cédula de Extranjeria'),
 (3, 'Pasaporte');
 ```
+
+📘 Vistas de la Base de Datos: también es necesaria, va junto con el scrip de la base de datos.
+
+DROP VIEW IF EXISTS vista_prestamos_completa;
+
+CREATE OR REPLACE VIEW vista_prestamos_completa AS
+SELECT 
+    p.id_prestamo,
+    p.saldo_restante,
+    p.estado,
+    p.id_ofertaprestamo,
+    p.id_prestatario AS p_id_prestatario,  -- alias único
+
+    pr.id_prestatario AS pr_id_prestatario,  -- alias único
+    persona_pre.id_persona AS id_persona_prestatario,
+    persona_pre.nombre AS nombre_prestatario,
+    persona_pre.apellido AS apellido_prestatario,
+    persona_pre.numerodocumento AS numerodocumento_prestatario,
+    persona_pre.tipo_documento AS tipo_documento_prestatario,
+    persona_pre.telefono AS telefono_prestatario,
+    persona_pre.sexo AS sexo_prestatario,
+    persona_pre.direccion AS direccion_prestatario,
+    persona_pre.email AS email_prestatario,
+    persona_pre.username AS username_prestatario,
+    persona_pre.contraseña AS contraseña_prestatario,
+    td_pre.nombre AS nombre_doc_prestatario,
+
+    o.id AS id_oferta,
+    o.cantidad,
+    o.intereses,
+    o.plazo,
+    o.cuotas,
+    o.cuotas_restantes,
+    o.frecuencia,
+    o.fechainicio,
+    o.fechavencimiento,
+    o.proposito,
+    o.tipopago,
+    o.estado AS estado_oferta,
+    o.id_prestamista AS o_id_prestamista,  -- alias único
+
+    pm.id_prestamista AS pm_id_prestamista,  -- alias único
+    persona_pm.id_persona AS id_persona_prestamista,
+    persona_pm.nombre AS nombre_prestamista,
+    persona_pm.apellido AS apellido_prestamista,
+    persona_pm.numerodocumento AS numerodocumento_prestamista,
+    persona_pm.tipo_documento AS tipo_documento_prestamista,
+    persona_pm.telefono AS telefono_prestamista,
+    persona_pm.sexo AS sexo_prestamista,
+    persona_pm.direccion AS direccion_prestamista,
+    persona_pm.email AS email_prestamista,
+    persona_pm.username AS username_prestamista,
+    persona_pm.contraseña AS contraseña_prestamista,
+    td_pm.nombre AS nombre_doc_prestamista
+
+FROM prestamo p
+JOIN prestatario pr ON p.id_prestatario = pr.id_prestatario
+JOIN persona persona_pre ON pr.id_prestatario = persona_pre.id_persona
+JOIN tipo_documento td_pre ON persona_pre.tipo_documento = td_pre.id_documento
+JOIN oferta_prestamo o ON p.id_ofertaprestamo = o.id
+JOIN prestamista pm ON o.id_prestamista = pm.id_prestamista
+JOIN persona persona_pm ON pm.id_prestamista = persona_pm.id_persona
+JOIN tipo_documento td_pm ON persona_pm.tipo_documento = td_pm.id_documento;
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+DROP VIEW IF EXISTS vista_recordatorio_completa;
+
+
+CREATE OR REPLACE VIEW vista_recordatorio_completa AS
+SELECT 
+    r.id_recordatorio, r.fecharecordatorio, r.mensaje, r.id_prestamo AS id_prestamo_recordatorio,
+    
+    p.id_prestamo, p.saldo_restante, p.estado, p.id_ofertaprestamo, p.id_prestatario AS p_id_prestatario,
+    
+    pr.id_prestatario AS pr_id_prestatario, 
+    
+    per_prestatario.id_persona AS id_persona_prestatario, 
+    per_prestatario.nombre AS nombre_prestatario, 
+    per_prestatario.apellido AS apellido_prestatario, 
+    per_prestatario.NumeroDocumento AS numerodocumento_prestatario, 
+    per_prestatario.tipo_documento AS tipo_documento_prestatario, 
+    per_prestatario.telefono AS telefono_prestatario, 
+    per_prestatario.sexo AS sexo_prestatario, 
+    per_prestatario.direccion AS direccion_prestatario, 
+    per_prestatario.email AS email_prestatario, 
+    per_prestatario.username AS username_prestatario, 
+    per_prestatario.contraseña AS contraseña_prestatario,
+    
+    td_prestatario.nombre AS nombre_doc_prestatario,
+
+    op.id AS id_oferta, 
+    op.cantidad, 
+    op.intereses, 
+    op.plazo, 
+    op.cuotas, 
+    op.cuotas_restantes,        
+    op.frecuencia, 
+    op.fechainicio, 
+    op.fechavencimiento, 
+    op.proposito, 
+    op.tipopago, 
+    op.estado AS estado_oferta, 
+    op.id_prestamista AS o_id_prestamista,
+    
+    pre.id_prestamista AS pm_id_prestamista,
+    
+    per_prestamista.id_persona AS id_persona_prestamista, 
+    per_prestamista.nombre AS nombre_prestamista, 
+    per_prestamista.apellido AS apellido_prestamista,
+    per_prestamista.NumeroDocumento AS numerodocumento_prestamista, 
+    per_prestamista.tipo_documento AS tipo_documento_prestamista, 
+    per_prestamista.telefono AS telefono_prestamista, 
+    per_prestamista.sexo AS sexo_prestamista, 
+    per_prestamista.direccion AS direccion_prestamista, 
+    per_prestamista.email AS email_prestamista, 
+    per_prestamista.username AS username_prestamista, 
+    per_prestamista.contraseña AS contraseña_prestamista,
+    
+    td_prestamista.nombre AS nombre_doc_prestamista
+
+FROM recordatorio r
+JOIN prestamo p ON r.id_prestamo = p.id_prestamo
+JOIN prestatario pr ON p.id_prestatario = pr.id_prestatario
+JOIN persona per_prestatario ON pr.id_prestatario = per_prestatario.id_persona
+JOIN tipo_documento td_prestatario ON per_prestatario.tipo_documento = td_prestatario.id_documento
+JOIN oferta_prestamo op ON p.id_ofertaprestamo = op.id
+JOIN prestamista pre ON op.id_prestamista = pre.id_prestamista
+JOIN persona per_prestamista ON pre.id_prestamista = per_prestamista.id_persona
+JOIN tipo_documento td_prestamista ON per_prestamista.tipo_documento = td_prestamista.id_documento
+
+ORDER BY r.fecharecordatorio;
+
