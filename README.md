@@ -129,7 +129,11 @@ protected string cadenaConexion = "Host=localhost;Port=5432;Username=postgres;Pa
 
 > 📌 **Importante:**
 > - Asegúrate de tener PostgreSQL corriendo correctamente, preferiblemente desde **Docker**.
-> - Antes de ejecutar el proyecto, debes crear una base de datos en PostgreSQL (por ejemplo, `dbproject`) y ejecutar el script SQL incluido más abajo.  
+> - Antes de ejecutar el proyecto, debes crear una base de datos en PostgreSQL (por ejemplo, `dbproject`) y ejecutar el script SQL incluido más abajo .
+```sql
+DROP DATABASE IF EXISTS prestech;
+CREATE DATABASE prestech;
+```
 >   Puedes usar otro nombre si lo prefieres, pero recuerda actualizar también la cadena de conexión en el código.
 >   Puedes usar el puerto, contraseña y nombre de database que desees, pero recuerda actualizar todo eso en la cadena de conexión.
 >   Está cadena de conexión se encuentra en la capa de Datos-POSTGRES, específicamente en la clase BaseDatosPost.
