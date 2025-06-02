@@ -10,19 +10,18 @@ namespace Logica
 {
     public class Service<T> : IService<T>
     {
-        //Vamos a comunicar el servicio con la capa base de datos. Para abrir la conexion
 
         public string AbrirConexion()
         {
             var bd = new Datos_POSTGRES.BaseDatos();
-            return bd.AbrirConexion().ToString();  // Convierte el enum ConnectionState a texto
+            return bd.AbrirConexion().ToString(); 
         }
 
         public string CerrarConexion()
         {
             var bd = new Datos_POSTGRES.BaseDatos();
             bd.CerrarConexion();
-            return "Conexión cerrada";  // O también puedes retornar bd.EstadoConexion().ToString() si existe.
+            return "Conexión cerrada"; 
         }
 
 
@@ -41,7 +40,7 @@ namespace Logica
         public string Guardar(T entity)
         {
             var repo = new Estrategia<T>().Repositorio(entity);
-            int id = repo.GetId(entity); // Método común en todos los repositorios
+            int id = repo.GetId(entity); 
 
             if (ExistePorId(id, entity))
             {
@@ -51,10 +50,7 @@ namespace Logica
             return repo.Guardar(entity);
         }
 
-        //public string Eliminar(T entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
+
         public string Eliminar(T entity)
         {
             var repo = new Estrategia<T>().Repositorio(entity);
@@ -66,7 +62,7 @@ namespace Logica
                 return $"No se encontró un registro con ID = {id} para eliminar.";
             }
 
-            return repo.Eliminar(id); // ahora usamos el método correcto que recibe un ID
+            return repo.Eliminar(id);
         }
 
 
@@ -84,16 +80,6 @@ namespace Logica
             return repo.Modificar(entity);
         }
 
-        //public T BuscarPorId(int id, T entity)
-        //{
-        //    if (typeof(T) == typeof(OfertaPrestamo))
-        //    {
-        //        var repo = new Datos_POSTGRES.OfertaPrestamoRepository();
-        //        return (T)(object)repo.BuscarPorId(id);
-        //    }
-        //    return default(T);
-        //}
-
         public T BuscarPorId(int id, T entity)
         {
             var repo = new Estrategia<T>().Repositorio(entity);
@@ -103,12 +89,6 @@ namespace Logica
                 throw new Exception($"No se encontró un registro con ID = {id}.");
             }
             return resultado;
-
-
-
-
-
-
         }
     }
 }

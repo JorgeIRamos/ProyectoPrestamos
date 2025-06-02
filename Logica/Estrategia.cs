@@ -3,23 +3,6 @@ using System;
 using Datos_POSTGRES;
 public class Estrategia<T>
 {
-    /*
- ✅ ANTES (archivos de texto)
-Tus repositorios como PrestamistaRepository heredaban de ArchivoDeRepositorio y su 
-constructor requería una ruta:
-public PrestamistaRepository(string ruta) : base(ruta) { }
-
-Entonces en la clase Estrategia<T> tú podías hacer:
-
-return (IFileRepository<T>)new PrestamistaRepository("prestamista.txt");
-
-❌ AHORA (base de datos)
-Tus repositorios ahora heredan de BaseDatos, y ya no usan archivos, por lo tanto sus 
-constructores no reciben ningún parámetro:
-public PrestamistaRepository() : base() { }
-
-
- */
     public IFileRepository<T> Repositorio(T objeto)
     {   if(objeto is Persona)
         {
@@ -53,10 +36,6 @@ public PrestamistaRepository() : base() { }
         {
             return (IFileRepository<T>)new TipoDocumentoRepository();
         }
-        //else if (objeto is Usuario)
-        //{
-        //    return (IFileRepository<T>)new UsuarioRepository();
-        //}
         else
         {
             throw new Exception("Tipo no soportado");

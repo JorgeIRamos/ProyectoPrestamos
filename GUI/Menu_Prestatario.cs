@@ -23,16 +23,12 @@ namespace GUI
         private byte[] CargarImagen;
         private decimal montopagar;
         private Service<OfertaPrestamo> serviceOfertaPrestamo;
-        private Service<Prestamista> servicePrestamista;
-        private Service<Prestatario> servicePrestatario;
         private Service<Prestamo> servicePrestamo;
         private Service<Transaccion> serviceTransaccion;
         private Service<Recordatorio> serviceRecordatorio;
         public Menu_Prestatario(int idPrestatario, string nombre)
         {
             serviceOfertaPrestamo = new Service<OfertaPrestamo>();
-            servicePrestamista = new Service<Prestamista>();
-            servicePrestatario = new Service<Prestatario>();
             servicePrestamo = new Service<Prestamo>();
             serviceTransaccion = new Service<Transaccion>();
             serviceRecordatorio = new Service<Recordatorio>();
