@@ -255,7 +255,7 @@ INSERT INTO tipo_documento (id_documento, nombre) VALUES
 ```
 
 📘 Vistas de la Base de Datos: también es necesaria, va junto con el scrip de la base de datos.
-
+```
 DROP VIEW IF EXISTS vista_prestamos_completa;
 
 CREATE OR REPLACE VIEW vista_prestamos_completa AS
@@ -384,4 +384,5 @@ JOIN persona per_prestamista ON pre.id_prestamista = per_prestamista.id_persona
 JOIN tipo_documento td_prestamista ON per_prestamista.tipo_documento = td_prestamista.id_documento
 
 ORDER BY r.fecharecordatorio;
+```
 
