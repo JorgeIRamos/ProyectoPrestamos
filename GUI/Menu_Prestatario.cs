@@ -95,7 +95,7 @@ namespace GUI
                 .OrderByDescending(t => t.fecha)
                 .FirstOrDefault();
 
-            if (ultimoPrestamo == null || ultimaTransaccion == null || ultimaTransaccion == null)
+            if (ultimoPrestamo == null || ultimaTransaccion == null || ultimaNotificacion == null)
             {
                 pnlnotificacionreciente.Visible = false;
                 pnlprestamosrecientes.Visible = false;
@@ -103,6 +103,8 @@ namespace GUI
                 lblresumen.Visible = false;
                 return;
             }
+
+
 
             lblmonto.Text = ultimoPrestamo.ofertaPrestamo.cantidad.ToString("C2");
             lblinteresesrecientes.Text = ultimoPrestamo.ofertaPrestamo.intereses.ToString() + " %";
