@@ -124,7 +124,7 @@ Para poder ejecutar el proyecto correctamente en tu entorno local, sigue los sig
 La conexión a la base de datos PostgreSQL se realiza mediante la siguiente cadena en el código:
 
 ```csharp
-protected string cadenaConexion = "Host=localhost;Port=5432;Username=postgres;Password=12345;Database=prestech";
+protected string cadenaConexion = "Host=localhost;Port=5432;Username=postgres;Password=12345;Database=dbproject";
 ```
 
 > 📌 **Importante:**
