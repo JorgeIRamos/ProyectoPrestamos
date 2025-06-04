@@ -661,6 +661,11 @@ namespace GUI
 
         private void btndescargarprestamos_Click(object sender, EventArgs e)
         {
+            if (dgvmisprestamos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.");
+                return;
+            }
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "Excel files (*.xlsx)|*.xlsx";
@@ -674,6 +679,11 @@ namespace GUI
 
         private void btndescargarpagos_Click(object sender, EventArgs e)
         {
+            if (dgvhistorialpago.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.");
+                return;
+            }
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "Excel files (*.xlsx)|*.xlsx";

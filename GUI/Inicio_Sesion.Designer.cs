@@ -74,17 +74,19 @@
             // txtusuario
             // 
             this.txtusuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtusuario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtusuario.Location = new System.Drawing.Point(118, 129);
             this.txtusuario.Name = "txtusuario";
-            this.txtusuario.Size = new System.Drawing.Size(246, 13);
+            this.txtusuario.Size = new System.Drawing.Size(246, 16);
             this.txtusuario.TabIndex = 7;
             // 
             // txtcontraseña
             // 
             this.txtcontraseña.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtcontraseña.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcontraseña.Location = new System.Drawing.Point(118, 175);
             this.txtcontraseña.Name = "txtcontraseña";
-            this.txtcontraseña.Size = new System.Drawing.Size(246, 13);
+            this.txtcontraseña.Size = new System.Drawing.Size(246, 16);
             this.txtcontraseña.TabIndex = 8;
             this.txtcontraseña.UseSystemPasswordChar = true;
             // 

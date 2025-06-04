@@ -1741,9 +1741,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(156)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.pnlmisprestamos);
             this.Controls.Add(this.pnlinicio);
             this.Controls.Add(this.pnlofertasprestamo);
+            this.Controls.Add(this.pnlmisprestamos);
             this.Controls.Add(this.pnlpagos);
             this.Controls.Add(this.pnlconfirmarpago);
             this.Controls.Add(this.pnlconsultarpagos);

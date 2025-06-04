@@ -126,6 +126,9 @@ namespace GUI
             }
 
             GuardarPrestamo();
+            txtcantidad.Clear();
+            txtintereses.Clear();
+            txtplazo.Clear();
         }
 
         private void CargarUltimosDatos()
@@ -555,6 +558,11 @@ namespace GUI
 
         private void btndescargarpagos_Click(object sender, EventArgs e)
         {
+            if (dgvcontrolpagos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.");
+                return;
+            }
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "Excel files (*.xlsx)|*.xlsx";
@@ -568,6 +576,11 @@ namespace GUI
 
         private void btndescargarprestamos_Click(object sender, EventArgs e)
         {
+            if (dgvDatosPrestamos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.");
+                return;
+            }
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.Filter = "Excel files (*.xlsx)|*.xlsx";

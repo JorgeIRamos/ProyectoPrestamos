@@ -146,7 +146,7 @@ namespace GUI
 
             foreach (var item in listapersonas)
             {
-                if (string.IsNullOrEmpty(nrodocumento) || !nrodocumento.All(char.IsDigit) || nrodocumento.Length != 10)
+                if (string.IsNullOrEmpty(nrodocumento) || !nrodocumento.All(char.IsDigit) || nrodocumento.Length > 10)
                 {
                     MessageBox.Show("El numero de documento no esta digitado de manera correcta.");
                     return false;
